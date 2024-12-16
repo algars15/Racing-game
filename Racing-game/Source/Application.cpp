@@ -6,6 +6,7 @@
 #include "ModulePhysics.h"
 #include "ModuleGame.h"
 #include "ModuleScene.h"
+#include "ModuleMenu.h"
 
 #include "Application.h"
 
@@ -18,7 +19,12 @@ Application::Application()
 	renderer = new ModuleRender(this);
 	audio = new ModuleAudio(this, true);
 	physics = new ModulePhysics(this);
-	scene_intro = new ModuleScene(this);
+	scene = new ModuleScene(this);
+	menu = new ModuleMenu(this);
+	game = new ModuleGame(this);
+
+	scene->SetGame(game);
+	scene->SetMenu(menu);
 
 	// The order of calls is very important!
 	// Modules will Init() Start() and Update in this order
@@ -30,7 +36,9 @@ Application::Application()
 	AddModule(audio);
 	
 	// Scenes
-	AddModule(scene_intro);
+	AddModule(scene);
+	AddModule(menu);
+	AddModule(game);
 
 	// Rendering happens at the end
 	AddModule(renderer);

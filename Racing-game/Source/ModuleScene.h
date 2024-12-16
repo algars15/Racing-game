@@ -31,6 +31,8 @@ public:
 
 	bool Start();
 	update_status Update();
+	void SetMenu(ModuleMenu* menu);
+	void SetGame(ModuleGame* game);
 	bool CleanUp();
 
 private:

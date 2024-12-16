@@ -20,7 +20,9 @@ public:
 	ModuleWindow* window;
 	ModuleAudio* audio;
 	ModulePhysics* physics;
-	ModuleScene* scene_intro;
+	ModuleGame* game;
+	ModuleMenu* menu;
+	ModuleScene* scene;
 
 	pugi::xml_document configFile;
 

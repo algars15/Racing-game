@@ -12,13 +12,21 @@
 ModuleScene::ModuleScene(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
     name = "scene"; 
-    menu = new ModuleMenu(app);
-    game = new ModuleGame(app);
 }
 
 ModuleScene::~ModuleScene()
 {
 
+}
+
+void ModuleScene::SetMenu(ModuleMenu* m)
+{
+    menu = m;
+}
+
+void ModuleScene::SetGame(ModuleGame* g)
+{
+    game = g;
 }
 
 bool ModuleScene::Start()
