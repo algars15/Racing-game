@@ -12,6 +12,8 @@
 
 Application::Application()
 {
+	LoadConfig();
+
 	window = new ModuleWindow(this);
 	renderer = new ModuleRender(this);
 	audio = new ModuleAudio(this, true);
@@ -32,6 +34,14 @@ Application::Application()
 
 	// Rendering happens at the end
 	AddModule(renderer);
+
+	bool ret = true;
+
+	for (auto it = list_modules.rbegin(); it != list_modules.rend(); ++it)
+	{
+		Module* module = *it;
+		module->SetParameters(configFile.child("config"));
+	}
 }
 
 Application::~Application()
@@ -122,4 +132,21 @@ bool Application::CleanUp()
 void Application::AddModule(Module* mod)
 {
 	list_modules.emplace_back(mod);
+}
+
+bool Application::LoadConfig()
+{
+	bool ret = true;
+
+	pugi::xml_parse_result result = configFile.load_file("config.xml");
+	if (result)
+	{
+		LOG("config.xml parsed without errors");
+	}
+	else
+	{
+		LOG("Error loading config.xml: %s", result.description());
+	}
+
+	return ret;
 }

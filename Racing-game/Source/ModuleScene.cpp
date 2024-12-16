@@ -11,7 +11,9 @@
 
 ModuleScene::ModuleScene(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
-	
+    name = "scene"; 
+    menu = new ModuleMenu(app);
+    game = new ModuleGame(app);
 }
 
 ModuleScene::~ModuleScene()
@@ -21,9 +23,7 @@ ModuleScene::~ModuleScene()
 
 bool ModuleScene::Start()
 {
-	menu = new ModuleMenu(App);
     menu->Start();
-    game = new ModuleGame(App);
     game->Start();
 
 	state = MENU;

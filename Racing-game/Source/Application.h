@@ -3,6 +3,7 @@
 #include "Globals.h"
 #include "Timer.h"
 #include <vector>
+#include "pugixml.hpp"
 
 class Module;
 class ModuleWindow;
@@ -21,6 +22,8 @@ public:
 	ModulePhysics* physics;
 	ModuleScene* scene_intro;
 
+	pugi::xml_document configFile;
+
 private:
 
 	std::vector<Module*> list_modules;
@@ -34,6 +37,8 @@ private:
 	uint32 last_sec_frame_count = 0;
 	uint32 prev_last_sec_frame_count = 0;
 
+	
+
 public:
 
 	Application();
@@ -42,8 +47,10 @@ public:
 	bool Init();
 	update_status Update();
 	bool CleanUp();
+	
 
 private:
 
 	void AddModule(Module* module);
+	bool LoadConfig();
 };

@@ -37,6 +37,9 @@
     <ClCompile Include="Source\ModuleUI.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
+    <ClCompile Include="Source\external\pugixml\src\pugixml.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source/p2Point.h">
@@ -89,8 +92,16 @@
     <Filter Include="Headers\Containers">
       <UniqueIdentifier>{39bd4360-6afc-44b3-8ba5-578b26392b24}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ConfigurationFiles">
+      <UniqueIdentifier>{6ab2d436-106f-4fcb-86c1-807402d43b1c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Source\resources.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="config.xml">
+      <Filter>ConfigurationFiles</Filter>
+    </Xml>
   </ItemGroup>
 </Project>

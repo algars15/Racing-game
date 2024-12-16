@@ -9,9 +9,10 @@ class Module
 {
 private :
 	bool enabled;
-
+	pugi::xml_node parameters;
 public:
 	Application* App;
+	std::string name;
 
 	Module(Application* parent, bool start_enabled = true) : App(parent), enabled(start_enabled)
 	{}
@@ -22,6 +23,12 @@ public:
 	bool IsEnabled() const
 	{
 		return enabled;
+	}
+
+	void SetParameters(pugi::xml_node node)
+	{
+		parameters = node.child(name.c_str());
+		if (parameters.empty()) LOG("Failed to load parameters from module %c", name.c_str());
 	}
 
 	void Enable()

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "raylib.h"
+#include "pugixml.hpp"
 
 #include <stdio.h>
 
@@ -32,8 +33,8 @@ enum update_status
 };
 
 // Configuration -----------
-#define SCREEN_WIDTH		  480
-#define SCREEN_HEIGHT		  640
+#define SCREEN_WIDTH		  1920
+#define SCREEN_HEIGHT		  1080
 #define SCREEN_SIZE				1
 #define WIN_FULLSCREEN		false
 #define WIN_RESIZABLE		false

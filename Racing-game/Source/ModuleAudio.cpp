@@ -10,6 +10,7 @@ ModuleAudio::ModuleAudio(Application* app, bool start_enabled) : Module(app, sta
 {
 	fx_count = 0;
 	music = Music{ 0 };
+	name = "audio";
 }
 
 // Destructor

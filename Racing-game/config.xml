@@ -1,0 +1,327 @@
+<?xml version="1.0"?>
+<config>
+	<application>
+		<title>Our racing game</title>
+		<maxFrameDuration value="16" />
+	</application>
+	<audio>
+		
+	</audio>
+	<game>
+		
+	</game>
+	<menu>
+
+	</menu>
+	<physics>
+
+	</physics>
+	<render>
+		<vsync value="false" />
+	</render>
+	<scene>
+
+	</scene>
+	<ui>
+
+	</ui>
+	<window>
+
+	</window>
+	
+	
+	<render>
+		<vsync value="false" />
+	</render>
+	
+	
+	<!--<window>
+		<resolution width="1280" height="640" scale="2" />
+		<fullscreen value="false" />
+		<borderless value="false" />
+		<resizable value="false" />
+		<fullscreen_window value="false" />
+	</window>
+	<scene>
+		<map path="Assets/Maps/" name="Mapa.tmx">
+			<parallax>
+				<layer name="mountain1" path="Assets/Textures/Parallax/Mountain1OFF.png" marginX="0" marginY="0" spacing="0" width="640" height="360" slowX="20" repeatNum="8" slowY="30" />
+				<layer name="mountain2" path="Assets/Textures/Parallax/Mountain2OFF.png" marginX="0" marginY="0" spacing="0" width="640" height="360" slowX="10" repeatNum="8" slowY="5" />
+				<layer name="cloud1" path="Assets/Textures/Parallax/Cloud1X2.png" marginX="0" marginY="0" spacing="0" width="640" height="360" slowX="5" repeatNum="6" slowY="1" />
+				<layer name="moon" path="Assets/Textures/Parallax/MoonX2.png" marginX="480" marginY="0" spacing="0" width="640" height="360" slowX="2" repeatNum="1" slowY="1" />
+				<layer name="cloud2" path="Assets/Textures/Parallax/Cloud2X2.png" marginX="0" marginY="0" spacing="0" width="640" height="360" slowX="4" repeatNum="6" slowY="1" />
+				<layer name="cloud3" path="Assets/Textures/Parallax/Cloud3X2.png" marginX="0" marginY="0" spacing="0" width="640" height="360" slowX="3" repeatNum="6" slowY="1" />
+				<layer name="sky" path="Assets/Textures/Parallax/SkyX2.png" marginX="0" marginY="0" spacing="0" width="640" height="360" slowX="1" repeatNum="6" slowY="1" />
+			</parallax>
+		</map>
+		<entities>
+			<player x="25" y="350" w="64" h="64" t_w="64" t_h="64" lives="3" texture="Assets/Textures/GhostCharacter/Ghost_Sheet_Resized.png" t_texture="Assets/Textures/Pumpkin Head/pumpkinhead_sheet2.png">
+				<propierties gJumpForce="0.6f" pJumpForce="0.5f" pushForce="0.5f" moveSpeed="0.2f" friction="2.0f" gravity="1.2f" attack1Time="0.8f" attack2Time="1.0f" hurtTime="1.0f" respawnTime=" 2.0f" playerState="0" direction="1" shootCooldown="5" />
+				<animations>
+					<idle loop="true" speed="0.2f">
+						<frame x="0" y="0" w="64" h="64" />
+						<frame x="64" y="0" w="64" h="64" />
+						<frame x="128" y="0" w="64" h="64" />
+						<frame x="192" y="0" w="64" h="64" />
+						<frame x="256" y="0" w="64" h="64" />
+						<frame x="320" y="0" w="64" h="64" />
+						<frame x="384" y="0" w="64" h="64" />
+						<frame x="448" y="0" w="64" h="64" />
+					</idle>
+					<walk loop="true" speed="0.1f">
+						<frame x="0" y="64" w="64" h="64" />
+						<frame x="64" y="64" w="64" h="64" />
+						<frame x="128" y="64" w="64" h="64" />
+						<frame x="192" y="64" w="64" h="64" />
+					</walk>
+					<jump loop="false" speed="0.2f">
+						<frame x="0" y="128" w="64" h="64" />
+						<frame x="64" y="128" w="64" h="64" />
+						<frame x="128" y="128" w="64" h="64" />
+					</jump>
+					<fall loop="false" speed=" 0.2f">
+						<frame x="0" y="192" w="64" h="64" />
+						<frame x="64" y="192" w="64" h="64" />
+						<frame x="128" y="192" w="64" h="64" />
+					</fall>
+					<hurt loop="false" speed="0.15f">
+						<frame x="0" y="256" w="64" h="64" />
+						<frame x="64" y="256" w="64" h="64" />
+						<frame x="128" y="256" w="64" h="64" />
+						<frame x="192" y="256" w="64" h="64" />
+					</hurt>
+					<death loop="false" speed="0.2f">
+						<frame x="0" y="320" w="64" h="64" />
+						<frame x="64" y="320" w="64" h="64" />
+						<frame x="128" y="320" w="64" h="64" />
+						<frame x="192" y="320" w="64" h="64" />
+						<frame x="256" y="320" w="64" h="64" />
+						<frame x="320" y="320" w="64" h="64" />
+					</death>
+					<t_idle loop="true" speed="0.1f">
+						<frame x="0" y="0" w="64" h="64" />
+					</t_idle>
+					<t_walk loop="true" speed="0.1f">
+						<frame x="0" y="0" w="64" h="64" />
+						<frame x="64" y="0" w="64" h="64" />
+						<frame x="128" y="0" w="64" h="64" />
+						<frame x="192" y="0" w="64" h="64" />
+					</t_walk>
+					<t_jump>
+						<frame x="0" y="0" w="64" h="64" />
+						<frame x="64" y="0" w="64" h="64" />
+					</t_jump>
+					<t_fall>
+						<frame x="192" y="0" w="64" h="64" />
+						<frame x="128" y="0" w="64" h="64" />
+					</t_fall>
+					<t_spell1 loop="false" speed="0.2f">
+						<frame x="0" y="64" w="64" h="64" />
+						<frame x="64" y="64" w="64" h="64" />
+						<frame x="128" y="64" w="64" h="64" />
+						<frame x="192" y="64" w="64" h="64" />
+						<frame x="256" y="64" w="64" h="64" />
+						<frame x="320" y="64" w="64" h="64" />
+						<frame x="384" y="64" w="64" h="64" />
+						<frame x="448" y="64" w="64" h="64" />
+					</t_spell1>
+					<t_hurt loop="false" speed="0.1f">
+						<frame x="0" y="128" w="64" h="64" />
+						<frame x="64" y="128" w="64" h="64" />
+						<frame x="128" y="128" w="64" h="64" />
+					</t_hurt>
+					<t_death loop=" false" speed="0.2f">
+						<frame x="0" y="192" w="64" h="64" />
+						<frame x="64" y="192" w="64" h="64" />
+						<frame x="128" y="192" w="64" h="64" />
+						<frame x="192" y="192" w="64" h="64" />
+						<frame x="256" y="192" w="64" h="64" />
+						<frame x="320" y="192" w="64" h="64" />
+						<frame x="384" y="192" w="64" h="64" />
+						<frame x="448" y="192" w="64" h="64" />
+					</t_death>
+					<t_spell2 loop="false" speed="0.2f">
+						<frame x="0" y="256" w="64" h="64" />
+						<frame x="64" y="256" w="64" h="64" />
+						<frame x="128" y="256" w="64" h="64" />
+						<frame x="192" y="256" w="64" h="64" />
+						<frame x="256" y="256" w="64" h="64" />
+						<frame x="320" y="256" w="64" h="64" />
+						<frame x="384" y="256" w="64" h="64" />
+						<frame x="448" y="256" w="64" h="64" />
+						<frame x="512" y="256" w="64" h="64" />
+						<frame x="576" y="256" w="64" h="64" />
+						<frame x="640" y="256" w="64" h="64" />
+					</t_spell2>
+				</animations>
+			</player>
+			<shot x="0" y="0" w="64" h="64" rad="5" texture="Assets/Textures/Pumpkin Head/fireball-sheet-test.png">
+				<animations>
+					<travel loop="true" speed="0.2f">
+						<frame x="0" y="0" w="64" h="64" />
+						<frame x="64" y="0" w="64" h="64" />
+						<frame x="128" y="0" w="64" h="64" />
+						<frame x="192" y="0" w="64" h="64" />
+					</travel>
+				</animations>
+			</shot>
+			<enemies>
+				<groundEnemy>
+					<skeleton x="100" y="420" w="48" h="48" texture="Assets/Textures/Enemies/Undead/SwordsMan-reorganized_spritesheet.png">
+						<properties speed="1" chaseArea="100" attackArea="20" jumpForce="0.3f" attackTime="1.0f" deathTime="1.5f" />
+						<animations>
+							<idle loop="true" speed="0.2f">
+								<frame x="0" y="0" w="48" h="48" />
+							</idle>
+							<walk loop="true" speed="0.2f">
+								<frame x="0" y="0" w="48" h="48" />
+								<frame x="48" y="0" w="48" h="48" />
+								<frame x="96" y="0" w="48" h="48" />
+								<frame x="144" y="0" w="48" h="48" />
+							</walk>
+							<attack loop="false" speed="0.1f">
+								<frame x="0" y="48" w="48" h="48" />
+								<frame x="48" y="48" w="48" h="48" />
+								<frame x="96" y="48" w="48" h="48" />
+								<frame x="144" y="48" w="48" h="48" />
+								<frame x="0" y="48" w="48" h="48" />
+							</attack>
+							<death loop="false" speed="0.2f">
+								<frame x="0" y="96" w="48" h="48" />
+								<frame x="48" y="96" w="48" h="48" />
+								<frame x="96" y="96" w="48" h="48" />
+							</death>
+						</animations>
+					</skeleton>
+				</groundEnemy>
+				<flyEnemy>
+					<bat x="250" y="350" w="32" h="32" texture="Assets/Textures/Enemies/Bat/Vampire/BatVampire_Sheet.png">
+						<properties speed="1" chaseArea="100" deathTime="1.0f" />
+						<animations>
+							<idle loop="true" speed="0.2f">
+								<frame x="0" y="0" w="32" h="32" />
+								<frame x="32" y="0" w="32" h="32" />
+								<frame x="64" y="0" w="32" h="32" />
+								<frame x="96" y="0" w="32" h="32" />
+							</idle>
+							<attack loop="true" speed="0.2f">
+								<frame x="0" y="32" w="32" h="32" />
+								<frame x="32" y="32" w="32" h="32" />
+								<frame x="64" y="32" w="32" h="32" />
+								<frame x="96" y="32" w="32" h="32" />
+								<frame x="128" y="32" w="32" h="32" />
+								<frame x="160" y="32" w="32" h="32" />
+							</attack>
+							<hurt loop=" false" speed="0.2f">
+								<frame x="0" y="64" w="32" h="32" />
+								<frame x="32" y="64" w="32" h="32" />
+								<frame x="64" y="64" w="32" h="32" />
+								<frame x="96" y="64" w="32" h="32" />
+							</hurt>
+							<death loop=" false" speed="0.1f">
+								<frame x="0" y="96" w="32" h="32" />
+								<frame x="32" y="96" w="32" h="32" />
+								<frame x="64" y="96" w="32" h="32" />
+								<frame x="96" y="96" w="32" h="32" />
+								<frame x="128" y="96" w="32" h="32" />
+								<frame x="192" y="96" w="32" h="32" />
+								<frame x="224" y="96" w="32" h="32" />
+							</death>
+						</animations>
+					</bat>
+				</flyEnemy>
+				<paths>
+					<path1>
+						<point x="2629" y=" 193" />
+						<point x="2689" y=" 193" />
+					</path1>
+					<path2>
+						<point x="100" y=" 420" />
+						<point x="275" y=" 390" />
+					</path2>
+					<path3>
+						<point x="753" y="240" />
+						<point x="865" y="240" />
+					</path3>
+					<path4>
+						<point x="2200" y="124" />
+						<point x="2000" y="130" />
+					</path4>
+					<path5>
+						<point x="1618" y="176" />
+						<point x="1696" y="176" />
+					</path5>
+					<path6>
+						<point x="1505" y="432" />
+						<point x="1713" y="432" />
+					</path6>
+				</paths>
+			</enemies>
+			<items>
+				<pumpkins>
+					<properties w="16" h="16" texture="Assets/Textures/Items/pumpkin ui obj-resized.png" />
+					<instances>
+						<pumpkin1 x="300" y="416" />
+						<checkPumpkin1 x="1808" y="192" />
+						<pumpkin2 x="816" y="304" />
+						<pumpkin3 x="720" y="385" />
+						<pumpkin4 x="1169" y="321" />
+						<pumpkin5 x="2239" y="257" />
+						<pumpkin6 x="2018" y="370" />
+						<pumpkin7 x="1472" y="432" />
+						<pumpkin8 x="1568" y="257" />
+					</instances>
+					<animations>
+						<unlit>
+							<frame x="0" y="0" w="16" h="16" />
+						</unlit>
+						<lit>
+							<frame x="0" y="16" w="16" h="16" />
+						</lit>
+					</animations>
+				</pumpkins>
+			</items>
+		</entities>
+		<savedData saved="true">
+			<player x="25" y="358" lives="3" transformable="false" transformed="false" />
+			<enemy0 dead="false" x="849" y="248" />
+			<enemy1 dead="false" x="1689" y="183" />
+			<enemy2 dead="false" x="190" y="423" />
+			<enemy3 dead="false" x="2113" y="119" />
+			<enemy4 dead="false" x="1598" y="439" />
+			<item0 alight="true" x="308" y="423" />
+			<item1 alight="true" x="1816" y="200" />
+			<item2 alight="true" x="824" y="312" />
+			<item3 alight="true" x="728" y="392" />
+			<item4 alight="true" x="1177" y="329" />
+			<item5 alight="true" x="2247" y="265" />
+			<item6 alight="true" x="2026" y="378" />
+			<item7 alight="true" x="1479" y="440" />
+			<item8 alight="true" x="1575" y="265" />
+		</savedData>
+	</scene>
+	<ui path="Assets/Textures/UI/HelpMenu_ver2.png" />
+	<audio>
+		<fx>
+			<gJumpSFX path="Assets/Audio/Fx/ghostJump.ogg" />
+			<pJumpSFX path="Assets/Audio/Fx/pumpkinJump.ogg" />
+			<atk1SFX path="Assets/Audio/Fx/atk1_alt.ogg" />
+			<atk2SFX path="Assets/Audio/Fx/customATK2.ogg" />
+			<switchOnSFX path="Assets/Audio/Fx/SwitchON.ogg" />
+			<switchOffSFX path="Assets/Audio/Fx/SwitchOFF.ogg" />
+			<gHurtSFX path="Assets/Audio/Fx/SquidHit.ogg" />
+			<pHurtSFX path="Assets/Audio/Fx/BonkSFX.ogg" />
+			<gDeathSFX path="Assets/Audio/Fx/SinkOMO.ogg" />
+			<pDeathSFX path="Assets/Audio/Fx/PumpkinCrack.ogg" />
+			<saveGame path="Assets/Audio/Fx/SaveGame.ogg" />
+			<loadGame path="Assets/Audio/Fx/LoadGame.ogg" />
+			<batWingsSFX path="Assets/Audio/Fx/BatWings.ogg" />
+			<farBatWings path="Assets/Audio/Fx/FarBatWings.ogg" />
+			<batDeathSFX path="Assets/Audio/Fx/BatDeath.ogg" />
+			<swordSFX path="Assets/Audio/Fx/SwordSlash.ogg" />
+			<skeletonDeathSFX path="Assets/Audio/Fx/SkeletonDeath.ogg" />
+			<noSound path="Assets/Audio/Fx/NoSound.ogg" />
+		</fx>
+		<music />
+	</audio>-->
+</config>
