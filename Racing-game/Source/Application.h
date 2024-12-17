@@ -11,6 +11,8 @@ class ModuleRender;
 class ModuleAudio;
 class ModulePhysics;
 class ModuleScene;
+class ModuleGame;
+class ModuleMenu;
 
 class Application
 {

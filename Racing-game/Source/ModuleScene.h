@@ -34,6 +34,9 @@ public:
 	void SetMenu(ModuleMenu* menu);
 	void SetGame(ModuleGame* game);
 	bool CleanUp();
+	State GetState();
+	bool GetToMenu();
+	FadeState GetFadeState();
 
 private:
 	ModuleGame* game;

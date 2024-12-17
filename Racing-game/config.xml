@@ -4,31 +4,41 @@
 		<title>Our racing game</title>
 		<maxFrameDuration value="16" />
 	</application>
+	
 	<audio>
 		
 	</audio>
+	
 	<game>
-		
+		<tracks>
+			<c1 path = "Assets/Tracks/C1.png" tmx = "Assets/Tracks/c1.tmx"/>
+			<c3 path = "Assets/Tracks/C3.png" tmx = "Assets/Tracks/c3.tmx"/>
+		</tracks>
 	</game>
+	
 	<menu>
-
+		<background path = "Assets/Menu/Menu.png"/>
 	</menu>
+	
 	<physics>
 
 	</physics>
+	
 	<render>
 		<vsync value="false" />
 	</render>
+	
 	<scene>
-
+		
 	</scene>
+	
 	<ui>
 
 	</ui>
+	
 	<window>
 
 	</window>
-	
 	
 	<render>
 		<vsync value="false" />

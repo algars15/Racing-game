@@ -25,27 +25,21 @@ ModuleMenu::~ModuleMenu()
 bool ModuleMenu::Start()
 {
 
-	menuTexture = LoadTexture("Assets/menu.png");
-    LoadHightScore();
+    menuTexture = LoadTexture(parameters.child("background").attribute("path").as_string());
 
 	LOG("Loading Intro assets");
 	bool ret = true;
-
-
 	return ret;
 }
 
 update_status ModuleMenu::Update()
-{
-	DrawTexture(menuTexture, 0, 0, WHITE);
+{    
+    if (App->scene->GetState() == MENU || 
+        App->scene->GetState() == TRANSITION && App->scene->GetFadeState() == FADEIN && App->scene->GetToMenu() || 
+        App->scene->GetState() == TRANSITION && App->scene->GetFadeState() == FADEOUT && !App->scene->GetToMenu()) {
 
-    char textoPreviousScore[50];
-    sprintf_s(textoPreviousScore, "PS: %d", previousScore);
-    DrawText(textoPreviousScore, App->window->GetWidth() / 2 - MeasureText(textoPreviousScore, 32) / 2, 560, 32, WHITE);
-
-    char textoHighScore[50];
-    sprintf_s(textoHighScore, "HS: %d", hightScore);
-    DrawText(textoHighScore, App->window->GetWidth()/2-MeasureText(textoHighScore,32) / 2, 600, 32, GOLD);
+        DrawTexture(menuTexture, 0, 0, WHITE);
+    }
     
 	return UPDATE_CONTINUE;
 }

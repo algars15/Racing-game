@@ -18,15 +18,8 @@
 enum ObjectType
 {
 	UNKNOWN,
-	BOLA,
-	BOLA_EXTRA,
-	PALANCA,
-	MUELLE,
-	REBOTADOR,
-	BOLA_REBOTADORA,
-	DETECTOR_MORT,
-	PASARELA,
-	VIDA
+	MAP_COLLIDER,
+	ROUTE_SENSOR
 };
 
 // Small class to return to other modules to track position and rotation of physics bodies
@@ -34,7 +27,8 @@ class PhysBody
 {
 public:
 	PhysBody() : listener(NULL), body(NULL)
-	{}
+	{
+	}
 
 	//void GetPosition(int& x, int& y) const;
 	void GetPhysicPosition(int& x, int &y) const;

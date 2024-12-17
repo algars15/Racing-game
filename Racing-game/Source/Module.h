@@ -7,7 +7,7 @@ class PhysBody;
 
 class Module
 {
-private :
+protected :
 	bool enabled;
 	pugi::xml_node parameters;
 public:

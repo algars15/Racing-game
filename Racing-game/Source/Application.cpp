@@ -21,7 +21,7 @@ Application::Application()
 	physics = new ModulePhysics(this);
 	scene = new ModuleScene(this);
 	menu = new ModuleMenu(this);
-	game = new ModuleGame(this);
+	game = new ModuleGame(this, false);
 
 	scene->SetGame(game);
 	scene->SetMenu(menu);
@@ -36,9 +36,9 @@ Application::Application()
 	AddModule(audio);
 	
 	// Scenes
-	AddModule(scene);
 	AddModule(menu);
 	AddModule(game);
+	AddModule(scene);
 
 	// Rendering happens at the end
 	AddModule(renderer);
@@ -70,7 +70,7 @@ bool Application::Init()
 	for (auto it = list_modules.begin(); it != list_modules.end() && ret; ++it)
 	{
 		Module* module = *it;
-		ret = module->Init();
+		if (module->IsEnabled()) ret = module->Init();
 	}
 
 	// After all Init calls we call Start() in all modules
@@ -79,7 +79,7 @@ bool Application::Init()
 	for (auto it = list_modules.begin(); it != list_modules.end() && ret; ++it)
 	{
 		Module* module = *it;
-		ret = module->Start();
+		if (module->IsEnabled()) ret = module->Start();
 	}
 	
 	return ret;

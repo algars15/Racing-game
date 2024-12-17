@@ -27,16 +27,22 @@ public:
 	ModuleGame(Application* app, bool start_enabled = true);
 	~ModuleGame();
 
-	bool Start();
 	update_status Update();
 	bool CleanUp();
 	void OnCollision(PhysBody* bodyA, PhysBody* bodyB, Vector2 normal);
 	bool GetReturnMain();
 	void SaveGame();
 	void RestartGame();
+	void LoadGame();
 
 public:
 
+	//PHYSICS
 	std::vector<PhysicEntity*> entities;
+
+	//TEXTURES
+	Texture2D mapTexture;
+
+	//UI
 	ModuleUI* ui;
 };

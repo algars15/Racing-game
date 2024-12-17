@@ -4159,6 +4159,7 @@ Texture2D LoadTexture(const char *fileName)
         UnloadImage(image);
     }
 
+    if (texture.id == 0) TraceLog(LOG_ERROR, "Could not load texture from: %c", fileName);
     return texture;
 }
 

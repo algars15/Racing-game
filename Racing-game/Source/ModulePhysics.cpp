@@ -123,7 +123,7 @@ PhysBody* ModulePhysics::CreateRectangle(int x, int y, int width, int height, b2
 	PhysBody* pbody = new PhysBody();
 
 	b2BodyDef body;
-	body.type = b2_dynamicBody;
+	body.type = colliderType;
 	body.position.Set(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));
 	body.userData.pointer = reinterpret_cast<uintptr_t>(pbody);
 

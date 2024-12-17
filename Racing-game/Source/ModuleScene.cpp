@@ -45,22 +45,15 @@ bool ModuleScene::Start()
     fadeSpeed = 255.0f / 1.0f;
     fadeState = FADEIN;
     toMenu = true;
-    song = LoadMusicStream("Assets/intro song.wav");
-    SetMusicVolume(song, 0.8f);
-    PlayMusicStream(song);
+
 
 	return ret;
 }
 
 update_status ModuleScene::Update()
 {
-    UpdateMusicStream(song);
-
     if (state == MENU)
     {
-        menu->Update();
-        
-
         if (IsKeyPressed(KEY_SPACE))
         {
             // Iniciar fade out
@@ -73,7 +66,6 @@ update_status ModuleScene::Update()
     }
     else if (state == GAME)
     {
-        game->Update();
         if (game->GetReturnMain())
         {
             state = TRANSITION;
@@ -87,8 +79,6 @@ update_status ModuleScene::Update()
         if (fadeState == FADEIN)
         {
             fadeAlpha -= fadeSpeed * GetFrameTime(); 
-            if (toMenu) menu->Update();
-            else game->Update();
 
             if (fadeAlpha <= 0.0f)
             {
@@ -100,8 +90,6 @@ update_status ModuleScene::Update()
         else if (fadeState == FADEOUT)
         {
             fadeAlpha += fadeSpeed * GetFrameTime();
-            if (toMenu) game->Update();
-            else menu->Update();
             
             if (fadeAlpha >= 255.0f)
             {
@@ -113,11 +101,10 @@ update_status ModuleScene::Update()
         else
         {
             fadeState = FADEIN;
-            if (!toMenu) game->RestartGame();
+            if (!toMenu) game->LoadGame();
             else menu->LoadHightScore();
         }
 
-        // Dibujar fade
         DrawRectangle(0, 0, App->window->GetWidth(), App->window->GetHeight(), { 0, 0, 0, static_cast<unsigned char>(fadeAlpha)});
     }
 
@@ -128,12 +115,22 @@ update_status ModuleScene::Update()
 // Load assets
 bool ModuleScene::CleanUp()
 {
-    UnloadMusicStream(song);
-    menu->CleanUp();
-    game->CleanUp();
-    delete menu;
-    delete game;
 	LOG("Unloading Intro scene");
 
 	return true;
+}
+
+State ModuleScene::GetState()
+{
+    return state;
+}
+
+bool ModuleScene::GetToMenu()
+{
+    return toMenu;
+}
+
+FadeState ModuleScene::GetFadeState()
+{
+    return fadeState;
 }
