@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="1" height="1" tilewidth="1920" tileheight="1080" infinite="0" nextlayerid="4" nextobjectid="15">
+ <tileset firstgid="1" source="C5.tsx"/>
+ <layer id="1" name="Capa de patrones 1" width="1" height="1">
+  <data encoding="csv">
+1
+</data>
+ </layer>
+ <objectgroup id="2" name="Collisions">
+  <object id="1" x="770" y="429" width="428" height="337"/>
+  <object id="2" x="339" y="338" width="1242" height="91"/>
+  <object id="3" x="0" y="0" width="1918" height="143"/>
+  <object id="4" x="1779" y="143" width="141" height="937"/>
+  <object id="5" x="1394" y="625" width="385" height="455"/>
+  <object id="6" x="1" y="142" width="141" height="938"/>
+  <object id="7" x="142" y="625" width="431" height="455"/>
+  <object id="8" x="573" y="961" width="821" height="119"/>
+ </objectgroup>
+ <objectgroup id="3" name="Route">
+  <object id="11" x="573" y="726" width="197" height="18"/>
+  <object id="12" x="1198" y="726" width="196" height="18"/>
+  <object id="13" x="1582" y="376" width="197" height="18"/>
+  <object id="14" x="143" y="376" width="196" height="18"/>
+ </objectgroup>
+</map>
