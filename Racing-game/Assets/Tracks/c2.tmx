@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="1" height="1" tilewidth="1920" tileheight="1080" infinite="0" nextlayerid="4" nextobjectid="13">
+ <tileset firstgid="1" name="C2" tilewidth="1920" tileheight="1080" tilecount="0" columns="1">
+  <image source="Downloads/C2.jpg" width="1920" height="1080"/>
+ </tileset>
+ <tileset firstgid="1" source="C2.tsx"/>
+ <layer id="1" name="Capa de patrones 1" width="1" height="1">
+  <data encoding="csv">
+1
+</data>
+ </layer>
+ <objectgroup id="2" name="Collisions">
+  <object id="1" x="0" y="0" width="433" height="384"/>
+  <object id="2" x="0" y="384" width="145" height="695.202"/>
+  <object id="3" x="145" y="960" width="1768.13" height="119.203"/>
+  <object id="4" x="428.965" y="4.90547" width="1489.07" height="139.095"/>
+  <object id="5" x="1776" y="137.353" width="142.033" height="824.546"/>
+  <object id="7" x="336" y="576" width="1249" height="192"/>
+  <object id="8" x="624" y="336" width="961" height="240"/>
+ </objectgroup>
+ <objectgroup id="3" name="Route">
+  <object id="9" x="1581.33" y="592" width="195" height="18"/>
+  <object id="10" x="950" y="767" width="18" height="195"/>
+  <object id="11" x="140" y="665" width="195" height="18"/>
+  <object id="12" x="1101" y="140" width="18" height="195"/>
+ </objectgroup>
+</map>
