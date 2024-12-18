@@ -19,7 +19,8 @@ enum ObjectType
 {
 	UNKNOWN,
 	MAP_COLLIDER,
-	ROUTE_SENSOR
+	ROUTE_SENSOR,
+	CAR
 };
 
 // Small class to return to other modules to track position and rotation of physics bodies

@@ -178,6 +178,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Source\PhysicEntity.h" />
+    <ClInclude Include="Source\Car.h" />
     <ClInclude Include="Source\ModuleUI.h" />
     <ClInclude Include="Source\ModuleMenu.h" />
     <ClInclude Include="Source\ModuleScene.h" />
@@ -193,6 +195,7 @@
     <ClInclude Include="Source\Timer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Car.cpp" />
     <ClCompile Include="Source\external\pugixml\src\pugixml.cpp" />
     <ClCompile Include="Source\ModuleUI.cpp" />
     <ClCompile Include="Source\ModuleMenu.cpp" />

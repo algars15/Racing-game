@@ -40,6 +40,9 @@
     <ClCompile Include="Source\external\pugixml\src\pugixml.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Car.cpp">
+      <Filter>Headers\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source/p2Point.h">
@@ -81,6 +84,12 @@
     <ClInclude Include="Source\ModuleUI.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Source\PhysicEntity.h">
+      <Filter>Headers\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Car.h">
+      <Filter>Headers\Entities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Headers">
@@ -94,6 +103,9 @@
     </Filter>
     <Filter Include="ConfigurationFiles">
       <UniqueIdentifier>{6ab2d436-106f-4fcb-86c1-807402d43b1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Entities">
+      <UniqueIdentifier>{8067fb16-9362-40c5-be27-c1ee290feb9d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
