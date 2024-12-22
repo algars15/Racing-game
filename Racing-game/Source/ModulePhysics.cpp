@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "ModuleRender.h"
 #include "ModulePhysics.h"
+#include "PhysicEntity.h"
 
 #include "p2Point.h"
 
@@ -371,6 +372,12 @@ void PhysBody::GetPhysicPosition(int& x, int& y) const
 	y = METERS_TO_PIXELS(pos.y);
 }
 
+Vector2 PhysBody::GetPosition() const
+{
+	b2Vec2 pos = body->GetPosition();
+	return { (float)METERS_TO_PIXELS(pos.x) , (float)METERS_TO_PIXELS(pos.y) };
+}
+
 float PhysBody::GetRotation() const
 {
 	return body->GetAngle();
@@ -494,6 +501,44 @@ int PhysBody::RayCast(int x1, int y1, int x2, int y2, float& normal_x, float& no
 	return ret;
 }
 
+int PhysBody::RayCast(int x1, int y1, int x2, int y2, float& distance) const
+{
+	int ret = -1;
+
+	b2RayCastInput input;
+	b2RayCastOutput output;
+
+	input.p1.Set(PIXEL_TO_METERS(x1), PIXEL_TO_METERS(y1));
+	input.p2.Set(PIXEL_TO_METERS(x2), PIXEL_TO_METERS(y2));
+	input.maxFraction = 1.0f;
+
+	const b2Fixture* fixture = body->GetFixtureList();
+
+	while (fixture != NULL)
+	{
+		if (fixture->GetShape()->RayCast(&output, input, body->GetTransform(), 0) == true)
+		{
+			// do we want the normal ?
+
+			float fx = (float)(x2 - x1);
+			float fy = (float)(y2 - y1);
+			float dist = sqrtf((fx * fx) + (fy * fy));
+
+			distance = dist;
+
+			return (int)(output.fraction * dist);
+		}
+		fixture = fixture->GetNext();
+	}
+
+	return ret;
+}
+
+void PhysBody::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
+{
+
+}
+
 void ModulePhysics::BeginContact(b2Contact* contact)
 {
 	b2BodyUserData dataA = contact->GetFixtureA()->GetBody()->GetUserData();
@@ -504,15 +549,12 @@ void ModulePhysics::BeginContact(b2Contact* contact)
 
 	b2WorldManifold worldManifold;
 	contact->GetWorldManifold(&worldManifold);
-	Vector2 normal;
-	normal.x = worldManifold.normal.x;
-	normal.y = worldManifold.normal.y;
 
 	if(physA && physA->listener != NULL)
-		physA->listener->OnCollision(physA, physB, normal);
+		physA->listener->OnCollision(physA, physB);
 
 	if(physB && physB->listener != NULL)
-		physB->listener->OnCollision(physB, physA, normal);
+		physB->listener->OnCollision(physB, physA);
 }
 
 b2RevoluteJoint* ModulePhysics::CreateRevoluteJoint(PhysBody* bodyA, PhysBody* bodyB, b2Vec2 anchor, b2Vec2 angle)

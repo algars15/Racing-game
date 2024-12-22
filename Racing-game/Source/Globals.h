@@ -43,7 +43,7 @@ enum update_status
 #define TITLE "Physics 2D Playground"
 
 //Game Configuration
-#define MAX_CAR_NUM 1
+#define MAX_CAR_NUM 2
 
 class BasicOperations
 {
@@ -64,6 +64,10 @@ public:
 	static float DotProduct(Vector2 vector1, Vector2 vector2)
 	{
 		return (vector1.x * vector2.x) + (vector1.y * vector2.y);
+	}
+	static float CrossProduct(Vector2 vector1, Vector2 vector2)
+	{
+		return (vector1.x * vector2.y) - (vector1.y * vector2.x);
 	}
 };
 

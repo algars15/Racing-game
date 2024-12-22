@@ -7,12 +7,13 @@ class PhysicEntity
 {
 protected:
 
-	PhysicEntity(PhysBody* _body, Module* _listener)
-		: body(_body)
-		, listener(_listener)
+	PhysicEntity(PhysBody* _body)
 	{
-		body->listener = listener;
+		body = _body;
+		body->listener = this;
 	}
+	
+	
 
 public:
 	virtual ~PhysicEntity() = default;
@@ -27,6 +28,11 @@ public:
 	void SetParameters(pugi::xml_node p)
 	{
 		parameters = p;
+	};
+
+	virtual void OnCollision(PhysBody* bodyA, PhysBody* bodyB)
+	{
+
 	};
 
 public:

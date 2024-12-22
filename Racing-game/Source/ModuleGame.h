@@ -26,7 +26,6 @@ public:
 
 	update_status Update();
 	bool CleanUp();
-	void OnCollision(PhysBody* bodyA, PhysBody* bodyB, Vector2 normal);
 	bool GetReturnMain();
 	void SaveGame();
 	void RestartGame();
@@ -40,6 +39,7 @@ public:
 
 	//TRACK
 	std::vector<Vector2> startPoints;
+	std::vector<Vector2> routePoints;
 
 	//CARS
 	std::vector<Car*> cars;
