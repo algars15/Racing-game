@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="1" height="1" tilewidth="1920" tileheight="1080" infinite="0" nextlayerid="4" nextobjectid="20">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="1" height="1" tilewidth="1920" tileheight="1080" infinite="0" nextlayerid="5" nextobjectid="30">
  <tileset firstgid="1" source="C1.tsx"/>
  <layer id="1" name="Capa de patrones 1" width="1" height="1">
   <data encoding="csv">
@@ -12,6 +12,12 @@
   <object id="4" x="1778" y="142" width="142" height="819"/>
   <object id="5" x="0" y="142" width="143" height="819"/>
   <object id="10" x="338" y="338" width="1245" height="428"/>
+ </objectgroup>
+ <objectgroup id="4" name="StartPoints">
+  <object id="26" x="201" y="610" width="1" height="1"/>
+  <object id="27" x="281" y="630" width="1" height="1"/>
+  <object id="28" x="201" y="710" width="1" height="1"/>
+  <object id="29" x="281" y="730" width="1" height="1"/>
  </objectgroup>
  <objectgroup id="3" name="Route">
   <object id="16" x="143" y="534" width="195" height="18"/>

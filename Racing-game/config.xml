@@ -14,7 +14,7 @@
 			<c1 path = "Assets/Tracks/C1.png" tmx = "Assets/Tracks/c1.tmx"/>
 			<c3 path = "Assets/Tracks/C3.png" tmx = "Assets/Tracks/c3.tmx"/>
 		</tracks>
-		<cars path = "Assets/Cars.png"/>
+		<cars path = "Assets/Cars.png" width = "44" height = "76" gravity = "0"/>
 	</game>
 	
 	<menu>

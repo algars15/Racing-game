@@ -8,6 +8,7 @@
 #include "ModuleUI.h"
 #include "fstream"
 #include "string"
+#include "Car.h"
 
 
 ModuleGame::ModuleGame(Application* app, bool start_enabled) : Module(app, start_enabled)
@@ -28,15 +29,14 @@ void ModuleGame::LoadGame()
 	TraceLog(LOG_INFO, "Loading Game Assets");
 
 	//Loading Track
-	int trackNum = 3;
+	int trackNum = 1;
 	char nodeName[16];
 	sprintf_s(nodeName, "c%d", trackNum);
 	pugi::xml_node trackNode = parameters.child("tracks").child(nodeName);
-		
 		//Image
 	mapTexture = LoadTexture(trackNode.attribute("path").as_string());
 	
-		//Colliders
+		//GroupObjects
 	pugi::xml_document mapFileXML;
 	pugi::xml_parse_result result = mapFileXML.load_file(trackNode.attribute("tmx").as_string());
 
@@ -58,8 +58,25 @@ void ModuleGame::LoadGame()
 
 				if (objectGroupName == "Collisions") App->physics->CreateRectangle(x + width / 2, y + height / 2, width, height, b2_staticBody, MAP_COLLIDER);
 				if (objectGroupName == "Route") App->physics->CreateRectangleSensor(x + width / 2, y + height / 2, width, height, b2_staticBody, ROUTE_SENSOR);
-			}
+				if (objectGroupName == "StartPoints")
+				{
+					Vector2 pos = { x,y };
+					startPoints.push_back(pos);
+					TraceLog(LOG_INFO,"%d,%d", pos.x, pos.y);
+				}
+			}	
 		}
+	}
+
+
+	//Loading Cars
+	pugi::xml_node carsNode = parameters.child("cars");
+	carsTexture = LoadTexture(carsNode.attribute("path").as_string());
+	for (int i = 0; i < MAX_CAR_NUM; i++)
+	{
+		Car* car = new Car(App->physics, startPoints[i].x, startPoints[i].y, carsNode.attribute("width").as_int(), carsNode.attribute("height").as_int(), this, carsTexture, i);
+		cars.push_back(car);
+		car->Start();
 	}
 }
 
@@ -88,7 +105,18 @@ bool ModuleGame::CleanUp()
 // Update: draw background
 update_status ModuleGame::Update()
 {
+	for each (Car * car in cars)
+	{
+		car->Update();
+	}
+
+	//DRAW
 	DrawTexture(mapTexture, 0, 0, WHITE);
+
+	for each (Car* car in cars)
+	{
+		car->Draw();
+	}
 
 	return UPDATE_CONTINUE;
 }

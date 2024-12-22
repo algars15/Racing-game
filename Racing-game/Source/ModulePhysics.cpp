@@ -376,6 +376,74 @@ float PhysBody::GetRotation() const
 	return body->GetAngle();
 }
 
+void PhysBody::ApplyForce(Vector2 force)
+{
+	body->ApplyForceToCenter({ force.x, force.y }, true);
+}
+void PhysBody::ApplyAngularImpulse(float impulse)
+{
+	body->ApplyAngularImpulse( impulse, true);
+}
+
+void PhysBody::ApplyTorque(float torque)
+{
+	body->ApplyTorque(torque, true);
+}
+
+Vector2 PhysBody::GetLinearVelocity() const
+{
+	b2Vec2 velocity = body->GetLinearVelocity();
+	return { velocity.x, velocity.y };
+}
+
+Vector2 PhysBody::GetLinearVelocityNormalized() const
+{
+	b2Vec2 velocity = body->GetLinearVelocity();
+	velocity.Normalize();
+	return { velocity.x, velocity.y };
+}
+
+void PhysBody::SetLinearVelocity(Vector2 velocity) const
+{
+	body->SetLinearVelocity({ velocity.x, velocity.y });
+}
+
+float PhysBody::GetVelocity() const
+{
+	return body->GetLinearVelocity().Length();
+}
+
+Vector2 PhysBody::GetWorldVector(Vector2 axis) const
+{
+	b2Vec2 worldVector = body->GetWorldVector(b2Vec2(axis.x, axis.y));
+	return { worldVector.x, worldVector.y };
+}
+
+Vector2 PhysBody::GetLateralVelocity() const
+{
+	b2Vec2 currentRightNormal = body->GetWorldVector(b2Vec2(1, 0));
+	b2Vec2 lateralVelocity = b2Dot(currentRightNormal, body->GetLinearVelocity()) * currentRightNormal;
+	return { lateralVelocity.x, lateralVelocity.y };
+}
+Vector2 PhysBody::GetForwardVelocity() const
+{
+	b2Vec2 currentFrontNormal = body->GetWorldVector(b2Vec2(0, 1));
+	b2Vec2 forwardVelocity = b2Dot(currentFrontNormal, body->GetLinearVelocity()) * currentFrontNormal;
+	return { forwardVelocity.x, forwardVelocity.y };
+}
+float PhysBody::GetMass() const
+{
+	return body->GetMass();
+}
+float PhysBody::GetAngularVelocity() const
+{
+	return body->GetAngularVelocity();
+}
+float PhysBody::GetInertia() const
+{
+	return body->GetInertia();
+}
+
 bool PhysBody::Contains(int x, int y) const
 {
 	b2Vec2 p(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));

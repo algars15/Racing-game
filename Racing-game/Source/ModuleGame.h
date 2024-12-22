@@ -11,10 +11,7 @@
 class PhysBody;
 class PhysicEntity;
 
-class Box; 
-class Circle;
-class Shape;
-class CircleSensor;
+class Car;
 
 class b2RevoluteJoint;
 class b2PrismaticJoint;
@@ -37,11 +34,18 @@ public:
 
 public:
 
-	//PHYSICS
-	std::vector<PhysicEntity*> entities;
-
 	//TEXTURES
 	Texture2D mapTexture;
+	Texture2D carsTexture;
+
+	//TRACK
+	std::vector<Vector2> startPoints;
+
+	//CARS
+	std::vector<Car*> cars;
+
+	//PHYSICS
+	std::vector<PhysicEntity*> entities;
 
 	//UI
 	ModuleUI* ui;

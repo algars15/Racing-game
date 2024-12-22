@@ -41,7 +41,7 @@
       <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="Source\Car.cpp">
-      <Filter>Headers\Entities</Filter>
+      <Filter>Sources\Entities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +106,9 @@
     </Filter>
     <Filter Include="Headers\Entities">
       <UniqueIdentifier>{8067fb16-9362-40c5-be27-c1ee290feb9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Entities">
+      <UniqueIdentifier>{f21525bf-cce7-4a3c-9bbc-167266982ed7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
