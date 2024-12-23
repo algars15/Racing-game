@@ -175,7 +175,6 @@ void Car::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 				currentWaypointPos = routePoints[currentWaypointIndex]->position;
 				if (routePoints[currentWaypointIndex]->body->width > routePoints[currentWaypointIndex]->body->height) currentWaypointPos.x += GetRandomValue(-80, 80);
 				if (routePoints[currentWaypointIndex]->body->width < routePoints[currentWaypointIndex]->body->height) currentWaypointPos.y += GetRandomValue(-80, 80);
-				
 			}
 			break;
 	}
