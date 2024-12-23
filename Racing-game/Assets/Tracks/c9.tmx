@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="1" height="1" tilewidth="1920" tileheight="1080" infinite="0" nextlayerid="5" nextobjectid="29">
+ <tileset firstgid="1" source="C9.tsx"/>
+ <tileset firstgid="2" source="C7.tsx"/>
+ <layer id="1" name="Capa de patrones 1" width="1" height="1">
+  <data encoding="csv">
+2
+</data>
+ </layer>
+ <objectgroup id="2" name="Collisions">
+  <object id="1" x="921.646" y="131.932" width="75.3547" height="333.721"/>
+  <object id="2" x="0" y="0" width="1918" height="126"/>
+  <object id="3" x="0.666667" y="126" width="416" height="241.333"/>
+  <object id="4" x="0" y="367.273" width="128" height="712.727"/>
+  <object id="5" x="128" y="976" width="1792.25" height="104"/>
+  <object id="6" x="1790.79" y="126.061" width="127.545" height="849.879"/>
+  <object id="7" x="1214.06" y="349.333" width="354.606" height="404.03"/>
+  <object id="8" x="349.333" y="588" width="353.708" height="165.333"/>
+  <object id="9" x="640" y="352" width="63.0435" height="235.966"/>
+  <object id="10" x="703.091" y="691" width="510.909" height="62.3636"/>
+ </objectgroup>
+ <objectgroup id="3" name="Route">
+  <object id="11" x="1569" y="594" width="222.667" height="18"/>
+  <object id="12" x="1543" y="127" width="26" height="222"/>
+  <object id="13" x="1569" y="353" width="223" height="23"/>
+  <object id="14" x="1544" y="752" width="25.5" height="224"/>
+  <object id="15" x="1568.5" y="726.5" width="225" height="23.5"/>
+  <object id="16" x="350" y="754" width="25.5" height="222"/>
+  <object id="17" x="129" y="730" width="220.5" height="23.5"/>
+  <object id="18" x="129" y="589.5" width="221.5" height="26"/>
+  <object id="19" x="372" y="369" width="23.5" height="220"/>
+  <object id="20" x="416.5" y="351.5" width="223.5" height="14"/>
+  <object id="21" x="658" y="126.5" width="28" height="224"/>
+  <object id="22" x="703" y="354.5" width="221" height="23"/>
+  <object id="23" x="703" y="447" width="218.5" height="18.5"/>
+  <object id="24" x="954" y="465.5" width="20.5" height="225"/>
+  <object id="25" x="997" y="445" width="217" height="19.5"/>
+  <object id="26" x="997" y="352" width="217" height="23.5"/>
+  <object id="27" x="1213.5" y="126.5" width="21" height="222.5"/>
+  <object id="28" x="2069.7" y="924.242"/>
+ </objectgroup>
+ <objectgroup id="4" name="StartPoints"/>
+</map>
