@@ -15,8 +15,12 @@ void Car::Start()
 	deceleration = parameters.attribute("deceleration").as_float();
 	maxSpeed = parameters.attribute("maxSpeed").as_float();
 	reverseMaxSpeed = parameters.attribute("reverseMaxSpeed").as_float();
-	currentWaypointIndex = 0;
-	waypointRadius = 20;
+	nextWaypointIndex = 0;
+	currentWaypointIndex = routePoints.size() - 1;
+	previousWaypointIndex = routePoints.size() - 2;
+	ranking.checkPoint = currentWaypointIndex;
+	ranking.distanceToNextCheckpoint = 0;
+	ranking.lap = - 1;
 }
 
 void Car::Update(float dt)
@@ -81,6 +85,13 @@ void Car::Update(float dt)
 
 	// Establecer la nueva velocidad
 	body->SetLinearVelocity(targetVelocity);
+
+	// Calcular la distancia al siguiente checkpoint para el ranking
+	Vector2 VectorToRoutePoint = {
+			body->GetPosition().x - routePoints[nextWaypointIndex]->position.x,
+			body->GetPosition().y - routePoints[nextWaypointIndex]->position.y,
+	};
+	ranking.distanceToNextCheckpoint = BasicOperations().MagnitudeVector(VectorToRoutePoint);
 }
 
 void Car::Input()
@@ -100,7 +111,7 @@ void Car::Ia()
 	Vector2 carForward = body->GetWorldVector({ 0.0f, 1.0f }); // Dirección hacia adelante del coche
 
 	// Punto objetivo de la ruta
-	Vector2 targetPoint = currentWaypointPos;
+	Vector2 targetPoint = nextWaypointPos;
 
 	// Vector hacia el punto objetivo
 	Vector2 toTarget = {
@@ -138,7 +149,7 @@ void Car::Draw()
 	body->GetPhysicPosition(x, y);
 	if (draw)
 	{
-		DrawCircle(currentWaypointPos.x, currentWaypointPos.y, waypointRadius, RED);
+		DrawCircle(nextWaypointPos.x, nextWaypointPos.y, 5, RED);
 		DrawTexturePro(texture, Rectangle{ (float) width * carNumber, 0, (float)width, (float)height },
 			Rectangle{ (float)x, (float)y, (float)width, (float)height },
 			Vector2{ (float)width / 2.0f, (float)height / 2.0f }, body->GetRotation() * RAD2DEG, WHITE);
@@ -168,14 +179,39 @@ void Car::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 	switch (otherPhysBody->objectType)
 	{
 		case ObjectType::ROUTE_SENSOR:
-			int nextPointIndex = (currentWaypointIndex + 1) % routePoints.size();
-			if (otherPhysBody == routePoints[currentWaypointIndex]->body)
+			
+			
+			if (otherPhysBody == routePoints[nextWaypointIndex]->body)
 			{
-				currentWaypointIndex = nextPointIndex;
-				currentWaypointPos = routePoints[currentWaypointIndex]->position;
-				if (routePoints[currentWaypointIndex]->body->width > routePoints[currentWaypointIndex]->body->height) currentWaypointPos.x += GetRandomValue(-80, 80);
-				if (routePoints[currentWaypointIndex]->body->width < routePoints[currentWaypointIndex]->body->height) currentWaypointPos.y += GetRandomValue(-80, 80);
+				nextWaypointIndex = (nextWaypointIndex + 1) % routePoints.size();
+				currentWaypointIndex = (currentWaypointIndex + 1) % routePoints.size();
+				previousWaypointIndex = (previousWaypointIndex + 1) % routePoints.size();
+				if (currentWaypointIndex == 0) ranking.lap++;
 			}
+			else if (otherPhysBody == routePoints[previousWaypointIndex]->body)
+			{
+				nextWaypointIndex = (nextWaypointIndex - 1 + routePoints.size()) % routePoints.size();
+				currentWaypointIndex = (currentWaypointIndex - 1 + routePoints.size()) % routePoints.size();
+				previousWaypointIndex = (previousWaypointIndex - 1 + routePoints.size()) % routePoints.size();
+				if (nextWaypointIndex == 0) ranking.lap--;
+			}
+			
+			ranking.checkPoint = currentWaypointIndex;
+
+			if (ia)
+			{
+				nextWaypointPos = routePoints[nextWaypointIndex]->position;
+				if (routePoints[nextWaypointIndex]->body->width > routePoints[nextWaypointIndex]->body->height) nextWaypointPos.x += GetRandomValue(-80, 80);
+				if (routePoints[nextWaypointIndex]->body->width < routePoints[nextWaypointIndex]->body->height) nextWaypointPos.y += GetRandomValue(-80, 80);
+			}
+
 			break;
 	}
 }
+
+Ranking Car::GetRank()
+{
+	return ranking;
+}
+
+

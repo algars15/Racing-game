@@ -24,6 +24,14 @@ struct RoutePoint
 	PhysBody* body;
 };
 
+struct Ranking
+{
+	int lap;
+	int checkPoint;
+	float distanceToNextCheckpoint;
+};
+
+
 class ModuleGame : public Module
 {
 public:

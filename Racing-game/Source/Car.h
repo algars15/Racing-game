@@ -33,6 +33,8 @@ public:
 
 	int RayHit(vec2<int> ray, vec2<int> mouse, vec2<float>& normal) override;
 
+	Ranking GetRank();
+
 	void OnCollision(PhysBody* bodyA, PhysBody* bodyB) override;
 
 private:
@@ -65,8 +67,10 @@ private:
 
 	//TRACK
 	std::vector<RoutePoint*> routePoints;
+	int nextWaypointIndex;
 	int currentWaypointIndex;
-	Vector2 currentWaypointPos;
-	float waypointRadius;
+	int previousWaypointIndex;
+	Vector2 nextWaypointPos;
+	Ranking ranking;
 };
 
