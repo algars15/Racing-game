@@ -18,7 +18,7 @@ protected:
 public:
 	virtual ~PhysicEntity() = default;
 	
-	virtual void Update() = 0;
+	virtual void Update(float dt) = 0;
 
 	virtual int RayHit(vec2<int> ray, vec2<int> mouse, vec2<float>& normal)
 	{

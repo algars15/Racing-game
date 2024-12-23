@@ -30,7 +30,7 @@ public:
 	ModuleGame(Application* app, bool start_enabled = true);
 	~ModuleGame();
 
-	update_status Update();
+	update_status Update(float dt);
 	bool CleanUp();
 	bool GetReturnMain();
 	void SaveGame();

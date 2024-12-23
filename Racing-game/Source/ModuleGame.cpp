@@ -120,11 +120,11 @@ bool ModuleGame::CleanUp()
 }
 
 // Update: draw background
-update_status ModuleGame::Update()
+update_status ModuleGame::Update(float dt)
 {
 	for each (Car * car in cars)
 	{
-		car->Update();
+		car->Update(dt);
 	}
 
 	//DRAW

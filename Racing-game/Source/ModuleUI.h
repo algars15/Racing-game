@@ -20,7 +20,7 @@ public:
 	~ModuleUI();
 
 	bool Start();
-	update_status Update();
+	update_status Update(float dt);
 	void Draw(int puntuation, int lives, bool mort);
 	void ShowPuntuation(int puntuacion, int x, int y);
 	bool CleanUp();

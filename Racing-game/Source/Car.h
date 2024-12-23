@@ -19,7 +19,7 @@ public:
 
 	void Start();
 
-	void Update() override;
+	void Update(float dt) override;
 
 	void Input();
 

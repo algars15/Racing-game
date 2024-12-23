@@ -30,7 +30,7 @@ public:
 	~ModuleScene();
 
 	bool Start();
-	update_status Update();
+	update_status Update(float dt);
 	void SetMenu(ModuleMenu* menu);
 	void SetGame(ModuleGame* game);
 	bool CleanUp();

@@ -13,7 +13,7 @@ public:
 	~ModuleMenu();
 
 	bool Start();
-	update_status Update();
+	update_status Update(float dt);
 	void LoadHightScore();
 	bool CleanUp();
 

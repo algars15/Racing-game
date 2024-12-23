@@ -32,7 +32,7 @@ bool ModuleMenu::Start()
 	return ret;
 }
 
-update_status ModuleMenu::Update()
+update_status ModuleMenu::Update(float dt)
 {    
     if (App->scene->GetState() == MENU || 
         App->scene->GetState() == TRANSITION && App->scene->GetFadeState() == FADEIN && App->scene->GetToMenu() || 

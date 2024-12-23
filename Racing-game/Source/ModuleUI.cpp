@@ -56,7 +56,7 @@ void ModuleUI::ShowPuntuation(int p, int x, int y)
 	puntuacionesFlotantes.push_back(pf);
 }
 
-update_status ModuleUI::Update()
+update_status ModuleUI::Update(float dt)
 {
 	for (int i = 0; i < puntuacionesFlotantes.size(); i++)
 	{

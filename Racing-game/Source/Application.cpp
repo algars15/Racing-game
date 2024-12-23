@@ -104,7 +104,8 @@ update_status Application::Update()
 		Module* module = *it;
 		if (module->IsEnabled())
 		{
-			ret = module->Update();
+			
+			ret = module->Update(GetFrameTime());
 		}
 	}
 

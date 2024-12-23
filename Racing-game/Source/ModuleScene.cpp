@@ -50,7 +50,7 @@ bool ModuleScene::Start()
 	return ret;
 }
 
-update_status ModuleScene::Update()
+update_status ModuleScene::Update(float dt)
 {
     if (state == MENU)
     {
@@ -78,7 +78,7 @@ update_status ModuleScene::Update()
     {
         if (fadeState == FADEIN)
         {
-            fadeAlpha -= fadeSpeed * GetFrameTime(); 
+            fadeAlpha -= fadeSpeed * dt; 
 
             if (fadeAlpha <= 0.0f)
             {
@@ -89,7 +89,7 @@ update_status ModuleScene::Update()
         }
         else if (fadeState == FADEOUT)
         {
-            fadeAlpha += fadeSpeed * GetFrameTime();
+            fadeAlpha += fadeSpeed * dt;
             
             if (fadeAlpha >= 255.0f)
             {

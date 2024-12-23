@@ -19,7 +19,7 @@ void Car::Start()
 	waypointRadius = 20;
 }
 
-void Car::Update()
+void Car::Update(float dt)
 {
 	input = { 0,0 };
 
@@ -36,8 +36,8 @@ void Car::Update()
 	float currentMaxSpeed = input.y > 0 ? reverseMaxSpeed : maxSpeed;
 
 	Vector2 accelerationVector = {
-		forwardVector.x * currentAcceleration * input.y * GetFrameTime(),
-		forwardVector.y * currentAcceleration * input.y * GetFrameTime()
+		forwardVector.x * currentAcceleration * input.y * dt,
+		forwardVector.y * currentAcceleration * input.y * dt
 	};
 
 	// Calculamos la velocidad deseada
