@@ -17,6 +17,12 @@ class b2RevoluteJoint;
 class b2PrismaticJoint;
 class ModuleUI;
 
+struct RoutePoint
+{
+	int pointIndex;
+	Vector2 position;
+	PhysBody* body;
+};
 
 class ModuleGame : public Module
 {
@@ -39,7 +45,7 @@ public:
 
 	//TRACK
 	std::vector<Vector2> startPoints;
-	std::vector<Vector2> routePoints;
+	std::vector<RoutePoint*> routePoints;
 
 	//CARS
 	std::vector<Car*> cars;
