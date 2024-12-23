@@ -36,8 +36,8 @@ void Car::Update()
 	float currentMaxSpeed = input.y > 0 ? reverseMaxSpeed : maxSpeed;
 
 	Vector2 accelerationVector = {
-		forwardVector.x * currentAcceleration * input.y,
-		forwardVector.y * currentAcceleration * input.y
+		forwardVector.x * currentAcceleration * input.y * GetFrameTime(),
+		forwardVector.y * currentAcceleration * input.y * GetFrameTime()
 	};
 
 	// Calculamos la velocidad deseada
