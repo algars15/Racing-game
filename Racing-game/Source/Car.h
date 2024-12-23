@@ -3,6 +3,7 @@
 #include "ModulePhysics.h"
 #include "Globals.h"
 #include "Timer.h"
+#include "ModuleGame.h"
 
 
 class Car : public PhysicEntity
@@ -28,7 +29,7 @@ public:
 
 	void SetParameters(pugi::xml_node parameters);
 
-	void SetRoute(std::vector<Vector2> routePoints);
+	void SetRoute(std::vector<RoutePoint*> routePoints);
 
 	int RayHit(vec2<int> ray, vec2<int> mouse, vec2<float>& normal) override;
 
@@ -49,6 +50,8 @@ private:
 	KeyboardKey rightKey;
 	KeyboardKey leftKey;
 	Vector2 input;
+	Timer stuckedTimer;
+
 
 	//PHYSICS
 	float turnSpeed;
@@ -61,8 +64,9 @@ private:
 	pugi::xml_node carNode;
 
 	//TRACK
-	std::vector<Vector2> routePoints;
+	std::vector<RoutePoint*> routePoints;
 	int currentWaypointIndex;
+	Vector2 currentWaypointPos;
 	float waypointRadius;
 };
 

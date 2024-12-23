@@ -1,4 +1,5 @@
 #include "Car.h"
+#include "math.h"
 
 void Car::Start()
 {
@@ -93,12 +94,13 @@ void Car::Input()
 
 void Car::Ia()
 {
+
 	// Obtener posición y orientación actual del coche
 	Vector2 carPosition = body->GetPosition();
 	Vector2 carForward = body->GetWorldVector({ 0.0f, 1.0f }); // Dirección hacia adelante del coche
 
 	// Punto objetivo de la ruta
-	Vector2 targetPoint = routePoints[currentWaypointIndex];
+	Vector2 targetPoint = currentWaypointPos;
 
 	// Vector hacia el punto objetivo
 	Vector2 toTarget = {
@@ -108,13 +110,26 @@ void Car::Ia()
 
 	// Normalizar el vector hacia el objetivo
 	Vector2 toTargetNormalized = BasicOperations().NormalizeVector(toTarget);
-	
 
 	// Calcular inputs
 	float crossProduct = BasicOperations().CrossProduct(carForward, toTargetNormalized);
 
 	input.y = BasicOperations().DotProduct(toTargetNormalized, carForward) > 0 ? 1 : -1; // Avanzar o retroceder
 	if (abs(crossProduct)>0.1) input.x = crossProduct > 0 ? -1 : 1; // Girar izquierda o derecha
+
+	//If stucked go reverse
+	if (body->GetVelocity() < 4 || stuckedTimer.ReadSec()>1)
+	{
+		if (stuckedTimer.ReadSec() > 1)
+		{
+			input.y = 1;
+			if (stuckedTimer.ReadSec() > 1.5f)
+			{
+				stuckedTimer.Start();
+			}
+		}
+	}
+	else stuckedTimer.Start();
 }
 
 void Car::Draw()
@@ -123,7 +138,7 @@ void Car::Draw()
 	body->GetPhysicPosition(x, y);
 	if (draw)
 	{
-		DrawCircle(routePoints[currentWaypointIndex].x, routePoints[currentWaypointIndex].y, waypointRadius, RED);
+		DrawCircle(currentWaypointPos.x, currentWaypointPos.y, waypointRadius, RED);
 		DrawTexturePro(texture, Rectangle{ (float) width * carNumber, 0, (float)width, (float)height },
 			Rectangle{ (float)x, (float)y, (float)width, (float)height },
 			Vector2{ (float)width / 2.0f, (float)height / 2.0f }, body->GetRotation() * RAD2DEG, WHITE);
@@ -135,7 +150,7 @@ void Car::SetParameters(pugi::xml_node p)
 	parameters = p;
 }
 
-void Car::SetRoute(std::vector<Vector2> r)
+void Car::SetRoute(std::vector<RoutePoint*> r)
 {
 	routePoints = r;
 }
@@ -153,7 +168,15 @@ void Car::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 	switch (otherPhysBody->objectType)
 	{
 		case ObjectType::ROUTE_SENSOR:
-			currentWaypointIndex = (currentWaypointIndex + 1) % routePoints.size();
+			int nextPointIndex = (currentWaypointIndex + 1) % routePoints.size();
+			if (otherPhysBody == routePoints[currentWaypointIndex]->body)
+			{
+				currentWaypointIndex = nextPointIndex;
+				currentWaypointPos = routePoints[currentWaypointIndex]->position;
+				if (routePoints[currentWaypointIndex]->body->width > routePoints[currentWaypointIndex]->body->height) currentWaypointPos.x += GetRandomValue(-80, 80);
+				if (routePoints[currentWaypointIndex]->body->width < routePoints[currentWaypointIndex]->body->height) currentWaypointPos.y += GetRandomValue(-80, 80);
+				
+			}
 			break;
 	}
 }

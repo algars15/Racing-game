@@ -46,6 +46,7 @@ void ModuleGame::LoadGame()
 	}
 	else {
 
+		int pointIndex = 0;
 		for (pugi::xml_node objectGroupNode = mapFileXML.child("map").child("objectgroup"); objectGroupNode != NULL; objectGroupNode = objectGroupNode.next_sibling("objectgroup")) {
 
 			std::string objectGroupName = objectGroupNode.attribute("name").as_string();
@@ -59,9 +60,12 @@ void ModuleGame::LoadGame()
 				if (objectGroupName == "Collisions") App->physics->CreateRectangle(x + width / 2, y + height / 2, width, height, b2_staticBody, MAP_COLLIDER);
 				else if (objectGroupName == "Route")
 				{
-					Vector2 point = { x + width / 2, y + height / 2 };
-					App->physics->CreateRectangleSensor(point.x, point.y, width, height, b2_staticBody, ROUTE_SENSOR);
-					routePoints.push_back(point);
+					RoutePoint* routePoint = new RoutePoint();
+					routePoint->position = { (float)x + width / 2, (float)y + height / 2 };
+					routePoint->pointIndex = pointIndex;
+					routePoint->body = App->physics->CreateRectangleSensor(routePoint->position.x, routePoint->position.y, width, height, b2_staticBody, ROUTE_SENSOR);
+					routePoints.push_back(routePoint);
+					pointIndex++;
 				}
 				else if (objectGroupName == "StartPoints")
 				{
