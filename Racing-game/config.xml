@@ -13,7 +13,11 @@
 		<properties sortTime = "0.5"/>
 		<tracks>
 			<c1 path = "Assets/Tracks/C1.png" tmx = "Assets/Tracks/c1.tmx"/>
+			<c2 path = "Assets/Tracks/C2.png" tmx = "Assets/Tracks/c2.tmx"/>
 			<c3 path = "Assets/Tracks/C3.png" tmx = "Assets/Tracks/c3.tmx"/>
+			<c4 path = "Assets/Tracks/C4.png" tmx = "Assets/Tracks/c4.tmx"/>
+			<c5 path = "Assets/Tracks/C5.png" tmx = "Assets/Tracks/c5.tmx"/>
+			<c7 path = "Assets/Tracks/C7.png" tmx = "Assets/Tracks/c7.tmx"/>
 		</tracks>
 		<cars path = "Assets/Cars/Cars.png" width = "44" height = "76" gravity = "0" angularDamping ="20" linearDamping ="3" acceleration = "60" deceleration ="24" maxSpeed ="10" reverseMaxSpeed =" 4" turnSpeed ="20"/>
 	</game>
