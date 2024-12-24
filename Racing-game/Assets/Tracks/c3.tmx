@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="1" height="1" tilewidth="1920" tileheight="1080" infinite="0" nextlayerid="5" nextobjectid="23">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="1" height="1" tilewidth="1920" tileheight="1080" infinite="0" nextlayerid="6" nextobjectid="74">
  <tileset firstgid="1" source="C3.tsx"/>
  <layer id="1" name="Capa de patrones 1" width="1" height="1">
   <data encoding="csv">
@@ -17,10 +17,25 @@
   <object id="14" x="338" y="430" width="861" height="336"/>
   <object id="15" x="2164" y="684"/>
  </objectgroup>
+ <objectgroup id="5" name="StartPoints">
+  <object id="68" x="280" y="619" width="1" height="1"/>
+  <object id="69" x="198" y="639" width="1" height="1"/>
+  <object id="70" x="280" y="719" width="1" height="1"/>
+  <object id="71" x="198" y="739" width="1" height="1"/>
+  <object id="72" x="280" y="819" width="1" height="1"/>
+  <object id="73" x="198" y="839" width="1" height="1"/>
+ </objectgroup>
  <objectgroup id="4" name="Route">
   <object id="18" x="143" y="534" width="195" height="18"/>
-  <object id="19" x="856" y="142" width="18" height="196"/>
-  <object id="20" x="1473" y="430" width="11" height="195"/>
-  <object id="21" x="731" y="766" width="16" height="195"/>
+  <object id="25" x="129.333" y="338" width="208" height="20"/>
+  <object id="26" x="336.667" y="143.333" width="22.6667" height="194"/>
+  <object id="28" x="1560.67" y="142.667" width="22" height="194.667"/>
+  <object id="29" x="1582.67" y="338.667" width="193.333" height="18.6667"/>
+  <object id="30" x="1394" y="431.333" width="22.6667" height="194"/>
+  <object id="31" x="1200" y="624.667" width="194" height="16"/>
+  <object id="34" x="1199.33" y="751.333" width="194.667" height="14.6667"/>
+  <object id="35" x="1172.67" y="767.333" width="27.3333" height="192"/>
+  <object id="36" x="338" y="766.667" width="20" height="194.667"/>
+  <object id="37" x="129" y="743" width="209.667" height="22.3333"/>
  </objectgroup>
 </map>
