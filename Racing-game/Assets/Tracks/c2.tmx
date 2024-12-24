@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="1" height="1" tilewidth="1920" tileheight="1080" infinite="0" nextlayerid="5" nextobjectid="37">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="1" height="1" tilewidth="1920" tileheight="1080" infinite="0" nextlayerid="5" nextobjectid="52">
  <tileset firstgid="1" name="C2" tilewidth="1920" tileheight="1080" tilecount="1" columns="1">
   <image source="C2.png" width="1920" height="1080"/>
  </tileset>
@@ -28,8 +28,20 @@
  </objectgroup>
  <objectgroup id="3" name="Route">
   <object id="9" x="1581.33" y="592" width="195" height="18"/>
-  <object id="10" x="950" y="767" width="18" height="195"/>
-  <object id="11" x="140" y="665" width="195" height="18"/>
-  <object id="12" x="1101" y="140" width="18" height="195"/>
+  <object id="10" x="336.273" y="768.045" width="18" height="192.091"/>
+  <object id="11" x="144.909" y="750.273" width="191" height="17.6364"/>
+  <object id="38" x="1585" y="755.667" width="191" height="12"/>
+  <object id="39" x="1567.33" y="767.667" width="17.6667" height="192.333"/>
+  <object id="40" x="336" y="576.333" width="0.333333"/>
+  <object id="41" x="144.667" y="576.333" width="191.333" height="16"/>
+  <object id="42" x="336" y="383.667" width="22.3333" height="192.091"/>
+  <object id="44" x="416.5" y="383.75" width="16.5" height="192.25"/>
+  <object id="45" x="433" y="371.5" width="191.25" height="12.5"/>
+  <object id="46" x="433" y="336" width="191" height="13"/>
+  <object id="47" x="624" y="144" width="18" height="192"/>
+  <object id="48" x="660.606" y="1360.61"/>
+  <object id="49" x="1561" y="144" width="23.5" height="192.5"/>
+  <object id="50" x="1584.5" y="336" width="191.5" height="18.5"/>
+  <object id="51" x="2082" y="632"/>
  </objectgroup>
 </map>

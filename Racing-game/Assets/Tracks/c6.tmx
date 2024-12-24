@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="1" height="1" tilewidth="1920" tileheight="1080" infinite="0" nextlayerid="5" nextobjectid="36">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="1" height="1" tilewidth="1920" tileheight="1080" infinite="0" nextlayerid="5" nextobjectid="42">
  <tileset firstgid="1" source="C6.tsx"/>
  <layer id="1" name="Capa de patrones 1" width="1" height="1">
   <data encoding="csv">
@@ -7,7 +7,7 @@
 </data>
  </layer>
  <objectgroup id="2" name="Rute">
-  <object id="13" x="147" y="533.5" width="193.5" height="18.5"/>
+  <object id="13" x="132.053" y="429.924" width="218" height="18.5"/>
   <object id="14" x="132" y="351.957" width="217.304" height="21.0435"/>
   <object id="15" x="349.5" y="128" width="27.5" height="223.978"/>
   <object id="16" x="1543.5" y="128.5" width="25.5" height="223.25"/>
@@ -25,7 +25,14 @@
   <object id="34" x="350.053" y="753.292" width="26.5" height="223.5"/>
   <object id="35" x="131.553" y="726.292" width="217.75" height="26.25"/>
  </objectgroup>
- <objectgroup id="4" name="StartingPoints"/>
+ <objectgroup id="4" name="StartingPoints">
+  <object id="36" x="200" y="512" width="1" height="1"/>
+  <object id="37" x="200" y="612" width="1" height="1"/>
+  <object id="38" x="200" y="712" width="1" height="1"/>
+  <object id="39" x="282" y="552" width="1" height="1"/>
+  <object id="40" x="282" y="652" width="1" height="1"/>
+  <object id="41" x="282" y="752" width="1" height="1"/>
+ </objectgroup>
  <objectgroup id="3" name="Collisions">
   <object id="3" x="0.666667" y="0.25" width="1919.33" height="127.75"/>
   <object id="4" x="1791" y="128" width="128.727" height="951.864"/>
