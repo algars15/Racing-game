@@ -2,10 +2,9 @@
 
 #include "Globals.h"
 #include "Module.h"
-
 #include "p2Point.h"
-
 #include "raylib.h"
+#include "Timer.h"
 #include <vector>
 
 class PhysBody;
@@ -13,8 +12,6 @@ class PhysicEntity;
 
 class Car;
 
-class b2RevoluteJoint;
-class b2PrismaticJoint;
 class ModuleUI;
 
 struct RoutePoint
@@ -57,6 +54,9 @@ public:
 
 	//CARS
 	std::vector<Car*> cars;
+	std::vector<int> ranking;
+	Timer sortTimer;
+	float sortTime;
 
 	//PHYSICS
 	std::vector<PhysicEntity*> entities;

@@ -35,6 +35,8 @@ public:
 
 	Ranking GetRank();
 
+	int GetCarNum();
+
 	void OnCollision(PhysBody* bodyA, PhysBody* bodyB) override;
 
 private:

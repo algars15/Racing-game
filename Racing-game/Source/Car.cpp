@@ -125,7 +125,7 @@ void Car::Ia()
 	// Calcular inputs
 	float crossProduct = BasicOperations().CrossProduct(carForward, toTargetNormalized);
 
-	input.y = BasicOperations().DotProduct(toTargetNormalized, carForward) > 0 ? 1 : -1; // Avanzar o retroceder
+	input.y = -1; // Avanzar o retroceder
 	if (abs(crossProduct)>0.1) input.x = crossProduct > 0 ? -1 : 1; // Girar izquierda o derecha
 
 	//If stucked go reverse
@@ -212,6 +212,11 @@ void Car::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 Ranking Car::GetRank()
 {
 	return ranking;
+}
+
+int Car::GetCarNum()
+{
+	return carNumber;
 }
 
 

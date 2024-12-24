@@ -9,6 +9,7 @@
 #include "fstream"
 #include "string"
 #include "Car.h"
+#include "Timer.h"
 
 
 ModuleGame::ModuleGame(Application* app, bool start_enabled) : Module(app, start_enabled)
@@ -95,6 +96,11 @@ void ModuleGame::LoadGame()
 		car->SetRoute(routePoints);
 		car->Start();
 	}
+
+	//Loading Properties
+	sortTime = parameters.child("properties").attribute("sortTime").as_float();
+	sortTimer.Start();
+	
 }
 
 void ModuleGame::RestartGame()
@@ -127,6 +133,33 @@ update_status ModuleGame::Update(float dt)
 		car->Update(dt);
 	}
 
+	if (sortTimer.ReadSec() > sortTime)
+	{
+		bool endedSwap;
+		do {
+			endedSwap = true;
+			for (int i = 0; i < cars.size() - 1; i++) {
+				bool swap = false;
+				Ranking carRank1 = cars[i]->GetRank();
+				Ranking carRank2 = cars[i + 1]->GetRank();
+
+				// Ordenar por vueltas
+				if (carRank1.lap < carRank2.lap) swap = true;
+				// Si las vueltas son iguales, ordenar por puntos de control
+				else if (carRank1.lap == carRank2.lap && carRank1.checkPoint < carRank2.checkPoint) swap = true;
+				// Si las vueltas y los checkpoints son iguales, ordenar por distancia (cambiado a mayor prioridad)
+				else if (carRank1.lap == carRank2.lap && carRank1.checkPoint == carRank2.checkPoint &&
+					carRank1.distanceToNextCheckpoint > carRank2.distanceToNextCheckpoint) swap = true;
+
+				if (swap) {
+					std::swap(cars[i], cars[i + 1]);
+					endedSwap = false; // Si ocurre un intercambio, necesitamos otra pasada
+				}
+			}
+		} while (!endedSwap);
+		sortTimer.Start();
+	}
+	
 	//DRAW
 	DrawTexture(mapTexture, 0, 0, WHITE);
 

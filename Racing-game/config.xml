@@ -10,6 +10,7 @@
 	</audio>
 	
 	<game>
+		<properties sortTime = "0.5"/>
 		<tracks>
 			<c1 path = "Assets/Tracks/C1.png" tmx = "Assets/Tracks/c1.tmx"/>
 			<c3 path = "Assets/Tracks/C3.png" tmx = "Assets/Tracks/c3.tmx"/>
