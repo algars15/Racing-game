@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="1" height="1" tilewidth="1920" tileheight="1080" infinite="0" nextlayerid="5" nextobjectid="30">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="1" height="1" tilewidth="1920" tileheight="1080" infinite="0" nextlayerid="5" nextobjectid="59">
  <tileset firstgid="1" source="C9.tsx"/>
  <tileset firstgid="2" source="C7.tsx"/>
  <layer id="1" name="Capa de patrones 1" width="1" height="1">
@@ -20,24 +20,30 @@
   <object id="10" x="703.091" y="691" width="510.909" height="62.3636"/>
  </objectgroup>
  <objectgroup id="3" name="Route">
-  <object id="11" x="1569" y="594" width="222.667" height="18"/>
-  <object id="12" x="1543" y="127" width="26" height="222"/>
-  <object id="13" x="1569" y="353" width="223" height="23"/>
-  <object id="14" x="1544" y="752" width="25.5" height="224"/>
-  <object id="15" x="1568.5" y="726.5" width="225" height="23.5"/>
-  <object id="16" x="350" y="754" width="25.5" height="222"/>
-  <object id="17" x="129" y="730" width="220.5" height="23.5"/>
-  <object id="18" x="129" y="589.5" width="221.5" height="26"/>
-  <object id="19" x="372" y="369" width="23.5" height="220" visible="0"/>
-  <object id="20" x="416.5" y="351.5" width="223.5" height="14"/>
-  <object id="21" x="658" y="126.5" width="28" height="224"/>
-  <object id="22" x="703" y="354.5" width="221" height="23"/>
-  <object id="23" x="703" y="447" width="218.5" height="18.5"/>
-  <object id="24" x="954" y="465.5" width="20.5" height="225"/>
-  <object id="25" x="997" y="445" width="217" height="19.5"/>
-  <object id="26" x="997" y="352" width="217" height="23.5"/>
-  <object id="27" x="1213.5" y="126.5" width="21" height="222.5"/>
-  <object id="28" x="2069.7" y="924.242"/>
+  <object id="30" x="1568.33" y="593" width="222.333" height="19.6667"/>
+  <object id="31" x="1568.67" y="733" width="223.667" height="19.3333"/>
+  <object id="32" x="1544.33" y="753.667" width="24" height="221.667"/>
+  <object id="33" x="349.667" y="753.333" width="21" height="207.667"/>
+  <object id="34" x="129.333" y="732.667" width="220.333" height="20.3333"/>
+  <object id="35" x="128.667" y="592.667" width="221" height="21.6667"/>
+  <object id="36" x="349.333" y="367.333" width="21.6667" height="221.333"/>
+  <object id="37" x="417" y="352.333" width="223.333" height="14.6667"/>
+  <object id="38" x="660.667" y="126" width="24" height="225"/>
+  <object id="39" x="704" y="351.667" width="218.333" height="20"/>
+  <object id="40" x="704" y="446.667" width="217.333" height="18.6667"/>
+  <object id="41" x="950.333" y="465.667" width="17" height="224.667"/>
+  <object id="42" x="997" y="444" width="217.333" height="21.3333"/>
+  <object id="43" x="997.333" y="350" width="217.667" height="16.6667"/>
+  <object id="44" x="1215.33" y="126.333" width="22.6667" height="224"/>
+  <object id="45" x="1545.33" y="126.333" width="23" height="223"/>
+  <object id="46" x="1568.33" y="349.667" width="224.667" height="19.6667"/>
+  <object id="58" x="1640" y="290" width="1" height="1"/>
  </objectgroup>
- <objectgroup id="4" name="StartPoints"/>
+ <objectgroup id="4" name="StartPoints">
+  <object id="53" x="1722.02" y="529.98" width="1" height="1"/>
+  <object id="54" x="1640.07" y="489.95" width="1" height="1"/>
+  <object id="55" x="1722.02" y="430.03" width="1" height="1"/>
+  <object id="56" x="1640.01" y="390" width="1" height="1"/>
+  <object id="57" x="1722.04" y="330.04" width="1" height="1"/>
+ </objectgroup>
 </map>
