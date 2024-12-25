@@ -30,7 +30,7 @@ void ModuleGame::LoadGame()
 	TraceLog(LOG_INFO, "Loading Game Assets");
 
 	//Loading Track
-	int trackNum = 8;
+	int trackNum = 10;
 	char nodeName[16];
 	sprintf_s(nodeName, "c%d", trackNum);
 	pugi::xml_node trackNode = parameters.child("tracks").child(nodeName);

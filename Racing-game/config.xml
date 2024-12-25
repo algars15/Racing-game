@@ -20,8 +20,8 @@
 			<c6 path = "Assets/Tracks/C6.png" tmx = "Assets/Tracks/c6.tmx"/>
 			<c7 path = "Assets/Tracks/C7.png" tmx = "Assets/Tracks/c7.tmx"/>
 			<c8 path = "Assets/Tracks/C8.png" tmx = "Assets/Tracks/c8.tmx"/>
-			<c7 path = "Assets/Tracks/C9.png" tmx = "Assets/Tracks/c9.tmx"/>
-			<c7 path = "Assets/Tracks/C10.png" tmx = "Assets/Tracks/c10.tmx"/>
+			<c9 path = "Assets/Tracks/C9.png" tmx = "Assets/Tracks/c9.tmx"/>
+			<c10 path = "Assets/Tracks/C10.png" tmx = "Assets/Tracks/c10.tmx"/>
 		</tracks>
 		<cars path = "Assets/Cars/Cars.png" width = "44" height = "76" gravity = "0" angularDamping ="20" linearDamping ="3" acceleration = "60" deceleration ="24" maxSpeed ="10" reverseMaxSpeed =" 4" turnSpeed ="20"/>
 	</game>
