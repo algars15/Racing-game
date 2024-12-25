@@ -17,6 +17,7 @@
 			<c3 path = "Assets/Tracks/C3.png" tmx = "Assets/Tracks/c3.tmx"/>
 			<c4 path = "Assets/Tracks/C4.png" tmx = "Assets/Tracks/c4.tmx"/>
 			<c5 path = "Assets/Tracks/C5.png" tmx = "Assets/Tracks/c5.tmx"/>
+			<c6 path = "Assets/Tracks/C6.png" tmx = "Assets/Tracks/c6.tmx"/>
 			<c7 path = "Assets/Tracks/C7.png" tmx = "Assets/Tracks/c7.tmx"/>
 		</tracks>
 		<cars path = "Assets/Cars/Cars.png" width = "44" height = "76" gravity = "0" angularDamping ="20" linearDamping ="3" acceleration = "60" deceleration ="24" maxSpeed ="10" reverseMaxSpeed =" 4" turnSpeed ="20"/>
