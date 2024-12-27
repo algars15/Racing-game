@@ -35,7 +35,7 @@
   <object id="31" x="1200" y="625.394" width="194" height="15.2727"/>
   <object id="34" x="1199.33" y="751.333" width="194.667" height="14.6667"/>
   <object id="35" x="1175.76" y="766.06" width="22.9924" height="194.727"/>
-  <object id="36" x="338" y="766.667" width="20" height="194.667"/>
-  <object id="37" x="129" y="748" width="209.667" height="17.3333"/>
+  <object id="36" x="338" y="766.303" width="20" height="194.531"/>
+  <object id="37" x="143.125" y="748" width="194.815" height="17.3333"/>
  </objectgroup>
 </map>
