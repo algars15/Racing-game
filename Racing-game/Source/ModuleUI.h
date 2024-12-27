@@ -22,17 +22,8 @@ public:
 	bool Start();
 	update_status Update(float dt);
 	void Draw(int puntuation, int lives, bool mort);
-	void ShowPuntuation(int puntuacion, int x, int y);
 	bool CleanUp();
 
 private:
 
-	std::vector<PuntuacionFlotante*> puntuacionesFlotantes;
-	int duracionFlotante;
-	Vector2 posVidas;
-	Vector2 posPuntos;
-	Texture2D vidasIcon;
-	Texture2D puntosIcon;
-	Texture2D loseScreen;
-	Color floatingPuntuationColors[10];
 };

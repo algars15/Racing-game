@@ -7,6 +7,7 @@
 #include "ModuleGame.h"
 #include "ModuleScene.h"
 #include "ModuleMenu.h"
+#include "ModuleUI.h"
 
 #include "Application.h"
 
@@ -17,14 +18,16 @@ Application::Application()
 
 	window = new ModuleWindow(this);
 	renderer = new ModuleRender(this);
-	audio = new ModuleAudio(this, true);
+	audio = new ModuleAudio(this);
 	physics = new ModulePhysics(this);
 	scene = new ModuleScene(this);
 	menu = new ModuleMenu(this);
 	game = new ModuleGame(this, false);
+	ui = new ModuleUI(this);
 
 	scene->SetGame(game);
 	scene->SetMenu(menu);
+	game->SetUI(ui);
 
 	// The order of calls is very important!
 	// Modules will Init() Start() and Update in this order
@@ -36,10 +39,13 @@ Application::Application()
 	AddModule(audio);
 	
 	// Scenes
+
 	AddModule(menu);
 	AddModule(game);
+	AddModule(ui);
 	AddModule(scene);
 
+	
 	// Rendering happens at the end
 	AddModule(renderer);
 
@@ -79,7 +85,7 @@ bool Application::Init()
 	for (auto it = list_modules.begin(); it != list_modules.end() && ret; ++it)
 	{
 		Module* module = *it;
-		if (module->IsEnabled()) ret = module->Start();
+		ret = module->Start();
 	}
 	
 	return ret;
@@ -101,10 +107,11 @@ update_status Application::Update()
 
 	for (auto it = list_modules.begin(); it != list_modules.end() && ret == UPDATE_CONTINUE; ++it)
 	{
+		
 		Module* module = *it;
+		
 		if (module->IsEnabled())
 		{
-			
 			ret = module->Update(GetFrameTime());
 		}
 	}

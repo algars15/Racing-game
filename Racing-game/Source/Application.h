@@ -13,6 +13,7 @@ class ModulePhysics;
 class ModuleScene;
 class ModuleGame;
 class ModuleMenu;
+class ModuleUI;
 
 class Application
 {
@@ -25,6 +26,7 @@ public:
 	ModuleGame* game;
 	ModuleMenu* menu;
 	ModuleScene* scene;
+	ModuleUI* ui;
 
 	pugi::xml_document configFile;
 

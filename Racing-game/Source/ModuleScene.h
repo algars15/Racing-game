@@ -12,7 +12,6 @@ enum State
 {
 	MENU,
 	GAME,
-	TRANSITION,
 	LOSE
 };
 
@@ -42,11 +41,16 @@ private:
 	ModuleGame* game;
 	ModuleMenu* menu;
 
+	//STATES
 	State state;
+	bool toMenu;
+	bool toGame;
+	bool toLose;
 
+	//FADE
 	float fadeAlpha;
 	float fadeSpeed;
 	FadeState fadeState;
-	bool toMenu;
 	Music song;
+
 };

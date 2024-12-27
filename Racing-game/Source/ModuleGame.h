@@ -41,6 +41,7 @@ public:
 	void SaveGame();
 	void RestartGame();
 	void LoadGame();
+	void SetUI(ModuleUI* ui);
 
 public:
 

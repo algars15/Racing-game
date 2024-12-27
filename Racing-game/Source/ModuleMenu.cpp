@@ -34,9 +34,7 @@ bool ModuleMenu::Start()
 
 update_status ModuleMenu::Update(float dt)
 {    
-    if (App->scene->GetState() == MENU || 
-        App->scene->GetState() == TRANSITION && App->scene->GetFadeState() == FADEIN && App->scene->GetToMenu() || 
-        App->scene->GetState() == TRANSITION && App->scene->GetFadeState() == FADEOUT && !App->scene->GetToMenu()) {
+    if (App->scene->GetState() == MENU) {
 
         DrawTexture(menuTexture, 0, 0, WHITE);
     }
