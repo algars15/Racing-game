@@ -12,22 +12,52 @@
 	<game>
 		<properties sortTime = "0.5"/>
 		<tracks>
-			<c1 path = "Assets/Tracks/C1.png" tmx = "Assets/Tracks/c1.tmx"/>
-			<c2 path = "Assets/Tracks/C2.png" tmx = "Assets/Tracks/c2.tmx"/>
-			<c3 path = "Assets/Tracks/C3.png" tmx = "Assets/Tracks/c3.tmx"/>
-			<c4 path = "Assets/Tracks/C4.png" tmx = "Assets/Tracks/c4.tmx"/>
-			<c5 path = "Assets/Tracks/C5.png" tmx = "Assets/Tracks/c5.tmx"/>
-			<c6 path = "Assets/Tracks/C6.png" tmx = "Assets/Tracks/c6.tmx"/>
-			<c7 path = "Assets/Tracks/C7.png" tmx = "Assets/Tracks/c7.tmx"/>
-			<c8 path = "Assets/Tracks/C8.png" tmx = "Assets/Tracks/c8.tmx"/>
-			<c9 path = "Assets/Tracks/C9.png" tmx = "Assets/Tracks/c9.tmx"/>
-			<c10 path = "Assets/Tracks/C10.png" tmx = "Assets/Tracks/c10.tmx"/>
+			<c0 path = "Assets/Tracks/C1.png" tmx = "Assets/Tracks/c1.tmx"/>
+			<c1 path = "Assets/Tracks/C2.png" tmx = "Assets/Tracks/c2.tmx"/>
+			<c2 path = "Assets/Tracks/C3.png" tmx = "Assets/Tracks/c3.tmx"/>
+			<c3 path = "Assets/Tracks/C4.png" tmx = "Assets/Tracks/c4.tmx"/>
+			<c4 path = "Assets/Tracks/C5.png" tmx = "Assets/Tracks/c5.tmx"/>
+			<c5 path = "Assets/Tracks/C6.png" tmx = "Assets/Tracks/c6.tmx"/>
+			<c6 path = "Assets/Tracks/C7.png" tmx = "Assets/Tracks/c7.tmx"/>
+			<c7 path = "Assets/Tracks/C8.png" tmx = "Assets/Tracks/c8.tmx"/>
+			<c8 path = "Assets/Tracks/C9.png" tmx = "Assets/Tracks/c9.tmx"/>
+			<c9 path = "Assets/Tracks/C10.png" tmx = "Assets/Tracks/c10.tmx"/>
 		</tracks>
 		<cars path = "Assets/Cars/Cars.png" width = "44" height = "76" gravity = "0" angularDamping ="20" linearDamping ="3" acceleration = "60" deceleration ="24" maxSpeed ="10" reverseMaxSpeed =" 4" turnSpeed ="20"/>
 	</game>
 	
 	<menu>
-		<background path = "Assets/Menu/Menu.png"/>
+		<menu path = "Assets/Menu/Menu.png"/>
+		<trackSelection path = "Assets/Menu/Track menu.png" trackSelectorPath ="Assets/Menu/Track selector.png">
+			<track x="131" y ="298"/>
+			<track x="590" y ="298"/>
+			<track x="1049" y ="298"/>
+			<track x="1508" y ="298"/>
+			<track x="131" y ="568"/>
+			<track x="590" y ="568"/>
+			<track x="1049" y ="568"/>
+			<track x="1508" y ="568"/>
+			<track x="131" y ="838"/>
+			<track x="590" y ="838"/>
+		</trackSelection>
+		<carSelection bkgPath = "Assets/Menu/Car_menu_bkg.png" carsPath = "Assets/Menu/Car menu_cars.png" carSelectorPath="Assets/Menu/Car Selection.png" selectorOffset ="6">
+			<car x="226" y ="258"/>
+			<car x="501" y ="258"/>
+			<car x="776" y ="258"/>
+			<car x="1051" y ="258"/>
+			<car x="1326" y ="258"/>
+			<car x="1601" y ="258"/>
+			<car x="226" y ="534"/>
+			<car x="501" y ="534"/>
+			<car x="776" y ="534"/>
+			<car x="1051" y ="534"/>
+			<car x="1326" y ="534"/>
+			<car x="1600" y ="534"/>
+			<car x="226" y ="816"/>
+			<car x="501" y ="816"/>
+			<car x="776" y ="816"/>
+			<car x="1051" y ="816"/>
+		</carSelection>
 	</menu>
 	
 	<physics>

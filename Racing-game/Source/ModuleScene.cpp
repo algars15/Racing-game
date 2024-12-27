@@ -77,18 +77,18 @@ update_status ModuleScene::Update(float dt)
                 if (toLose) state = LOSE;
             }
         }
-        else
+        else if (fadeState == BETWEEN)
         {
-            fadeState = FADEIN;
             if (toGame) game->LoadGame();
             else if (toMenu) menu->LoadHightScore();
+            fadeState = FADEIN;
         }
     }
     else
     {
         if (state == MENU)
         {
-            if (IsKeyPressed(KEY_SPACE)) toGame = true;
+            if (menu->GetGoGame()) toGame = true;
         }
         else if (state == GAME)
         {

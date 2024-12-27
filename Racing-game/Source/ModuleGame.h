@@ -42,18 +42,24 @@ public:
 	void RestartGame();
 	void LoadGame();
 	void SetUI(ModuleUI* ui);
+	void SetTrack(int track);
+	void SetCars(int j1Car, int j2Car);
 
-public:
+private:
 
 	//TEXTURES
 	Texture2D mapTexture;
 	Texture2D carsTexture;
 
 	//TRACK
+	int trackNum;
 	std::vector<Vector2> startPoints;
 	std::vector<RoutePoint*> routePoints;
 
 	//CARS
+	int numPlayers;
+	int j1CarNum;
+	int j2CarNum;
 	std::vector<Car*> cars;
 	std::vector<int> ranking;
 	Timer sortTimer;
