@@ -43,7 +43,7 @@ enum update_status
 #define TITLE "Physics 2D Playground"
 
 //Game Configuration
-#define MAX_CAR_NUM 4
+#define MAX_CAR_NUM 6
 
 class BasicOperations
 {

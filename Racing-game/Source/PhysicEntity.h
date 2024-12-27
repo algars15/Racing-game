@@ -5,17 +5,14 @@
 
 class PhysicEntity
 {
-protected:
 
+public:
 	PhysicEntity(PhysBody* _body)
 	{
 		body = _body;
 		body->listener = this;
 	}
-	
-	
 
-public:
 	virtual ~PhysicEntity() = default;
 	
 	virtual void Update(float dt) = 0;

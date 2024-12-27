@@ -27,8 +27,6 @@ public:
 
 	void Draw();
 
-	void SetParameters(pugi::xml_node parameters);
-
 	void SetRoute(std::vector<RoutePoint*> routePoints);
 
 	int RayHit(vec2<int> ray, vec2<int> mouse, vec2<float>& normal) override;
@@ -38,6 +36,8 @@ public:
 	int GetCarNum();
 
 	void OnCollision(PhysBody* bodyA, PhysBody* bodyB) override;
+
+	void SetKeys(KeyboardKey keyUp, KeyboardKey keyDown, KeyboardKey keyRight, KeyboardKey keyLeft);
 
 private:
 	//TEXTURE

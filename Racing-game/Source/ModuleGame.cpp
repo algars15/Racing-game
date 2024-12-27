@@ -31,7 +31,6 @@ void ModuleGame::LoadGame()
 	TraceLog(LOG_INFO, "Loading Game Assets");
 
 	//Loading Track
-	int trackNum = 7;
 	char nodeName[16];
 	sprintf_s(nodeName, "c%d", trackNum);
 	pugi::xml_node trackNode = parameters.child("tracks").child(nodeName);
@@ -87,15 +86,43 @@ void ModuleGame::LoadGame()
 	//Loading Cars
 	pugi::xml_node carsNode = parameters.child("cars");
 	carsTexture = LoadTexture(carsNode.attribute("path").as_string());
-	for (int i = 0; i < MAX_CAR_NUM && i < startPoints.size(); i++)
-	{
-		int numPlayers = 1;
-		bool ia = i < numPlayers ? false : true;
-		Car* car = new Car(App->physics, startPoints[i].x, startPoints[i].y, carsNode.attribute("width").as_int(), carsNode.attribute("height").as_int(), carsTexture, i, ia);
-		cars.push_back(car);
+	for (int i = 0; i < MAX_CAR_NUM && i < startPoints.size(); i++) {
+		bool ia = (i >= numPlayers); // IA solo si no es un jugador
+		Car* car = nullptr;
+
+		if (i == 0) {
+			car = new Car(App->physics, startPoints[i].x, startPoints[i].y, carsNode.attribute("width").as_int(), carsNode.attribute("height").as_int(), carsTexture, j1CarNum, ia);
+			car->SetKeys(KEY_W, KEY_S, KEY_D, KEY_A);
+		}
+		else if (i == 1 && numPlayers == 2) {
+			car = new Car(App->physics, startPoints[i].x, startPoints[i].y, carsNode.attribute("width").as_int(), carsNode.attribute("height").as_int(), carsTexture, j2CarNum, ia);
+			car->SetKeys(KEY_UP, KEY_DOWN, KEY_RIGHT, KEY_LEFT);
+		}
+		else {
+			// Selección de un número de carro único
+			bool foundDifferent = false;
+			int carNum = 0;
+
+			do {
+				carNum = GetRandomValue(0, startPoints.size() - 1); // Número aleatorio válido
+				foundDifferent = true; // Asumimos que es diferente
+
+				for (Car* existingCar : cars) {
+					if (existingCar->GetCarNum() == carNum) {
+						foundDifferent = false; // Si coincide, no es diferente
+						break;
+					}
+				}
+			} while (!foundDifferent);
+
+			car = new Car(App->physics, startPoints[i].x, startPoints[i].y, carsNode.attribute("width").as_int(), carsNode.attribute("height").as_int(), carsTexture, carNum, ia);
+		}
+
+		// Configurar y empezar el carro
 		car->SetParameters(carsNode);
 		car->SetRoute(routePoints);
 		car->Start();
+		cars.push_back(car);
 	}
 
 	//Loading Properties
@@ -187,4 +214,16 @@ void ModuleGame::SetUI(ModuleUI* _ui)
 bool ModuleGame::GetReturnMain()
 {
 	return false;
+}
+
+void ModuleGame::SetCars(int j1Car, int j2Car)
+{
+	j1CarNum = j1Car;
+	j2CarNum = j2Car;
+	numPlayers = j2CarNum < 0 ? 1 : 2;
+}
+
+void ModuleGame::SetTrack(int track)
+{
+	trackNum = track;
 }

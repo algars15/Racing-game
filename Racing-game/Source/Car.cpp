@@ -3,10 +3,6 @@
 
 void Car::Start()
 {
-	forwardKey = KEY_W;
-	backKey = KEY_S;
-	rightKey = KEY_D;
-	leftKey = KEY_A;
 	body->body->SetAngularDamping(parameters.attribute("angularDamping").as_float());
 	body->body->SetLinearDamping(parameters.attribute("linearDamping").as_float());
 	body->body->SetGravityScale(parameters.attribute("gravity").as_float());
@@ -21,6 +17,14 @@ void Car::Start()
 	ranking.checkPoint = currentWaypointIndex;
 	ranking.distanceToNextCheckpoint = 0;
 	ranking.lap = - 1;
+}
+
+void Car::SetKeys(KeyboardKey keyUp, KeyboardKey keyDown, KeyboardKey keyRight, KeyboardKey keyLeft)
+{
+	forwardKey = keyUp;
+	backKey = keyDown;
+	rightKey = keyRight;
+	leftKey = keyLeft;
 }
 
 void Car::Update(float dt)
@@ -156,11 +160,6 @@ void Car::Draw()
 	}
 }
 
-void Car::SetParameters(pugi::xml_node p)
-{
-	parameters = p;
-}
-
 void Car::SetRoute(std::vector<RoutePoint*> r)
 {
 	routePoints = r;
@@ -218,5 +217,7 @@ int Car::GetCarNum()
 {
 	return carNumber;
 }
+
+
 
 
