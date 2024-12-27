@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="1" height="1" tilewidth="1920" tileheight="1080" infinite="0" nextlayerid="5" nextobjectid="69">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="1" height="1" tilewidth="1920" tileheight="1080" infinite="0" nextlayerid="5" nextobjectid="82">
  <tileset firstgid="1" source="C5.tsx"/>
  <layer id="1" name="Capa de patrones 1" width="1" height="1">
   <data encoding="csv">
@@ -25,23 +25,17 @@
   <object id="47" x="489" y="279" width="1" height="1"/>
  </objectgroup>
  <objectgroup id="3" name="Route">
-  <object id="16" x="795.333" y="143.333" width="18.3333" height="194.333"/>
-  <object id="36" x="890" y="1222"/>
-  <object id="49" x="1556" y="142.667" width="25.3333" height="195.333"/>
-  <object id="50" x="1580.67" y="337.333" width="198" height="20.6667"/>
-  <object id="51" x="1580.67" y="409.333" width="198" height="19.3333"/>
-  <object id="52" x="1554" y="428.667" width="27.3333" height="196.667"/>
-  <object id="53" x="1394" y="428" width="30.6667" height="196.667"/>
-  <object id="54" x="1197.33" y="624.667" width="196.667" height="27.3333"/>
-  <object id="55" x="1198" y="741.333" width="197.333" height="24"/>
-  <object id="56" x="1167.33" y="766" width="30.6667" height="194.667"/>
-  <object id="57" x="770" y="765.333" width="26.6667" height="196"/>
-  <object id="58" x="574" y="738" width="196" height="26"/>
-  <object id="59" x="572.667" y="626" width="198" height="23.3333"/>
-  <object id="60" x="541.333" y="428.667" width="32" height="195.333"/>
-  <object id="61" x="338.667" y="429.333" width="24" height="195.333"/>
-  <object id="66" x="144" y="406" width="194.667" height="23.5"/>
-  <object id="67" x="142.333" y="338" width="196.333" height="14"/>
-  <object id="68" x="338.333" y="143" width="22.3333" height="194.667"/>
+  <object id="69" x="795.75" y="143" width="18.5833" height="195"/>
+  <object id="70" x="1555.5" y="143" width="25" height="195"/>
+  <object id="71" x="1581.5" y="374.5" width="197.5" height="21.5"/>
+  <object id="73" x="1491.5" y="429" width="23.5" height="196"/>
+  <object id="74" x="1198.5" y="625" width="195.5" height="25"/>
+  <object id="75" x="1170.67" y="765.333" width="26.6667" height="196"/>
+  <object id="76" x="769.333" y="765.333" width="31.3333" height="196"/>
+  <object id="77" x="573" y="690" width="197" height="21.5"/>
+  <object id="78" x="540.5" y="428" width="32.5" height="196.5"/>
+  <object id="79" x="339" y="428.5" width="30" height="196.5"/>
+  <object id="80" x="140.5" y="368" width="199" height="23.5"/>
+  <object id="81" x="362" y="142.5" width="25.5" height="194.5"/>
  </objectgroup>
 </map>
