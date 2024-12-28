@@ -415,6 +415,11 @@ void PhysBody::SetLinearVelocity(Vector2 velocity) const
 	body->SetLinearVelocity({ velocity.x, velocity.y });
 }
 
+void PhysBody::SetRotation(float rotation) const
+{
+	body->SetTransform({ body->GetPosition().x, body->GetPosition().y }, rotation);
+}
+
 float PhysBody::GetVelocity() const
 {
 	return body->GetLinearVelocity().Length();

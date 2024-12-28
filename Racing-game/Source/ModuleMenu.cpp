@@ -101,13 +101,13 @@ update_status ModuleMenu::Update(float dt)
             else if (!goGame)
             {
                 int j1Sumator = 0;
-                if (IsKeyPressed(KEY_D)) 
+                if (IsKeyPressed(J1_KEY_RIGHT)) 
                     j1Sumator = j1CarSelected + 1 >= carPositions.size() ? 0 : 1;
-                else if (IsKeyPressed(KEY_A)) 
+                else if (IsKeyPressed(J1_KEY_LEFT))
                     j1Sumator = j1CarSelected - 1 < 0 ? 0 : - 1;
-                else if (IsKeyPressed(KEY_W)) 
+                else if (IsKeyPressed(J1_KEY_UP))
                     j1Sumator = j1CarSelected - 6 < 0 ? 0 : - 6;
-                else if (IsKeyPressed(KEY_S)) 
+                else if (IsKeyPressed(J1_KEY_DOWN))
                     j1Sumator = j1CarSelected + 6 >= carPositions.size() ? 0 : + 6;
 
                 if (j1CarSelected + j1Sumator == j2CarSelected) 
@@ -118,10 +118,17 @@ update_status ModuleMenu::Update(float dt)
                 j1CarSelected += j1Sumator;
 
                 int j2Sumator = 0;
-                if (IsKeyPressed(KEY_RIGHT)) j2Sumator = j2CarSelected + 1 >= carPositions.size() ? 0 : + 1;
-                else if (IsKeyPressed(KEY_LEFT)) j2Sumator = j2CarSelected - 1 < 0 ? 0 :  - 1;
-                else if (IsKeyPressed(KEY_UP)) j2Sumator = j2CarSelected - 6 < 0 ? 0 :  - 6;
-                else if (IsKeyPressed(KEY_DOWN)) j2Sumator = j2CarSelected + 6 >= carPositions.size() ? 0 : + 6;
+                if (j2CarSelected < 0)
+                {
+                    if (IsKeyPressed(J2_KEY_RIGHT) || IsKeyPressed(J2_KEY_LEFT) || IsKeyPressed(J2_KEY_UP) || IsKeyPressed(J2_KEY_DOWN)) j2Sumator = j2CarSelected + 1 >= carPositions.size() ? 0 : +1;
+                }
+                else
+                {
+                    if (IsKeyPressed(J2_KEY_RIGHT)) j2Sumator = j2CarSelected + 1 >= carPositions.size() ? 0 : +1;
+                    else if (IsKeyPressed(J2_KEY_LEFT)) j2Sumator = j2CarSelected - 1 < 0 ? 0 : -1;
+                    else if (IsKeyPressed(J2_KEY_UP)) j2Sumator = j2CarSelected - 6 < 0 ? 0 : -6;
+                    else if (IsKeyPressed(J2_KEY_DOWN)) j2Sumator = j2CarSelected + 6 >= carPositions.size() ? 0 : +6;
+                }
 
                 if (j2CarSelected + j2Sumator == j1CarSelected)
                 {

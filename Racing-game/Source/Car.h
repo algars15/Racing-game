@@ -41,6 +41,8 @@ public:
 	
 	void SetGame(ModuleGame* game);
 
+	void SetRotation(float degrees);
+
 private:
 	
 	ModuleGame* game;

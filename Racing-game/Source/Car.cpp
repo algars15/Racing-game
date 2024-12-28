@@ -19,6 +19,11 @@ void Car::Start()
 	ranking.lap = - 1;
 }
 
+void Car::SetRotation(float degrees)
+{
+	body->SetRotation(degrees * PI / 180);
+}
+
 void Car::SetKeys(KeyboardKey keyUp, KeyboardKey keyDown, KeyboardKey keyRight, KeyboardKey keyLeft)
 {
 	forwardKey = keyUp;

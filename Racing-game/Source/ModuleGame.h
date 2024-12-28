@@ -28,6 +28,14 @@ struct Ranking
 	float distanceToNextCheckpoint;
 };
 
+enum TrackDirection
+{
+	UP,
+	DOWN,
+	RIGHT,
+	LEFT
+};
+
 
 class ModuleGame : public Module
 {
@@ -67,6 +75,7 @@ private:
 	int trackNum;
 	std::vector<Vector2> startPoints;
 	std::vector<RoutePoint*> routePoints;
+	TrackDirection trackDirection;
 
 	//CARS
 	int numPlayers;

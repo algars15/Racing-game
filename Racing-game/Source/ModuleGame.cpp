@@ -47,6 +47,17 @@ void ModuleGame::LoadGame()
 	}
 	else {
 
+		//PROPERTIES
+		for (pugi::xml_node propertieNode = mapFileXML.child("map").child("properties").child("property"); propertieNode; propertieNode = propertieNode.next_sibling("property"))
+		{
+			std::string propertyName = propertieNode.attribute("name").as_string();
+			if (propertyName == "Direction")
+			{
+				trackDirection = (TrackDirection) propertieNode.attribute("value").as_int();
+			}
+		}
+
+		//LAYERS
 		int pointIndex = 0;
 		for (pugi::xml_node objectGroupNode = mapFileXML.child("map").child("objectgroup"); objectGroupNode != NULL; objectGroupNode = objectGroupNode.next_sibling("objectgroup")) {
 
@@ -86,6 +97,21 @@ void ModuleGame::LoadGame()
 	currentLap = 0;
 
 	//Loading Cars
+	float carsStartRotation = 0;
+	switch (trackDirection)
+	{
+	case UP: carsStartRotation = 0;
+		break;
+	case DOWN: carsStartRotation = 180;
+		break;
+	case RIGHT: carsStartRotation = 90;
+		break;
+	case LEFT: carsStartRotation = 270;
+		break;
+	default:
+		break;
+	}
+
 	pugi::xml_node carsNode = parameters.child("cars");
 	carsTexture = LoadTexture(carsNode.attribute("path").as_string());
 	for (int i = 0; i < MAX_CAR_NUM && i < startPoints.size(); i++) {
@@ -94,11 +120,11 @@ void ModuleGame::LoadGame()
 
 		if (i == 0) {
 			car = new Car(App->physics, startPoints[i].x, startPoints[i].y, carsNode.attribute("width").as_int(), carsNode.attribute("height").as_int(), carsTexture, j1CarNum, ia);
-			car->SetKeys(KEY_W, KEY_S, KEY_D, KEY_A);
+			car->SetKeys(J1_KEY_UP, J1_KEY_DOWN, J1_KEY_RIGHT, J1_KEY_LEFT);
 		}
 		else if (i == 1 && numPlayers == 2) {
 			car = new Car(App->physics, startPoints[i].x, startPoints[i].y, carsNode.attribute("width").as_int(), carsNode.attribute("height").as_int(), carsTexture, j2CarNum, ia);
-			car->SetKeys(KEY_UP, KEY_DOWN, KEY_RIGHT, KEY_LEFT);
+			car->SetKeys(J2_KEY_UP, J2_KEY_DOWN, J2_KEY_RIGHT, J2_KEY_LEFT);
 		}
 		else {
 			// Selección de un número de carro único
@@ -119,8 +145,10 @@ void ModuleGame::LoadGame()
 
 			car = new Car(App->physics, startPoints[i].x, startPoints[i].y, carsNode.attribute("width").as_int(), carsNode.attribute("height").as_int(), carsTexture, carNum, ia);
 		}
+	
 
 		// Configurar y empezar el carro
+		car->SetRotation(carsStartRotation);
 		car->SetParameters(carsNode);
 		car->SetRoute(routePoints);
 		car->SetGame(this);

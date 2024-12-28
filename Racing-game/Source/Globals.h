@@ -43,7 +43,19 @@ enum update_status
 #define TITLE "Physics 2D Playground"
 
 //Game Configuration
-#define MAX_CAR_NUM 6
+#define MAX_CAR_NUM 4
+
+#define J1_KEY_UP KEY_W
+#define J1_KEY_DOWN KEY_S
+#define J1_KEY_RIGHT KEY_D
+#define J1_KEY_LEFT KEY_A
+#define J1_KEY_BOOST KEY_C
+
+#define J2_KEY_UP KEY_I
+#define J2_KEY_DOWN KEY_K
+#define J2_KEY_RIGHT KEY_L
+#define J2_KEY_LEFT KEY_J
+#define J2_KEY_BOOST KEY_N
 
 class BasicOperations
 {

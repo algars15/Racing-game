@@ -47,6 +47,7 @@ public:
 	float GetInertia() const;
 	float GetMass() const;
 	void SetLinearVelocity(Vector2 velocity) const;
+	void SetRotation(float rotation) const;
 	void ApplyForce(Vector2 force);
 	void ApplyTorque(float torque);
 	void ApplyAngularImpulse(float angular);
