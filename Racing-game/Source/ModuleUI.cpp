@@ -51,12 +51,12 @@ update_status ModuleUI::Update(float dt)
 			
 			std::vector<std::string> rankingNames = game->GetRankingNames();
 
-			for (int i = 0; i < rankingNames.size(); i++)
+			/*for (int i = 0; i < rankingNames.size(); i++)
 			{
 				char carName[30];
 				sprintf_s(carName, "%s", rankingNames[i].c_str());
 				DrawTextEx(fontRushDriver, carName, { App->window->GetWidth() - MeasureTextEx(fontRushDriver,carName, 50, 5).x - 30, (float)30*i }, 50, 5, WHITE);
-			}
+			}*/
 		}
 		else
 		{
