@@ -8,9 +8,11 @@ void Car::Start()
 	body->body->SetLinearDamping(parameters.attribute("linearDamping").as_float());
 	body->body->SetGravityScale(parameters.attribute("gravity").as_float());
 	turnSpeed = parameters.attribute("turnSpeed").as_float();
+	turnSpeedDrs = parameters.attribute("turnSpeedDrs").as_float();
 	acceleration = parameters.attribute("acceleration").as_float();
 	deceleration = parameters.attribute("deceleration").as_float();
 	maxSpeed = parameters.attribute("maxSpeed").as_float();
+	drsMaxSpeed = parameters.attribute("drsMaxSpeed").as_float();
 	reverseMaxSpeed = parameters.attribute("reverseMaxSpeed").as_float();
 
 	nextWaypointIndex = 0;
@@ -24,6 +26,8 @@ void Car::Start()
 	char nodeName[16];
 	sprintf_s(nodeName, "car%d", carNumber);
 	name = parameters.child(nodeName).attribute("name").as_string();
+	
+	drs = false;
 }
 
 void Car::SetRotation(float degrees)
@@ -31,12 +35,13 @@ void Car::SetRotation(float degrees)
 	body->SetRotation(degrees * PI / 180);
 }
 
-void Car::SetKeys(KeyboardKey keyUp, KeyboardKey keyDown, KeyboardKey keyRight, KeyboardKey keyLeft)
+void Car::SetKeys(KeyboardKey keyUp, KeyboardKey keyDown, KeyboardKey keyRight, KeyboardKey keyLeft, KeyboardKey keyBoost)
 {
 	forwardKey = keyUp;
 	backKey = keyDown;
 	rightKey = keyRight;
 	leftKey = keyLeft;
+	boostKey = keyBoost;
 }
 
 void Car::Update(float dt)
@@ -51,12 +56,24 @@ void Car::Update(float dt)
 
 	Vector2 velocity = body->GetLinearVelocity();
 
-	// Calcular la dirección deseada
-	Vector2 forwardVector = body->GetWorldVector({ 0.0f, 1.0f }); // Dirección hacia adelante
-	Vector2 rightVector = body->GetWorldVector({ 1.0f, 0.0f }); // Dirección lateral (derecha)
+	// Calcular la direcciï¿½n deseada
+	Vector2 forwardVector = body->GetWorldVector({ 0.0f, 1.0f }); // Direcciï¿½n hacia adelante
+	Vector2 rightVector = body->GetWorldVector({ 1.0f, 0.0f }); // Direcciï¿½n lateral (derecha)
 
 	float currentAcceleration = input.y > 0 ? deceleration : acceleration;
-	float currentMaxSpeed = input.y > 0 ? reverseMaxSpeed : maxSpeed;
+
+	float currentMaxSpeed = 0;
+	if (input.y > 0) {
+		currentMaxSpeed = reverseMaxSpeed;
+	}
+	else if (input.y <= 0){
+		if (drs) {
+			currentMaxSpeed = drsMaxSpeed;
+		}
+		else {
+			currentMaxSpeed = maxSpeed;
+		}
+	}
 
 	Vector2 accelerationVector = {
 		forwardVector.x * currentAcceleration * input.y * dt,
@@ -82,7 +99,7 @@ void Car::Update(float dt)
 
 	float speed = BasicOperations().MagnitudeVector(targetVelocity);
 
-	// Limitar la velocidad máxima
+	// Limitar la velocidad mï¿½xima
 	if (speed > currentMaxSpeed) {
 		targetVelocity = BasicOperations().NormalizeVector(targetVelocity);
 		targetVelocity = {
@@ -97,13 +114,24 @@ void Car::Update(float dt)
 	speedFactor = speedFactor < 0 ? 0 : speedFactor;
 
 	// Aplicar giro (torque)
-	if (abs(speed) > 0.1f) { // Umbral mínimo de velocidad
-		float dynamicTorque = turnSpeed * input.x * speedFactor;
-		body->ApplyTorque(dynamicTorque);
+	if (drs) {
+		if (abs(speed) > 0.1f) { // Umbral mï¿½nimo de velocidad
+			float dynamicTorque = turnSpeedDrs * input.x * speedFactor;
+			body->ApplyTorque(dynamicTorque);
+		}
 	}
+	else {
+		if (abs(speed) > 0.1f) { // Umbral mï¿½nimo de velocidad
+			float dynamicTorque = turnSpeed * input.x * speedFactor;
+			body->ApplyTorque(dynamicTorque);
+		}
+	}
+	
 
 	// Establecer la nueva velocidad
 	body->SetLinearVelocity(targetVelocity);
+
+	
 
 	// Calcular la distancia al siguiente checkpoint para el ranking
 	Vector2 VectorToRoutePoint = {
@@ -115,6 +143,9 @@ void Car::Update(float dt)
 
 void Car::Input()
 {
+	if (IsKeyDown(boostKey) && IsKeyDown(forwardKey))	drs = true;
+	else drs = false;
+	
 	if (IsKeyDown(forwardKey) && !IsKeyDown(backKey)) input.y = -1;
 	else if (IsKeyDown(backKey) && !IsKeyDown(forwardKey)) input.y = 1;
 
@@ -125,9 +156,9 @@ void Car::Input()
 void Car::Ia()
 {
 
-	// Obtener posición y orientación actual del coche
+	// Obtener posiciï¿½n y orientaciï¿½n actual del coche
 	Vector2 carPosition = body->GetPosition();
-	Vector2 carForward = body->GetWorldVector({ 0.0f, 1.0f }); // Dirección hacia adelante del coche
+	Vector2 carForward = body->GetWorldVector({ 0.0f, 1.0f }); // Direcciï¿½n hacia adelante del coche
 
 	// Punto objetivo de la ruta
 	Vector2 targetPoint = nextWaypointPos;
