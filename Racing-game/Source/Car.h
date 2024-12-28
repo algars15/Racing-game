@@ -34,6 +34,8 @@ public:
 	Ranking GetRank();
 
 	int GetCarNum();
+	
+	std::string GetCarName();
 
 	void OnCollision(PhysBody* bodyA, PhysBody* bodyB) override;
 
@@ -43,10 +45,14 @@ public:
 
 	void SetRotation(float degrees);
 
+	void SetName(std::string name);
+
 private:
 	
 	ModuleGame* game;
 	
+	std::string name;
+
 	//TEXTURE
 	Texture2D texture;
 	int carNumber;

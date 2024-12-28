@@ -47,6 +47,7 @@ public:
 	bool CleanUp();
 	bool GetReturnMain();
 	bool GetStarted();
+	bool GetEnded();
 	void SaveGame();
 	void RestartGame();
 	void LoadGame();
@@ -56,6 +57,7 @@ public:
 	float GetTime();
 	int GetLaps();
 	int GetCurrentLap();
+	std::vector<std::string> GetRankingNames();
 
 private:
 
@@ -63,6 +65,7 @@ private:
 	Timer startTimer;
 	float raceTime;
 	bool started;
+	bool ended;
 
 	int currentLap;
 	int laps;

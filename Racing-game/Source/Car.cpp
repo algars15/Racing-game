@@ -3,6 +3,7 @@
 
 void Car::Start()
 {
+	//COMMON
 	body->body->SetAngularDamping(parameters.attribute("angularDamping").as_float());
 	body->body->SetLinearDamping(parameters.attribute("linearDamping").as_float());
 	body->body->SetGravityScale(parameters.attribute("gravity").as_float());
@@ -11,12 +12,18 @@ void Car::Start()
 	deceleration = parameters.attribute("deceleration").as_float();
 	maxSpeed = parameters.attribute("maxSpeed").as_float();
 	reverseMaxSpeed = parameters.attribute("reverseMaxSpeed").as_float();
+
 	nextWaypointIndex = 0;
 	currentWaypointIndex = routePoints.size() - 1;
 	previousWaypointIndex = routePoints.size() - 2;
 	ranking.checkPoint = currentWaypointIndex;
 	ranking.distanceToNextCheckpoint = 0;
-	ranking.lap = - 1;
+	ranking.lap = -1;
+
+	//INDIVIDUAL
+	char nodeName[16];
+	sprintf_s(nodeName, "car%d", carNumber);
+	name = parameters.child(nodeName).attribute("name").as_string();
 }
 
 void Car::SetRotation(float degrees)
@@ -161,7 +168,7 @@ void Car::Draw()
 	body->GetPhysicPosition(x, y);
 	if (draw)
 	{
-		DrawCircle(nextWaypointPos.x, nextWaypointPos.y, 5, RED);
+		if (ia) DrawCircle(nextWaypointPos.x, nextWaypointPos.y, 5, RED);
 		DrawTexturePro(texture, Rectangle{ (float) width * carNumber, 0, (float)width, (float)height },
 			Rectangle{ (float)x, (float)y, (float)width, (float)height },
 			Vector2{ (float)width / 2.0f, (float)height / 2.0f }, body->GetRotation() * RAD2DEG, WHITE);
@@ -193,7 +200,11 @@ void Car::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 				nextWaypointIndex = (nextWaypointIndex + 1) % routePoints.size();
 				currentWaypointIndex = (currentWaypointIndex + 1) % routePoints.size();
 				previousWaypointIndex = (previousWaypointIndex + 1) % routePoints.size();
-				if (currentWaypointIndex == 0) ranking.lap++;
+				if (currentWaypointIndex == 0)
+				{
+					ranking.lap++;
+					if (!ia && ranking.lap >= game->GetLaps()) ia = true;
+				}
 			}
 			else if (otherPhysBody == routePoints[previousWaypointIndex]->body)
 			{
@@ -229,6 +240,16 @@ int Car::GetCarNum()
 void Car::SetGame(ModuleGame* Game)
 {
 	game = Game;
+}
+
+void Car::SetName(std::string Name)
+{
+	name = Name;
+}
+
+std::string Car::GetCarName()
+{
+	return name;
 }
 
 

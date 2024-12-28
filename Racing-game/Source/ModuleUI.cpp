@@ -32,6 +32,9 @@ bool ModuleUI::Start()
 		lights.push_back(light);
 	}
 
+	//LEADER BOARD
+	leaderBoard = LoadTexture(parameters.child("leaderBoard").attribute("path").as_string());
+
 	bool ret = true;
 	return ret;
 }
@@ -41,22 +44,46 @@ update_status ModuleUI::Update(float dt)
 {
 	if (App->scene->GetState() == GAME)
 	{
-		//TRAFFIC LIGHT
-		DrawTexture(trafficLight, App->window->GetWidth() / 2 - trafficLight.width / 2, 0, WHITE);
-		if (game->GetTime() < 2)
+		if (game->GetEnded())
 		{
-			if (game->GetTime() < 0)
+			DrawTexture(leaderBoard, App->window->GetWidth() / 2 - leaderBoard.width / 2, 0, WHITE);
+			
+			
+			std::vector<std::string> rankingNames = game->GetRankingNames();
+
+			for (int i = 0; i < rankingNames.size(); i++)
 			{
-				int redLights = 5 + game->GetTime(); // De -5 a 0, se apagan progresivamente
-				for (int i = 0; i < 5; i++)
+				char carName[30];
+				sprintf_s(carName, "%s", rankingNames[i].c_str());
+				DrawTextEx(fontRushDriver, carName, { App->window->GetWidth() - MeasureTextEx(fontRushDriver,carName, 50, 5).x - 30, (float)30*i }, 50, 5, WHITE);
+			}
+		}
+		else
+		{
+			//TRAFFIC LIGHT
+			DrawTexture(trafficLight, App->window->GetWidth() / 2 - trafficLight.width / 2, 0, WHITE);
+			if (game->GetTime() < 2)
+			{
+				if (game->GetTime() < 0)
 				{
-					if (i < redLights)
+					int redLights = 5 + game->GetTime(); // De -5 a 0, se apagan progresivamente
+					for (int i = 0; i < 5; i++)
 					{
-						DrawTexture(lights[i], App->window->GetWidth() / 2 - trafficLight.width / 2, 0, GRAY);
+						if (i < redLights)
+						{
+							DrawTexture(lights[i], App->window->GetWidth() / 2 - trafficLight.width / 2, 0, GRAY);
+						}
+						else
+						{
+							DrawTexture(lights[i], App->window->GetWidth() / 2 - trafficLight.width / 2, 0, RED);
+						}
 					}
-					else
+				}
+				else
+				{
+					for (int i = 0; i < 5; i++)
 					{
-						DrawTexture(lights[i], App->window->GetWidth() / 2 - trafficLight.width / 2, 0, RED);
+						DrawTexture(lights[i], App->window->GetWidth() / 2 - trafficLight.width / 2, 0, GREEN);
 					}
 				}
 			}
@@ -64,17 +91,11 @@ update_status ModuleUI::Update(float dt)
 			{
 				for (int i = 0; i < 5; i++)
 				{
-					DrawTexture(lights[i], App->window->GetWidth() / 2 - trafficLight.width / 2, 0, GREEN);
+					DrawTexture(lights[i], App->window->GetWidth() / 2 - trafficLight.width / 2, 0, GRAY);
 				}
 			}
 		}
-		else
-		{
-			for (int i = 0; i < 5; i++)
-			{
-				DrawTexture(lights[i], App->window->GetWidth() / 2 - trafficLight.width / 2, 0, GRAY);
-			}
-		}
+		
 
 		//POSITIONS
 		char lapsText[30];

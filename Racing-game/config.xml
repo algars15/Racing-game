@@ -12,7 +12,7 @@
 	<game>
 		<properties sortTime = "0.3" startTime="7"/>
 		<tracks>
-			<c0 path = "Assets/Tracks/C1.png" tmx = "Assets/Tracks/c1.tmx" laps="10"/>
+			<c0 path = "Assets/Tracks/C1.png" tmx = "Assets/Tracks/c1.tmx" laps="1"/>
 			<c1 path = "Assets/Tracks/C2.png" tmx = "Assets/Tracks/c2.tmx" laps="9"/>
 			<c2 path = "Assets/Tracks/C3.png" tmx = "Assets/Tracks/c3.tmx" laps="9"/>
 			<c3 path = "Assets/Tracks/C4.png" tmx = "Assets/Tracks/c4.tmx" laps="9"/>
@@ -23,7 +23,24 @@
 			<c8 path = "Assets/Tracks/C9.png" tmx = "Assets/Tracks/c9.tmx" laps="7"/>
 			<c9 path = "Assets/Tracks/C10.png" tmx = "Assets/Tracks/c10.tmx" laps="6"/>
 		</tracks>
-		<cars path = "Assets/Cars/Cars.png" width = "44" height = "76" gravity = "0" angularDamping ="20" linearDamping ="3" acceleration = "60" deceleration ="24" maxSpeed ="10" reverseMaxSpeed =" 4" turnSpeed ="20"/>
+		<cars path = "Assets/Cars/Cars.png" width = "44" height = "76" gravity = "0" angularDamping ="20" linearDamping ="3" acceleration = "60" deceleration ="24" maxSpeed ="10" reverseMaxSpeed =" 4" turnSpeed ="20">
+			<car0 name="CHARLES LEMERC"></car0>
+			<car1 name="DANIEL RIQUIARDE"></car1>
+			<car2 name="SERGIO PEREZOSO"></car2>
+			<car3 name="FRANCO PINTACOLAS"></car3>
+			<car4 name="PIERRE GASTLY"></car4>
+			<car5 name="FRENANDO ALONSO"></car5>
+			<car6 name="JORGE EL RUSO"></car6>
+			<car7 name="LA CABRA SAINZ"></car7>
+			<car8 name="LEWIS HALIMONTON"></car8>
+			<car9 name="MAXIMO VERSTAPON"></car9>
+			<car10 name="ESTEBAN MOJON"></car10>
+			<car11 name="LANCE TROLL"></car11>
+			<car12 name="VALTERO BOTAS"></car12>
+			<car13 name="YUKI TU NO DA"></car13>
+			<car14 name="KEVIN EL MAGNO"></car14>
+			<car15 name="NICO HULK"></car15>
+		</cars>			
 	</game>
 	
 	<menu>
@@ -83,6 +100,7 @@
 			<light path ="Assets/UI/ForthLight.png"></light>
 			<light path ="Assets/UI/LastLight.png"></light>
 		</trafficLight>
+		<leaderBoard path ="Assets/UI/Leaderboard.png"></leaderBoard>
 		
 	</ui>
 	

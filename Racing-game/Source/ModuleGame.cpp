@@ -36,7 +36,6 @@ void ModuleGame::LoadGame()
 	pugi::xml_node trackNode = parameters.child("tracks").child(nodeName);
 		//Image
 	mapTexture = LoadTexture(trackNode.attribute("path").as_string());
-	
 		//GroupObjects
 	pugi::xml_document mapFileXML;
 	pugi::xml_parse_result result = mapFileXML.load_file(trackNode.attribute("tmx").as_string());
@@ -159,11 +158,12 @@ void ModuleGame::LoadGame()
 	//Loading Properties
 	sortTime = parameters.child("properties").attribute("sortTime").as_float();
 	sortTimer.Start();
-	started = false;
+	
 	startTime = parameters.child("properties").attribute("startTime").as_float();
 	startTimer.Start();
 
-	
+	ended = false;
+	started = false;
 }
 
 void ModuleGame::RestartGame()
@@ -203,37 +203,50 @@ update_status ModuleGame::Update(float dt)
 			car->Update(dt);
 		}
 
-		if (sortTimer.ReadSec() > sortTime)
+		if (!ended)
 		{
-			for (int i = 0; i < cars.size() - 1; i++) 
+			if (sortTimer.ReadSec() > sortTime)
 			{
-				if (cars[i]->GetRank().lap > currentLap && currentLap < laps) currentLap = cars[i]->GetRank().lap;
-			}
 
-			bool endedSwap;
-			do {
-				endedSwap = true;
-				for (int i = 0; i < cars.size() - 1; i++) {
-					bool swap = false;
-					Ranking carRank1 = cars[i]->GetRank();
-					Ranking carRank2 = cars[i + 1]->GetRank();
-
-					// Ordenar por vueltas
-					if (carRank1.lap < carRank2.lap) swap = true;
-					// Si las vueltas son iguales, ordenar por puntos de control
-					else if (carRank1.lap == carRank2.lap && carRank1.checkPoint < carRank2.checkPoint) swap = true;
-					// Si las vueltas y los checkpoints son iguales, ordenar por distancia (cambiado a mayor prioridad)
-					else if (carRank1.lap == carRank2.lap && carRank1.checkPoint == carRank2.checkPoint &&
-						carRank1.distanceToNextCheckpoint > carRank2.distanceToNextCheckpoint) swap = true;
-
-					if (swap) {
-						std::swap(cars[i], cars[i + 1]);
-						endedSwap = false; // Si ocurre un intercambio, necesitamos otra pasada
-					}
+				bool allEnded = true;
+				for (int i = 0; i < cars.size(); i++)
+				{
+					if (cars[i]->GetRank().lap > currentLap && currentLap < laps) currentLap = cars[i]->GetRank().lap;
+					if (cars[i]->GetRank().lap < laps) allEnded = false;
 				}
-			} while (!endedSwap);
-			sortTimer.Start();
+
+				if (allEnded)
+				{
+					ended = true;
+				}
+
+
+				bool endedSwap;
+				do {
+					endedSwap = true;
+					for (int i = 0; i < cars.size() - 1; i++) {
+						bool swap = false;
+						Ranking carRank1 = cars[i]->GetRank();
+						Ranking carRank2 = cars[i + 1]->GetRank();
+
+						// Ordenar por vueltas
+						if (carRank1.lap < carRank2.lap) swap = true;
+						// Si las vueltas son iguales, ordenar por puntos de control
+						else if (carRank1.lap == carRank2.lap && carRank1.checkPoint < carRank2.checkPoint) swap = true;
+						// Si las vueltas y los checkpoints son iguales, ordenar por distancia (cambiado a mayor prioridad)
+						else if (carRank1.lap == carRank2.lap && carRank1.checkPoint == carRank2.checkPoint &&
+							carRank1.distanceToNextCheckpoint > carRank2.distanceToNextCheckpoint) swap = true;
+
+						if (swap) {
+							std::swap(cars[i], cars[i + 1]);
+							endedSwap = false; // Si ocurre un intercambio, necesitamos otra pasada
+						}
+					}
+				} while (!endedSwap);
+				sortTimer.Start();
+			}
 		}
+
 
 		//DRAW
 		DrawTexture(mapTexture, 0, 0, WHITE);
@@ -292,4 +305,21 @@ int ModuleGame::GetLaps()
 int ModuleGame::GetCurrentLap()
 {
 	return currentLap;
+}
+
+bool ModuleGame::GetEnded()
+{
+	return ended;
+}
+
+std::vector<std::string> ModuleGame::GetRankingNames()
+{
+	std::vector<std::string> names;
+
+	for (int i = 0; i < cars.size(); i++)
+	{
+		names.push_back(cars[i]->GetCarName());
+	}
+
+	return names;
 }

@@ -28,4 +28,7 @@ private:
 	//TRAFFIC LIGHT
 	Texture2D trafficLight;
 	std::vector<Texture2D> lights;
+
+	//LEADER BOARD
+	Texture2D leaderBoard;
 };
