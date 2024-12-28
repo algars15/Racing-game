@@ -120,11 +120,11 @@ void ModuleGame::LoadGame()
 
 		if (i == 0) {
 			car = new Car(App->physics, startPoints[i].x, startPoints[i].y, carsNode.attribute("width").as_int(), carsNode.attribute("height").as_int(), carsTexture, j1CarNum, ia);
-			car->SetKeys(J1_KEY_UP, J1_KEY_DOWN, J1_KEY_RIGHT, J1_KEY_LEFT);
+			car->SetKeys(J1_KEY_UP, J1_KEY_DOWN, J1_KEY_RIGHT, J1_KEY_LEFT, J1_KEY_BOOST);
 		}
 		else if (i == 1 && numPlayers == 2) {
 			car = new Car(App->physics, startPoints[i].x, startPoints[i].y, carsNode.attribute("width").as_int(), carsNode.attribute("height").as_int(), carsTexture, j2CarNum, ia);
-			car->SetKeys(J2_KEY_UP, J2_KEY_DOWN, J2_KEY_RIGHT, J2_KEY_LEFT);
+			car->SetKeys(J2_KEY_UP, J2_KEY_DOWN, J2_KEY_RIGHT, J2_KEY_LEFT, J2_KEY_BOOST);
 		}
 		else {
 			// Selección de un número de carro único

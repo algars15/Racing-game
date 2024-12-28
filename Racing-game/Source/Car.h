@@ -37,7 +37,7 @@ public:
 
 	void OnCollision(PhysBody* bodyA, PhysBody* bodyB) override;
 
-	void SetKeys(KeyboardKey keyUp, KeyboardKey keyDown, KeyboardKey keyRight, KeyboardKey keyLeft);
+	void SetKeys(KeyboardKey keyUp, KeyboardKey keyDown, KeyboardKey keyRight, KeyboardKey keyLeft, KeyboardKey keyBoost);
 	
 	void SetGame(ModuleGame* game);
 
@@ -56,10 +56,12 @@ private:
 
 	//BEHAVIOUR
 	bool ia;
+	bool drs;
 	KeyboardKey forwardKey;
 	KeyboardKey backKey;
 	KeyboardKey rightKey;
 	KeyboardKey leftKey;
+	KeyboardKey boostKey;
 	Vector2 input;
 	Timer stuckedTimer;
 

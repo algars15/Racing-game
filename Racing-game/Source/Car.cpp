@@ -17,6 +17,7 @@ void Car::Start()
 	ranking.checkPoint = currentWaypointIndex;
 	ranking.distanceToNextCheckpoint = 0;
 	ranking.lap = - 1;
+	drs = false;
 }
 
 void Car::SetRotation(float degrees)
@@ -24,12 +25,13 @@ void Car::SetRotation(float degrees)
 	body->SetRotation(degrees * PI / 180);
 }
 
-void Car::SetKeys(KeyboardKey keyUp, KeyboardKey keyDown, KeyboardKey keyRight, KeyboardKey keyLeft)
+void Car::SetKeys(KeyboardKey keyUp, KeyboardKey keyDown, KeyboardKey keyRight, KeyboardKey keyLeft, KeyboardKey keyBoost)
 {
 	forwardKey = keyUp;
 	backKey = keyDown;
 	rightKey = keyRight;
 	leftKey = keyLeft;
+	boostKey = keyBoost;
 }
 
 void Car::Update(float dt)
@@ -98,6 +100,8 @@ void Car::Update(float dt)
 	// Establecer la nueva velocidad
 	body->SetLinearVelocity(targetVelocity);
 
+	
+
 	// Calcular la distancia al siguiente checkpoint para el ranking
 	Vector2 VectorToRoutePoint = {
 			body->GetPosition().x - routePoints[nextWaypointIndex]->position.x,
@@ -108,6 +112,9 @@ void Car::Update(float dt)
 
 void Car::Input()
 {
+	if (IsKeyDown(boostKey) && IsKeyDown(forwardKey))	drs = true;
+	else drs = false;
+	
 	if (IsKeyDown(forwardKey) && !IsKeyDown(backKey)) input.y = -1;
 	else if (IsKeyDown(backKey) && !IsKeyDown(forwardKey)) input.y = 1;
 
