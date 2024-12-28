@@ -10,6 +10,7 @@ void Car::Start()
 	acceleration = parameters.attribute("acceleration").as_float();
 	deceleration = parameters.attribute("deceleration").as_float();
 	maxSpeed = parameters.attribute("maxSpeed").as_float();
+	drsMaxSpeed = parameters.attribute("drsMaxSpeed").as_float();
 	reverseMaxSpeed = parameters.attribute("reverseMaxSpeed").as_float();
 	nextWaypointIndex = 0;
 	currentWaypointIndex = routePoints.size() - 1;
@@ -51,7 +52,19 @@ void Car::Update(float dt)
 	Vector2 rightVector = body->GetWorldVector({ 1.0f, 0.0f }); // Dirección lateral (derecha)
 
 	float currentAcceleration = input.y > 0 ? deceleration : acceleration;
-	float currentMaxSpeed = input.y > 0 ? reverseMaxSpeed : maxSpeed;
+	//float currentMaxSpeed = input.y > 0 ? reverseMaxSpeed : maxSpeed;
+	float currentMaxSpeed = 0;
+	if (input.y > 0) {
+		currentMaxSpeed = reverseMaxSpeed;
+	}
+	else if (input.y < 0){
+		if (drs) {
+			currentMaxSpeed = drsMaxSpeed;
+		}
+		else {
+			currentMaxSpeed = maxSpeed;
+		}
+	}
 
 	Vector2 accelerationVector = {
 		forwardVector.x * currentAcceleration * input.y * dt,

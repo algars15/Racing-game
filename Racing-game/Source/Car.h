@@ -71,6 +71,7 @@ private:
 	float acceleration;
 	float deceleration;
 	float maxSpeed;
+	float drsMaxSpeed;
 	float reverseMaxSpeed;
 
 	//PARAMETERS
