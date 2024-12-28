@@ -23,7 +23,7 @@
 			<c8 path = "Assets/Tracks/C9.png" tmx = "Assets/Tracks/c9.tmx" laps="7"/>
 			<c9 path = "Assets/Tracks/C10.png" tmx = "Assets/Tracks/c10.tmx" laps="6"/>
 		</tracks>
-		<cars path = "Assets/Cars/Cars.png" width = "44" height = "76" gravity = "0" angularDamping ="20" linearDamping ="3" acceleration = "60" deceleration ="24" maxSpeed ="10" drsMaxSpeed ="12" reverseMaxSpeed =" 4" turnSpeed ="20"/>
+		<cars path = "Assets/Cars/Cars.png" width = "44" height = "76" gravity = "0" angularDamping ="20" linearDamping ="3" acceleration = "60" deceleration ="24" maxSpeed ="10" drsMaxSpeed ="12" reverseMaxSpeed =" 4" turnSpeed ="20" turnSpeedDrs ="22"/>
 	</game>
 	
 	<menu>

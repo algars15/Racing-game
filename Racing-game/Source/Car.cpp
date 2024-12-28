@@ -7,6 +7,7 @@ void Car::Start()
 	body->body->SetLinearDamping(parameters.attribute("linearDamping").as_float());
 	body->body->SetGravityScale(parameters.attribute("gravity").as_float());
 	turnSpeed = parameters.attribute("turnSpeed").as_float();
+	turnSpeedDrs = parameters.attribute("turnSpeedDrs").as_float();
 	acceleration = parameters.attribute("acceleration").as_float();
 	deceleration = parameters.attribute("deceleration").as_float();
 	maxSpeed = parameters.attribute("maxSpeed").as_float();
@@ -52,7 +53,7 @@ void Car::Update(float dt)
 	Vector2 rightVector = body->GetWorldVector({ 1.0f, 0.0f }); // Dirección lateral (derecha)
 
 	float currentAcceleration = input.y > 0 ? deceleration : acceleration;
-	//float currentMaxSpeed = input.y > 0 ? reverseMaxSpeed : maxSpeed;
+
 	float currentMaxSpeed = 0;
 	if (input.y > 0) {
 		currentMaxSpeed = reverseMaxSpeed;
@@ -105,10 +106,19 @@ void Car::Update(float dt)
 	speedFactor = speedFactor < 0 ? 0 : speedFactor;
 
 	// Aplicar giro (torque)
-	if (abs(speed) > 0.1f) { // Umbral mínimo de velocidad
-		float dynamicTorque = turnSpeed * input.x * speedFactor;
-		body->ApplyTorque(dynamicTorque);
+	if (drs) {
+		if (abs(speed) > 0.1f) { // Umbral mínimo de velocidad
+			float dynamicTorque = turnSpeedDrs * input.x * speedFactor;
+			body->ApplyTorque(dynamicTorque);
+		}
 	}
+	else {
+		if (abs(speed) > 0.1f) { // Umbral mínimo de velocidad
+			float dynamicTorque = turnSpeed * input.x * speedFactor;
+			body->ApplyTorque(dynamicTorque);
+		}
+	}
+	
 
 	// Establecer la nueva velocidad
 	body->SetLinearVelocity(targetVelocity);

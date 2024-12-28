@@ -68,6 +68,7 @@ private:
 
 	//PHYSICS
 	float turnSpeed;
+	float turnSpeedDrs;
 	float acceleration;
 	float deceleration;
 	float maxSpeed;
