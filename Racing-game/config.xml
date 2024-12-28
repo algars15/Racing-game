@@ -10,18 +10,18 @@
 	</audio>
 	
 	<game>
-		<properties sortTime = "0.5"/>
+		<properties sortTime = "0.3" startTime="7"/>
 		<tracks>
-			<c0 path = "Assets/Tracks/C1.png" tmx = "Assets/Tracks/c1.tmx"/>
-			<c1 path = "Assets/Tracks/C2.png" tmx = "Assets/Tracks/c2.tmx"/>
-			<c2 path = "Assets/Tracks/C3.png" tmx = "Assets/Tracks/c3.tmx"/>
-			<c3 path = "Assets/Tracks/C4.png" tmx = "Assets/Tracks/c4.tmx"/>
-			<c4 path = "Assets/Tracks/C5.png" tmx = "Assets/Tracks/c5.tmx"/>
-			<c5 path = "Assets/Tracks/C6.png" tmx = "Assets/Tracks/c6.tmx"/>
-			<c6 path = "Assets/Tracks/C7.png" tmx = "Assets/Tracks/c7.tmx"/>
-			<c7 path = "Assets/Tracks/C8.png" tmx = "Assets/Tracks/c8.tmx"/>
-			<c8 path = "Assets/Tracks/C9.png" tmx = "Assets/Tracks/c9.tmx"/>
-			<c9 path = "Assets/Tracks/C10.png" tmx = "Assets/Tracks/c10.tmx"/>
+			<c0 path = "Assets/Tracks/C1.png" tmx = "Assets/Tracks/c1.tmx" laps="10"/>
+			<c1 path = "Assets/Tracks/C2.png" tmx = "Assets/Tracks/c2.tmx" laps="9"/>
+			<c2 path = "Assets/Tracks/C3.png" tmx = "Assets/Tracks/c3.tmx" laps="9"/>
+			<c3 path = "Assets/Tracks/C4.png" tmx = "Assets/Tracks/c4.tmx" laps="9"/>
+			<c4 path = "Assets/Tracks/C5.png" tmx = "Assets/Tracks/c5.tmx" laps="8"/>
+			<c5 path = "Assets/Tracks/C6.png" tmx = "Assets/Tracks/c6.tmx" laps="8"/>
+			<c6 path = "Assets/Tracks/C7.png" tmx = "Assets/Tracks/c7.tmx" laps="7"/>
+			<c7 path = "Assets/Tracks/C8.png" tmx = "Assets/Tracks/c8.tmx" laps="7"/>
+			<c8 path = "Assets/Tracks/C9.png" tmx = "Assets/Tracks/c9.tmx" laps="7"/>
+			<c9 path = "Assets/Tracks/C10.png" tmx = "Assets/Tracks/c10.tmx" laps="6"/>
 		</tracks>
 		<cars path = "Assets/Cars/Cars.png" width = "44" height = "76" gravity = "0" angularDamping ="20" linearDamping ="3" acceleration = "60" deceleration ="24" maxSpeed ="10" reverseMaxSpeed =" 4" turnSpeed ="20"/>
 	</game>
@@ -73,7 +73,17 @@
 	</scene>
 	
 	<ui>
-
+		<fonts>
+			<rushDriver path="Assets/UI/RushDriver-Italic.otf"/>
+		</fonts>
+		<trafficLight path ="Assets/UI/BaseTrafficLight.png" width="770" height ="118">
+			<light path ="Assets/UI/FirstLight.png"></light>
+			<light path ="Assets/UI/SecondLight.png"></light>
+			<light path ="Assets/UI/ThirdLight.png"></light>
+			<light path ="Assets/UI/ForthLight.png"></light>
+			<light path ="Assets/UI/LastLight.png"></light>
+		</trafficLight>
+		
 	</ui>
 	
 	<window>

@@ -38,8 +38,13 @@ public:
 	void OnCollision(PhysBody* bodyA, PhysBody* bodyB) override;
 
 	void SetKeys(KeyboardKey keyUp, KeyboardKey keyDown, KeyboardKey keyRight, KeyboardKey keyLeft);
+	
+	void SetGame(ModuleGame* game);
 
 private:
+	
+	ModuleGame* game;
+	
 	//TEXTURE
 	Texture2D texture;
 	int carNumber;

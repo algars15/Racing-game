@@ -20,6 +20,18 @@ ModuleUI::~ModuleUI()
 
 bool ModuleUI::Start()
 {
+	//FONTS
+	fontRushDriver = LoadFont(parameters.child("fonts").child("rushDriver").attribute("path").as_string());
+
+	//TRAFFIC LIGHT
+	trafficLight = LoadTexture(parameters.child("trafficLight").attribute("path").as_string());
+
+	for (pugi::xml_node lightNode : parameters.child("trafficLight").children("light")) {
+
+		Texture2D light = LoadTexture(lightNode.attribute("path").as_string());
+		lights.push_back(light);
+	}
+
 	bool ret = true;
 	return ret;
 }
@@ -27,14 +39,53 @@ bool ModuleUI::Start()
 
 update_status ModuleUI::Update(float dt)
 {
-	if (App->scene->GetState() == MENU)
+	if (App->scene->GetState() == GAME)
 	{
+		//TRAFFIC LIGHT
+		DrawTexture(trafficLight, App->window->GetWidth() / 2 - trafficLight.width / 2, 0, WHITE);
+		if (game->GetTime() < 2)
+		{
+			if (game->GetTime() < 0)
+			{
+				int redLights = 5 + game->GetTime(); // De -5 a 0, se apagan progresivamente
+				for (int i = 0; i < 5; i++)
+				{
+					if (i < redLights)
+					{
+						DrawTexture(lights[i], App->window->GetWidth() / 2 - trafficLight.width / 2, 0, GRAY);
+					}
+					else
+					{
+						DrawTexture(lights[i], App->window->GetWidth() / 2 - trafficLight.width / 2, 0, RED);
+					}
+				}
+			}
+			else
+			{
+				for (int i = 0; i < 5; i++)
+				{
+					DrawTexture(lights[i], App->window->GetWidth() / 2 - trafficLight.width / 2, 0, GREEN);
+				}
+			}
+		}
+		else
+		{
+			for (int i = 0; i < 5; i++)
+			{
+				DrawTexture(lights[i], App->window->GetWidth() / 2 - trafficLight.width / 2, 0, GRAY);
+			}
+		}
+
+		//POSITIONS
+		char lapsText[30];
+		sprintf_s(lapsText, "LAP: %d / %d", game->GetCurrentLap(), game->GetLaps());
+		DrawTextEx(fontRushDriver, lapsText, { App->window->GetWidth() - MeasureTextEx(fontRushDriver,lapsText, 50, 5).x - 30, 30 }, 50, 5, WHITE);
 
 	}
 	return UPDATE_CONTINUE;
 }
 
-void ModuleUI::Draw(int puntuation, int lives, bool mort)
+void ModuleUI::Draw()
 {
 	/*if (!mort)
 	{
@@ -63,6 +114,10 @@ void ModuleUI::Draw(int puntuation, int lives, bool mort)
 	}*/
 }
 
+void ModuleUI::SetGame(ModuleGame* g)
+{
+	game = g;
+}
 
 bool ModuleUI::CleanUp()
 {

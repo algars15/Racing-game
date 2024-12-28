@@ -72,15 +72,17 @@ update_status ModuleScene::Update(float dt)
             {
                 fadeState = BETWEEN;
                 fadeAlpha = 255.0f;
-                if (toMenu) state = MENU;
-                if (toGame) state = GAME;
-                if (toLose) state = LOSE;
             }
         }
         else if (fadeState == BETWEEN)
         {
             if (toGame) game->LoadGame();
             else if (toMenu) menu->LoadHightScore();
+
+            if (toMenu) state = MENU;
+            if (toGame) state = GAME;
+            if (toLose) state = LOSE;
+
             fadeState = FADEIN;
         }
     }

@@ -82,6 +82,8 @@ void ModuleGame::LoadGame()
 	{
 		TraceLog(LOG_INFO, "number of start points different than max cars");
 	}
+	laps = trackNode.attribute("laps").as_int();
+	currentLap = 0;
 
 	//Loading Cars
 	pugi::xml_node carsNode = parameters.child("cars");
@@ -121,6 +123,7 @@ void ModuleGame::LoadGame()
 		// Configurar y empezar el carro
 		car->SetParameters(carsNode);
 		car->SetRoute(routePoints);
+		car->SetGame(this);
 		car->Start();
 		cars.push_back(car);
 	}
@@ -128,6 +131,10 @@ void ModuleGame::LoadGame()
 	//Loading Properties
 	sortTime = parameters.child("properties").attribute("sortTime").as_float();
 	sortTimer.Start();
+	started = false;
+	startTime = parameters.child("properties").attribute("startTime").as_float();
+	startTimer.Start();
+
 	
 }
 
@@ -157,6 +164,12 @@ update_status ModuleGame::Update(float dt)
 {
 	if (App->scene->GetState() == GAME) {
 		
+		raceTime = -startTime + startTimer.ReadSec();
+		if (!started && raceTime > 0)
+		{
+			started = true;
+		}
+
 		for each (Car * car in cars)
 		{
 			car->Update(dt);
@@ -164,6 +177,11 @@ update_status ModuleGame::Update(float dt)
 
 		if (sortTimer.ReadSec() > sortTime)
 		{
+			for (int i = 0; i < cars.size() - 1; i++) 
+			{
+				if (cars[i]->GetRank().lap > currentLap && currentLap < laps) currentLap = cars[i]->GetRank().lap;
+			}
+
 			bool endedSwap;
 			do {
 				endedSwap = true;
@@ -216,6 +234,11 @@ bool ModuleGame::GetReturnMain()
 	return false;
 }
 
+bool ModuleGame::GetStarted()
+{
+	return started;
+}
+
 void ModuleGame::SetCars(int j1Car, int j2Car)
 {
 	j1CarNum = j1Car;
@@ -226,4 +249,19 @@ void ModuleGame::SetCars(int j1Car, int j2Car)
 void ModuleGame::SetTrack(int track)
 {
 	trackNum = track;
+}
+
+float ModuleGame::GetTime()
+{
+	return raceTime;
+}
+
+int ModuleGame::GetLaps()
+{
+	return laps;
+}
+
+int ModuleGame::GetCurrentLap()
+{
+	return currentLap;
 }

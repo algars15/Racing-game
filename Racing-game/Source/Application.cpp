@@ -28,6 +28,7 @@ Application::Application()
 	scene->SetGame(game);
 	scene->SetMenu(menu);
 	game->SetUI(ui);
+	ui->SetGame(game);
 
 	// The order of calls is very important!
 	// Modules will Init() Start() and Update in this order

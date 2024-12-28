@@ -38,14 +38,26 @@ public:
 	update_status Update(float dt);
 	bool CleanUp();
 	bool GetReturnMain();
+	bool GetStarted();
 	void SaveGame();
 	void RestartGame();
 	void LoadGame();
 	void SetUI(ModuleUI* ui);
 	void SetTrack(int track);
 	void SetCars(int j1Car, int j2Car);
+	float GetTime();
+	int GetLaps();
+	int GetCurrentLap();
 
 private:
+
+	float startTime;
+	Timer startTimer;
+	float raceTime;
+	bool started;
+
+	int currentLap;
+	int laps;
 
 	//TEXTURES
 	Texture2D mapTexture;

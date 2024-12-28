@@ -31,8 +31,11 @@ void Car::Update(float dt)
 {
 	input = { 0,0 };
 
-	if (!ia) Input();
-	else (Ia());
+	if (game->GetStarted())
+	{
+		if (!ia) Input();
+		else (Ia());
+	}
 
 	Vector2 velocity = body->GetLinearVelocity();
 
@@ -218,6 +221,9 @@ int Car::GetCarNum()
 	return carNumber;
 }
 
-
+void Car::SetGame(ModuleGame* Game)
+{
+	game = Game;
+}
 
 
