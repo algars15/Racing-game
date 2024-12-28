@@ -58,7 +58,7 @@ void Car::Update(float dt)
 	if (input.y > 0) {
 		currentMaxSpeed = reverseMaxSpeed;
 	}
-	else if (input.y < 0){
+	else if (input.y <= 0){
 		if (drs) {
 			currentMaxSpeed = drsMaxSpeed;
 		}
