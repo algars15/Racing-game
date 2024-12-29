@@ -58,6 +58,7 @@ public:
 	int GetLaps();
 	int GetCurrentLap();
 	std::vector<std::string> GetRankingNames();
+	std::vector<int> GetRankingNums();
 
 private:
 
@@ -66,6 +67,7 @@ private:
 	float raceTime;
 	bool started;
 	bool ended;
+	bool returnToMainMenu;
 
 	int currentLap;
 	int laps;

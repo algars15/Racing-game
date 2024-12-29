@@ -12,7 +12,7 @@
 	<game>
 		<properties sortTime = "0.3" startTime="7"/>
 		<tracks>
-			<c0 path = "Assets/Tracks/C1.png" tmx = "Assets/Tracks/c1.tmx" laps="10"/>
+			<c0 path = "Assets/Tracks/C1.png" tmx = "Assets/Tracks/c1.tmx" laps="0"/>
 			<c1 path = "Assets/Tracks/C2.png" tmx = "Assets/Tracks/c2.tmx" laps="9"/>
 			<c2 path = "Assets/Tracks/C3.png" tmx = "Assets/Tracks/c3.tmx" laps="9"/>
 			<c3 path = "Assets/Tracks/C4.png" tmx = "Assets/Tracks/c4.tmx" laps="9"/>
@@ -100,7 +100,48 @@
 			<light path ="Assets/UI/ForthLight.png"></light>
 			<light path ="Assets/UI/LastLight.png"></light>
 		</trafficLight>
-		<leaderBoard path ="Assets/UI/Leaderboard.png"></leaderBoard>
+		<leaderBoard path ="Assets/UI/Leaderboard.png" x="690" y="300" numbersSpacing ="80" displacementX = "90" displacementY="25">
+			<names path ="Assets/UI/Names/Name-Lemerc.png"/>
+			<names path ="Assets/UI/Names/Name-Riquiarde.png"/>
+			<names path ="Assets/UI/Names/Name-Perezoso.png"/>
+			<names path ="Assets/UI/Names/Name-Pintacolas.png"/>
+			<names path ="Assets/UI/Names/Name-Gastly.png"/>
+			<names path ="Assets/UI/Names/Name-Alonso.png"/>
+			<names path ="Assets/UI/Names/Name-Jorge.png"/>
+			<names path ="Assets/UI/Names/Name-Sainz.png"/>
+			<names path ="Assets/UI/Names/Name-Halimonton.png"/>
+			<names path ="Assets/UI/Names/Name-Verstapon.png"/>
+			<names path ="Assets/UI/Names/Name-Mojon.png"/>
+			<names path ="Assets/UI/Names/Name-Troll.png"/>
+			<names path ="Assets/UI/Names/Name-Botas.png"/>
+			<names path ="Assets/UI/Names/Name-Yuki.png"/>
+			<names path ="Assets/UI/Names/Name-Kevin.png"/>
+			<names path ="Assets/UI/Names/Name-Hulk.png"/>
+			<number path ="Assets/UI/Classification/1.png"/>
+			<number path ="Assets/UI/Classification/2.png"/>
+			<number path ="Assets/UI/Classification/3.png"/>
+			<number path ="Assets/UI/Classification/4.png"/>
+			<number path ="Assets/UI/Classification/5.png"/>
+			<number path ="Assets/UI/Classification/6.png"/>
+		</leaderBoard>
+		<inGameLeaderBoard path = "Assets/UI/Classification/CheckeredLine.png" x="0" y ="100">
+			<pilot path ="Assets/UI/Classification/Pilots/LEC.png"/>
+			<pilot path ="Assets/UI/Classification/Pilots/RIC.png"/>
+			<pilot path ="Assets/UI/Classification/Pilots/PER.png"/>
+			<pilot path ="Assets/UI/Classification/Pilots/COL.png"/>
+			<pilot path ="Assets/UI/Classification/Pilots/GAS.png"/>
+			<pilot path ="Assets/UI/Classification/Pilots/ALO.png"/>
+			<pilot path ="Assets/UI/Classification/Pilots/RUS.png"/>
+			<pilot path ="Assets/UI/Classification/Pilots/SAI.png"/>
+			<pilot path ="Assets/UI/Classification/Pilots/HAM.png"/>
+			<pilot path ="Assets/UI/Classification/Pilots/VER.png"/>
+			<pilot path ="Assets/UI/Classification/Pilots/OCO.png"/>
+			<pilot path ="Assets/UI/Classification/Pilots/STR.png"/>
+			<pilot path ="Assets/UI/Classification/Pilots/BOT.png"/>
+			<pilot path ="Assets/UI/Classification/Pilots/TSU.png"/>
+			<pilot path ="Assets/UI/Classification/Pilots/MAG.png"/>
+			<pilot path ="Assets/UI/Classification/Pilots/HUL.png"/>
+		</inGameLeaderBoard>
 		
 	</ui>
 	

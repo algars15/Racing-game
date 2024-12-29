@@ -75,6 +75,7 @@ public:
 	update_status PreUpdate();
 	update_status PostUpdate();
 	bool CleanUp();
+	bool ClearWorld();
 
 	PhysBody* CreateCircle(int x, int y, int radius, b2BodyType colliderType = b2_dynamicBody, ObjectType objectType = UNKNOWN);
 	PhysBody* CreateCircleSensor(int x, int y, int radius, b2BodyType colliderType = b2_dynamicBody, ObjectType objectType = UNKNOWN);

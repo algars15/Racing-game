@@ -102,14 +102,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ShowIncludes>false</ShowIncludes>
-      <AdditionalIncludeDirectories>$(SolutionDir)Source\external\pugixml\src;$(SolutionDir)Source\external\box2d\include\box2d;$(SolutionDir)Source\external\raylib\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Visual Leak Detector\include;$(SolutionDir)Source\external\pugixml\src;$(SolutionDir)Source\external\box2d\include\box2d;$(SolutionDir)Source\external\raylib\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>opengl32.lib;winmm.lib;box2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)Build\box2d\Debug\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)Build\box2d\Debug\Win32;%(AdditionalLibraryDirectories);C:\Program Files (x86)\Visual Leak Detector\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -144,7 +144,7 @@
       <UseFullPaths>false</UseFullPaths>
       <ShowIncludes>false</ShowIncludes>
       <PreprocessorDefinitions>WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)Source\external\pugixml\src;$(SolutionDir)Source\external\box2d\include\box2d;$(SolutionDir)Source\external\raylib\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Visual Leak Detector\include;$(SolutionDir)Source\external\pugixml\src;$(SolutionDir)Source\external\box2d\include\box2d;$(SolutionDir)Source\external\raylib\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
@@ -152,7 +152,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>Console</SubSystem>
       <AdditionalDependencies>opengl32.lib;winmm.lib;box2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)Build\box2d\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)Build\box2d\Release\Win32;%(AdditionalLibraryDirectories);C:\Program Files (x86)\Visual Leak Detector\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

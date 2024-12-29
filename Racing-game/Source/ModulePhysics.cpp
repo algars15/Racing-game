@@ -49,7 +49,7 @@ update_status ModulePhysics::PreUpdate()
 		if(c->GetFixtureA()->IsSensor() && c->IsTouching())
 		{
 			b2BodyUserData data1 = c->GetFixtureA()->GetBody()->GetUserData();
-			b2BodyUserData data2 = c->GetFixtureA()->GetBody()->GetUserData();
+			b2BodyUserData data2 = c->GetFixtureB()->GetBody()->GetUserData();
 
 			PhysBody* pb1 = (PhysBody*)data1.pointer;
 			PhysBody* pb2 = (PhysBody*)data2.pointer;
@@ -361,6 +361,29 @@ bool ModulePhysics::CleanUp()
 
 	// Delete the whole physics world!
 	delete world;
+	return true;
+}
+
+bool ModulePhysics::ClearWorld()
+{
+	TraceLog(LOG_INFO,"Clearing physics");
+
+	// Destruir todos los cuerpos y listeners asociados
+	for (auto it = list_physBodys.rbegin(); it != list_physBodys.rend(); ++it)
+	{
+		PhysBody* item = *it;
+
+		if (item->body != nullptr)
+		{
+			world->DestroyBody(item->body);  // Eliminar cuerpo de Box2D
+			item->body = nullptr;
+		}
+
+		item->listener = nullptr;  // Desvincular listener
+		delete item;               // Liberar memoria de PhysBody
+	}
+
+	list_physBodys.clear(); // Limpiar lista de cuerpos
 
 	return true;
 }
@@ -555,11 +578,19 @@ void ModulePhysics::BeginContact(b2Contact* contact)
 	b2WorldManifold worldManifold;
 	contact->GetWorldManifold(&worldManifold);
 
-	if(physA && physA->listener != NULL)
+	if (physA && physA->listener != nullptr)
 		physA->listener->OnCollision(physA, physB);
+	else {
+		// Debug: Log the issue of invalid or deleted physA
+		LOG("physA is invalid or has been deleted.");
+	}
 
-	if(physB && physB->listener != NULL)
+	if (physB && physB->listener != nullptr)
 		physB->listener->OnCollision(physB, physA);
+	else {
+		// Debug: Log the issue of invalid or deleted physB
+		LOG("physB is invalid or has been deleted.");
+	}
 }
 
 b2RevoluteJoint* ModulePhysics::CreateRevoluteJoint(PhysBody* bodyA, PhysBody* bodyB, b2Vec2 anchor, b2Vec2 angle)

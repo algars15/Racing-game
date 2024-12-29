@@ -22,6 +22,7 @@ bool ModuleUI::Start()
 {
 	//FONTS
 	fontRushDriver = LoadFont(parameters.child("fonts").child("rushDriver").attribute("path").as_string());
+	fonts.push_back(fontRushDriver);
 
 	//TRAFFIC LIGHT
 	trafficLight = LoadTexture(parameters.child("trafficLight").attribute("path").as_string());
@@ -34,6 +35,28 @@ bool ModuleUI::Start()
 
 	//LEADER BOARD
 	leaderBoard = LoadTexture(parameters.child("leaderBoard").attribute("path").as_string());
+	for (pugi::xml_node nameNode : parameters.child("leaderBoard").children("names")) {
+
+		Texture2D name = LoadTexture(nameNode.attribute("path").as_string());
+		names.push_back(name);
+	}
+	for (pugi::xml_node numberNode : parameters.child("leaderBoard").children("number")) {
+
+		Texture2D number = LoadTexture(numberNode.attribute("path").as_string());
+		numbers.push_back(number);
+	}
+	numbersPosition = { parameters.child("leaderBoard").attribute("x").as_float(), parameters.child("leaderBoard").attribute("y").as_float() };
+	nameDisplacement = { parameters.child("leaderBoard").attribute("displacementX").as_float(), parameters.child("leaderBoard").attribute("displacementY").as_float() };
+	numbersSpacing = parameters.child("leaderBoard").attribute("numbersSpacing").as_int();
+
+	//INGAME LEADER BOARD
+	checkeredLine = LoadTexture(parameters.child("inGameLeaderBoard").attribute("path").as_string());
+	for (pugi::xml_node pilotNode : parameters.child("inGameLeaderBoard").children("pilot")) {
+
+		Texture2D pilot = LoadTexture(pilotNode.attribute("path").as_string());
+		pilots.push_back(pilot);
+	}
+	inGameLeaderBoardPosition = { parameters.child("inGameLeaderBoard").attribute("x").as_float() , parameters.child("inGameLeaderBoard").attribute("y").as_float() };
 
 	bool ret = true;
 	return ret;
@@ -49,14 +72,15 @@ update_status ModuleUI::Update(float dt)
 			DrawTexture(leaderBoard, App->window->GetWidth() / 2 - leaderBoard.width / 2, 0, WHITE);
 			
 			
-			std::vector<std::string> rankingNames = game->GetRankingNames();
+			std::vector<int> rankingNumbers = game->GetRankingNums();
 
-			/*for (int i = 0; i < rankingNames.size(); i++)
+			Vector2 currentNumPosition = numbersPosition;
+			for (int i = 0; i < rankingNumbers.size(); i++)
 			{
-				char carName[30];
-				sprintf_s(carName, "%s", rankingNames[i].c_str());
-				DrawTextEx(fontRushDriver, carName, { App->window->GetWidth() - MeasureTextEx(fontRushDriver,carName, 50, 5).x - 30, (float)30*i }, 50, 5, WHITE);
-			}*/
+				DrawTexture(numbers[i], currentNumPosition.x, currentNumPosition.y, WHITE);
+				DrawTexture(names[rankingNumbers[i]], currentNumPosition.x + nameDisplacement.x, currentNumPosition.y + nameDisplacement.y, WHITE);
+				currentNumPosition.y += numbersSpacing;
+			}
 		}
 		else
 		{
@@ -94,6 +118,16 @@ update_status ModuleUI::Update(float dt)
 					DrawTexture(lights[i], App->window->GetWidth() / 2 - trafficLight.width / 2, 0, GRAY);
 				}
 			}
+
+			Vector2 currentPosition = inGameLeaderBoardPosition;
+			DrawTexture(checkeredLine, currentPosition.x, currentPosition.y, WHITE);
+			currentPosition.y += checkeredLine.height;
+			for (int i = 0; i < game->GetRankingNums().size(); i++)
+			{
+				DrawTexture(pilots[game->GetRankingNums()[i]], currentPosition.x, currentPosition.y, WHITE);
+				currentPosition.y += pilots[game->GetRankingNums()[i]].height;
+			}
+			DrawTexture(checkeredLine, currentPosition.x, currentPosition.y, WHITE);
 		}
 		
 
@@ -142,6 +176,10 @@ void ModuleUI::SetGame(ModuleGame* g)
 
 bool ModuleUI::CleanUp()
 {
+	for each (Font font in fonts)
+	{
+		UnloadFont(font);
+	}
 
 	LOG("Unloading Intro scene");
 

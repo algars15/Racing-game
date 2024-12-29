@@ -11,7 +11,6 @@
 
 #include "Application.h"
 
-
 Application::Application()
 {
 	LoadConfig();
@@ -111,7 +110,7 @@ update_status Application::Update()
 		
 		Module* module = *it;
 		
-		if (module->IsEnabled())
+   		if (module->IsEnabled())
 		{
 			ret = module->Update(GetFrameTime());
 		}
@@ -133,7 +132,6 @@ update_status Application::Update()
 
 bool Application::CleanUp()
 {
-
 	bool ret = true;
 	for (auto it = list_modules.rbegin(); it != list_modules.rend() && ret; ++it)
 	{
@@ -142,8 +140,6 @@ bool Application::CleanUp()
 	}
 	
 	return ret;
-
-	
 }
 
 void Application::AddModule(Module* mod)

@@ -96,7 +96,6 @@ update_status ModuleMenu::Update(float dt)
             {
                 App->game->SetCars(j1CarSelected, j2CarSelected);
                 goGame = true;
-
             }
             else if (!goGame)
             {
@@ -157,28 +156,9 @@ bool ModuleMenu::GetGoGame()
     return goGame;
 }
 
-void ModuleMenu::LoadHightScore() {
-    /*std::ifstream file("HighScore.txt");
-
-    TraceLog(LOG_INFO, "Cargando informacion del archivo de puntuaje");
-    
-    if (!file.is_open()) {
-        std::ofstream newFile("HighScore.txt");  
-        newFile << "0\n0" << std::endl;
-        newFile.close();  
-        TraceLog(LOG_INFO, "Archivo de puntaje no encontrado. Se ha creado uno nuevo...");
-        hightScore = 0;
-    }
-    else {
-        
-        file >> hightScore >> previousScore;
-        if (file.fail()) {
-            
-            TraceLog(LOG_INFO, "Error al leer el archivo. Estableciendo el puntaje a 0.");
-            hightScore = 0;
-        }
-        file.close();  
-    }*/
+void ModuleMenu::RestartMenu() {
+    state = MENU;
+    goGame = false;
 }
 
 

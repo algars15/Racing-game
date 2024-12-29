@@ -7,7 +7,6 @@
 
 #define LOG(format, ...) log(__FILE__, __LINE__, format, __VA_ARGS__);
 
-
 void log(const char file[], int line, const char* format, ...);
 
 #define CAP(n) ((n <= 0.0f) ? n=0.0f : (n >= 1.0f) ? n=1.0f : n=n)
@@ -36,9 +35,9 @@ enum update_status
 #define SCREEN_HEIGHT		  1080
 #define SCREEN_SIZE				1
 #define WIN_FULLSCREEN		false
-#define WIN_RESIZABLE		false
-#define WIN_BORDERLESS		true
-#define WIN_FULLSCREEN_DESKTOP true
+#define WIN_RESIZABLE		true
+#define WIN_BORDERLESS		false
+#define WIN_FULLSCREEN_DESKTOP false
 #define VSYNC				true
 #define TITLE "Physics 2D Playground"
 

@@ -22,9 +22,9 @@ public:
 
 	bool Start();
 	update_status Update(float dt);
-	void LoadHightScore();
 	bool CleanUp();
 	bool GetGoGame();
+	void RestartMenu();
 
 
 private:

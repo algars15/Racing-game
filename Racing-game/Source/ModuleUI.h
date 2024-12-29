@@ -16,6 +16,7 @@ public:
 	update_status Update(float dt);
 	void Draw();
 	void SetGame(ModuleGame* game);
+
 	bool CleanUp();
 
 private:
@@ -24,6 +25,7 @@ private:
 
 	//FONTS
 	Font fontRushDriver;
+	std::vector<Font> fonts;
 
 	//TRAFFIC LIGHT
 	Texture2D trafficLight;
@@ -31,4 +33,16 @@ private:
 
 	//LEADER BOARD
 	Texture2D leaderBoard;
+	std::vector<Texture2D> numbers;
+	std::vector<Texture2D> names;
+	Vector2 numbersPosition;
+	Vector2 nameDisplacement;
+	int numbersSpacing;
+
+	//INGAME LEADERBOARD
+	std::vector<Texture2D> pilots;
+	Texture2D checkeredLine;
+	Vector2 inGameLeaderBoardPosition;
+
+	
 };

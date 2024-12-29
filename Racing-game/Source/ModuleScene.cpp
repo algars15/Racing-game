@@ -5,6 +5,7 @@
 #include "ModuleScene.h"
 #include "ModuleWindow.h"
 #include "ModuleMenu.h"
+#include "ModulePhysics.h"
 #include "Module.h"
 #include "Application.h"
 
@@ -76,9 +77,15 @@ update_status ModuleScene::Update(float dt)
         }
         else if (fadeState == BETWEEN)
         {
-            if (toGame) game->LoadGame();
-            else if (toMenu) menu->LoadHightScore();
-
+            if (toGame)
+            {
+                game->LoadGame();
+                menu->RestartMenu();
+            }
+            else if (toMenu)
+            {
+                game->RestartGame();
+            }
             if (toMenu) state = MENU;
             if (toGame) state = GAME;
             if (toLose) state = LOSE;
