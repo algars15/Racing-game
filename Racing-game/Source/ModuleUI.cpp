@@ -90,7 +90,7 @@ update_status ModuleUI::Update(float dt)
 			{
 				if (game->GetTime() < 0)
 				{
-					int redLights = 5 + game->GetTime(); // De -5 a 0, se apagan progresivamente
+					int redLights = 6 + game->GetTime(); // De -5 a 0, se apagan progresivamente
 					for (int i = 0; i < 5; i++)
 					{
 						if (i < redLights)
