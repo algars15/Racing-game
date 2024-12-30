@@ -119,7 +119,7 @@ void ModuleGame::LoadGame()
 	pugi::xml_node carsNode = parameters.child("cars");
 	carsTexture = LoadTexture(carsNode.attribute("path").as_string());
 	for (int i = 0; i < MAX_CAR_NUM && i < startPoints.size(); i++) {
-		bool ia = (i >= numPlayers); // IA solo si no es un jugador
+		bool ia = (i >= numPlayers); // AI only if it is not a player
 		Car* car = nullptr;
 
 		if (i == 0) {
@@ -131,17 +131,17 @@ void ModuleGame::LoadGame()
 			car->SetKeys(J2_KEY_UP, J2_KEY_DOWN, J2_KEY_RIGHT, J2_KEY_LEFT, J2_KEY_BOOST);
 		}
 		else {
-			// Selección de un número de carro único
+			// Choose a non taken car number
 			bool foundDifferent = false;
 			int carNum = 0;
 
 			do {
-				carNum = GetRandomValue(0, startPoints.size() - 1); // Número aleatorio válido
-				foundDifferent = true; // Asumimos que es diferente
+				carNum = GetRandomValue(0, startPoints.size() - 1); // Valid random number
+				foundDifferent = true; // Assuming it is different
 
 				for (Car* existingCar : cars) {
 					if (existingCar->GetCarNum() == carNum) {
-						foundDifferent = false; // Si coincide, no es diferente
+						foundDifferent = false; // If it is the same, it is not different
 						break;
 					}
 				}
@@ -151,7 +151,7 @@ void ModuleGame::LoadGame()
 		}
 	
 
-		// Configurar y empezar el carro
+		// Setup and start the cars
 		car->SetRotation(carsStartRotation);
 		car->SetParameters(carsNode);
 		car->SetRoute(routePoints);

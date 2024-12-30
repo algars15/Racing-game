@@ -64,8 +64,8 @@ void Car::Update(float dt)
 	Vector2 velocity = body->GetLinearVelocity();
 
 	// Calcular la direcci�n deseada
-	Vector2 forwardVector = body->GetWorldVector({ 0.0f, 1.0f }); // Direcci�n hacia adelante
-	Vector2 rightVector = body->GetWorldVector({ 1.0f, 0.0f }); // Direcci�n lateral (derecha)
+	Vector2 forwardVector = body->GetWorldVector({ 0.0f, 1.0f }); // Forward direction
+	Vector2 rightVector = body->GetWorldVector({ 1.0f, 0.0f }); // Right direction
 
 	float currentAcceleration = input.y > 0 ? deceleration : acceleration;
 
@@ -87,13 +87,13 @@ void Car::Update(float dt)
 		forwardVector.y * currentAcceleration * input.y
 	};
 
-	// Calculamos la velocidad deseada
+	// Calculate velocity
 	Vector2 targetVelocity = {
 		velocity.x + accelerationVector.x,
 		velocity.y + accelerationVector.y
 	}; 
 
-	// Eliminar la componente lateral de la velocidad (cancelar el derrape)
+	// Eliminate lateral component of the velocity (eliminate car drift)
 	Vector2 lateralVelocity = {
 		rightVector.x * BasicOperations().DotProduct(velocity, rightVector),
 		rightVector.y * BasicOperations().DotProduct(velocity, rightVector)
@@ -106,7 +106,7 @@ void Car::Update(float dt)
 
 	float speed = BasicOperations().MagnitudeVector(targetVelocity);
 
-	// Limitar la velocidad m�xima
+	// Limit maximum velocity
 	if (speed > currentMaxSpeed) {
 		targetVelocity = BasicOperations().NormalizeVector(targetVelocity);
 		targetVelocity = {
@@ -115,20 +115,20 @@ void Car::Update(float dt)
 		};
 	}
 
-	//Giramos dependiendo de la velocidad
-	float speedFactor = speed / (maxSpeed / 2); // Rango [0, 1]
+	// Rotate depending on the velocity
+	float speedFactor = speed / (maxSpeed / 2); // Range [0, 1]
 	speedFactor = speedFactor > 1 ? 1 : speedFactor;
 	speedFactor = speedFactor < 0 ? 0 : speedFactor;
 
-	// Aplicar giro (torque)
+	// Apply rotation (torque)
 	if (drs) {
-		if (abs(speed) > 0.1f) { // Umbral m�nimo de velocidad
+		if (abs(speed) > 0.1f) { // Minimum velocity values
 			float dynamicTorque = turnSpeedDrs * input.x * speedFactor;
 			body->ApplyTorque(dynamicTorque);
 		}
 	}
 	else {
-		if (abs(speed) > 0.1f) { // Umbral m�nimo de velocidad
+		if (abs(speed) > 0.1f) { // Minimum velocity values
 			float dynamicTorque = turnSpeed * input.x * speedFactor;
 			body->ApplyTorque(dynamicTorque);
 		}
@@ -138,12 +138,12 @@ void Car::Update(float dt)
 	if (!IsSoundPlaying(carSound)) PlaySound(carSound);
 	SetSoundPitch(carSound, defaultPitch + pitch);
 
-	// Establecer la nueva velocidad
+	// Establish new velocity
 	body->SetLinearVelocity(targetVelocity);
 
 	
 
-	// Calcular la distancia al siguiente checkpoint para el ranking
+	// Calculate distance to the next checkpoint(ranking)
 	Vector2 VectorToRoutePoint = {
 			body->GetPosition().x - routePoints[nextWaypointIndex]->position.x,
 			body->GetPosition().y - routePoints[nextWaypointIndex]->position.y,
@@ -166,27 +166,27 @@ void Car::Input()
 void Car::Ia()
 {
 	
-	// Obtener posici�n y orientaci�n actual del coche
+	// Get actual position and orientation of the car
 	Vector2 carPosition = body->GetPosition();
-	Vector2 carForward = body->GetWorldVector({ 0.0f, 1.0f }); // Direcci�n hacia adelante del coche
+	Vector2 carForward = body->GetWorldVector({ 0.0f, 1.0f }); // Forward direction
 
-	// Punto objetivo de la ruta
+	// Next target point in the route
 	Vector2 targetPoint = nextWaypointPos;
 
-	// Vector hacia el punto objetivo
+	// Vector towards objective point
 	Vector2 toTarget = {
 		targetPoint.x - carPosition.x,
 		targetPoint.y - carPosition.y
 	};
 
-	// Normalizar el vector hacia el objetivo
+	// Normalize vector
 	Vector2 toTargetNormalized = BasicOperations().NormalizeVector(toTarget);
 
-	// Calcular inputs
+	// Calculate inputs
 	float crossProduct = BasicOperations().CrossProduct(carForward, toTargetNormalized);
 
-	input.y = -1; // Avanzar o retroceder
-	if (abs(crossProduct)>0.1) input.x = crossProduct > 0 ? -1 : 1; // Girar izquierda o derecha
+	input.y = -1; // Go forward or backward
+	if (abs(crossProduct)>0.1) input.x = crossProduct > 0 ? -1 : 1; // Turn left or right
 
 	//If stucked go reverse
 	if (body->GetVelocity() < 4 || stuckedTimer.ReadSec()>1)

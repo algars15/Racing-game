@@ -90,7 +90,7 @@ update_status ModuleUI::Update(float dt)
 			{
 				if (game->GetTime() < 0)
 				{
-					int redLights = 6 + game->GetTime(); // De -5 a 0, se apagan progresivamente
+					int redLights = 6 + game->GetTime(); // From -5 to 0, they turn off progressively
 					for (int i = 0; i < 5; i++)
 					{
 						if (i < redLights)
@@ -142,31 +142,7 @@ update_status ModuleUI::Update(float dt)
 
 void ModuleUI::Draw()
 {
-	/*if (!mort)
-	{
-		for (int i = 0; i < puntuacionesFlotantes.size(); i++)
-		{
-			char buffer[16];
-			sprintf_s(buffer, "%d", puntuacionesFlotantes[i]->puntuacion);
-			DrawText(buffer, puntuacionesFlotantes[i]->x, puntuacionesFlotantes[i]->y, 32, floatingPuntuationColors[(puntuacionesFlotantes[i]->puntuacion / 100)-1]);
-		}
-		DrawTexture(puntosIcon, posPuntos.x, posPuntos.y, WHITE);
-		char puntuacion[16];
-		sprintf_s(puntuacion, "%d", puntuation);
-		DrawText(puntuacion, posPuntos.x + puntosIcon.width + 10, posPuntos.y + 5, 32, WHITE);
-		DrawTexture(vidasIcon, posVidas.x, posVidas.y, WHITE);
-		char vidas[16];
-		sprintf_s(vidas, "%d", lives);
-		DrawText(vidas, posVidas.x + vidasIcon.width + 10, posVidas.y + 5, 32, WHITE);
-	}
-	else
-	{
-		DrawTexture(loseScreen, 0, 0, WHITE);
-
-		char textoPuntuacion[30];
-		sprintf_s(textoPuntuacion, "Score : %i", puntuation);
-		DrawText(textoPuntuacion, App->window->GetWidth()/2-MeasureText(textoPuntuacion,32)/2, 600, 32, BLACK);
-	}*/
+	
 }
 
 void ModuleUI::SetGame(ModuleGame* g)

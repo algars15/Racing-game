@@ -27,11 +27,9 @@ bool ModulePhysics::Start()
 	world = new b2World(b2Vec2(GRAVITY_X, -GRAVITY_Y));
 	world->SetContactListener(this);
 
-	// needed to create joints like mouse joint
 	b2BodyDef bd;
 	ground = world->CreateBody(&bd);
 
-	// big static circle as "ground" in the middle of the screen
 	int x = (int)(SCREEN_WIDTH / 2);
 	int y = (int)(SCREEN_HEIGHT / 1.5f);
 	int diameter = SCREEN_WIDTH / 2;
@@ -214,7 +212,6 @@ PhysBody* ModulePhysics::CreateChain(int x, int y, const int* points, int size, 
 	return pbody;
 }
 
-// 
 update_status ModulePhysics::PostUpdate()
 {
 	if (!App->GetDebug())
@@ -229,8 +226,7 @@ update_status ModulePhysics::PostUpdate()
 	b2Body* mouseSelect = nullptr;
 	Vector2 mousePosition = GetMousePosition();
 	b2Vec2 pMousePosition = b2Vec2(PIXEL_TO_METERS(mousePosition.x), PIXEL_TO_METERS(mousePosition.y));
-	// Bonus code: this will iterate all objects in the world and draw the circles
-	// You need to provide your own macro to translate meters to pixels
+
 	for(b2Body* b = world->GetBodyList(); b; b = b->GetNext())
 	{
 		for(b2Fixture* f = b->GetFixtureList(); f; f = f->GetNext())
@@ -368,22 +364,22 @@ bool ModulePhysics::ClearWorld()
 		mouse_joint = nullptr;
 	}
 
-	// Destruir todos los cuerpos y listeners asociados
+	// Destroy all bodies and listeners
 	for (auto it = list_physBodys.rbegin(); it != list_physBodys.rend(); ++it)
 	{
 		PhysBody* item = *it;
 
 		if (item->body != nullptr)
 		{
-			world->DestroyBody(item->body);  // Eliminar cuerpo de Box2D
+			world->DestroyBody(item->body);  // Destroy Box2D body
 			item->body = nullptr;
 		}
 
-		item->listener = nullptr;  // Desvincular listener
-		delete item;               // Liberar memoria de PhysBody
+		item->listener = nullptr;  // Unlink listener
+		delete item;               // Free PhysBody memory
 	}
 
-	list_physBodys.clear(); // Limpiar lista de cuerpos
+	list_physBodys.clear(); // Free body list
 
 	return true;
 }
@@ -602,7 +598,7 @@ b2RevoluteJoint* ModulePhysics::CreateRevoluteJoint(PhysBody* bodyA, PhysBody* b
 	jointDef.upperAngle = angle.y;
 	jointDef.enableMotor = true;
 	jointDef.motorSpeed = 0.0f;
-	jointDef.maxMotorTorque = 300.0f;  // Ajusta seg�n se requiera
+	jointDef.maxMotorTorque = 300.0f;
 	b2RevoluteJoint* joint = (b2RevoluteJoint*)world->CreateJoint(&jointDef);
 	return joint;
 }

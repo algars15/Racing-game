@@ -13,7 +13,7 @@
 		<properties sortTime = "0.3" startTime="7"/>
 		<audio redPath ="Assets/Sounds/redSound.wav" greenPath="Assets/Sounds/greenSound.wav" endSong="Assets/Sounds/endSong.wav"/>
 		<tracks>
-			<c0 path = "Assets/Tracks/C1.png" tmx = "Assets/Tracks/c1.tmx" laps="0"/>
+			<c0 path = "Assets/Tracks/C1.png" tmx = "Assets/Tracks/c1.tmx" laps="10"/>
 			<c1 path = "Assets/Tracks/C2.png" tmx = "Assets/Tracks/c2.tmx" laps="9"/>
 			<c2 path = "Assets/Tracks/C3.png" tmx = "Assets/Tracks/c3.tmx" laps="9"/>
 			<c3 path = "Assets/Tracks/C4.png" tmx = "Assets/Tracks/c4.tmx" laps="9"/>
