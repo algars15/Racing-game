@@ -217,7 +217,6 @@ PhysBody* ModulePhysics::CreateChain(int x, int y, const int* points, int size, 
 // 
 update_status ModulePhysics::PostUpdate()
 {
-
 	if (!App->GetDebug())
 	{
 		if (mouse_joint)
@@ -362,6 +361,12 @@ bool ModulePhysics::CleanUp()
 bool ModulePhysics::ClearWorld()
 {
 	TraceLog(LOG_INFO,"Clearing physics");
+
+	if (mouse_joint)
+	{
+		world->DestroyJoint(mouse_joint);
+		mouse_joint = nullptr;
+	}
 
 	// Destruir todos los cuerpos y listeners asociados
 	for (auto it = list_physBodys.rbegin(); it != list_physBodys.rend(); ++it)

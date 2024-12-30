@@ -96,5 +96,6 @@ private:
 
 	//AUDIO
 	Sound carSound;
+	float defaultPitch;
 };
 

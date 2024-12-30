@@ -16,6 +16,9 @@ void Car::Start()
 	reverseMaxSpeed = parameters.attribute("reverseMaxSpeed").as_float();
 
 	carSound = LoadSound(parameters.attribute("soundPath").as_string());
+	float soundVolume = ia ? 0.2f : 0.4f;
+	SetSoundVolume(carSound, soundVolume);
+	defaultPitch = BasicOperations::GetRandomFloat(0.8f, 1.2f);
 
 	nextWaypointIndex = 0;
 	currentWaypointIndex = routePoints.size() - 1;
@@ -56,6 +59,8 @@ void Car::Update(float dt)
 		else (Ia());
 	}
 
+	
+
 	Vector2 velocity = body->GetLinearVelocity();
 
 	// Calcular la direcci�n deseada
@@ -78,8 +83,8 @@ void Car::Update(float dt)
 	}
 
 	Vector2 accelerationVector = {
-		forwardVector.x * currentAcceleration * input.y * dt,
-		forwardVector.y * currentAcceleration * input.y * dt
+		forwardVector.x * currentAcceleration * input.y,
+		forwardVector.y * currentAcceleration * input.y
 	};
 
 	// Calculamos la velocidad deseada
@@ -129,6 +134,9 @@ void Car::Update(float dt)
 		}
 	}
 	
+	float pitch = (abs(speed) / (maxSpeed))/1.5f;
+	if (!IsSoundPlaying(carSound)) PlaySound(carSound);
+	SetSoundPitch(carSound, defaultPitch + pitch);
 
 	// Establecer la nueva velocidad
 	body->SetLinearVelocity(targetVelocity);
@@ -157,7 +165,7 @@ void Car::Input()
 
 void Car::Ia()
 {
-
+	
 	// Obtener posici�n y orientaci�n actual del coche
 	Vector2 carPosition = body->GetPosition();
 	Vector2 carForward = body->GetWorldVector({ 0.0f, 1.0f }); // Direcci�n hacia adelante del coche

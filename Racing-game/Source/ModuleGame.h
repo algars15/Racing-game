@@ -69,6 +69,7 @@ private:
 	bool started;
 	bool ended;
 	bool returnToMainMenu;
+	int redSoundCounter;
 
 	int currentLap;
 	int laps;
@@ -97,4 +98,9 @@ private:
 
 	//UI
 	ModuleUI* ui;
+
+	//AUDIO
+	Sound greenSound;
+	Sound redSound;
+	Sound endSong;
 };

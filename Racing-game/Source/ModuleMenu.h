@@ -46,4 +46,10 @@ private:
 
 	std::vector<Vector2> trackPositions;
 	std::vector<Vector2> carPositions;
+
+	//AUDIO
+	Sound menuSong;
+	Sound selectionSound1;
+	Sound selectionSound2;
+	Sound pressSound;
 };

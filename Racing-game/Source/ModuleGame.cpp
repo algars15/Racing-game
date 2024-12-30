@@ -173,6 +173,15 @@ void ModuleGame::LoadGame()
 	ended = false;
 	started = false;
 	returnToMainMenu = false;
+
+	//Loading Audio
+	redSound = LoadSound(parameters.child("audio").attribute("redPath").as_string());
+	SetSoundVolume(redSound, 0.3f);
+	greenSound = LoadSound(parameters.child("audio").attribute("greenPath").as_string());
+	SetSoundVolume(greenSound, 0.3f);
+	redSoundCounter = -5;
+	endSong = LoadSound(parameters.child("audio").attribute("endSong").as_string());
+	SetSoundVolume(endSong, 0.5f);
 }
 
 void ModuleGame::RestartGame()
@@ -184,21 +193,28 @@ void ModuleGame::RestartGame()
 // Load assets
 bool ModuleGame::CleanUp()
 {
-	for (auto it = entities.rbegin(); it != entities.rend(); ++it)
+	if (App->scene->GetState() == GAME)
 	{
-		PhysicEntity* item = *it;
-		item->CleanUp();
-		delete item;
-	}
-	entities.clear();
+		for (auto it = entities.rbegin(); it != entities.rend(); ++it)
+		{
+			PhysicEntity* item = *it;
+			item->CleanUp();
+			delete item;
+		}
+		entities.clear();
 
-	for (auto it = routePoints.rbegin(); it != routePoints.rend(); ++it)
-	{
-		RoutePoint* item = *it;
-		delete item;
+		for (auto it = routePoints.rbegin(); it != routePoints.rend(); ++it)
+		{
+			RoutePoint* item = *it;
+			delete item;
+		}
+		routePoints.clear();
+		UnloadSound(greenSound);
+		UnloadSound(redSound);
+		UnloadSound(endSong);
+		LOG("Unloading Intro scene");
 	}
-
-	LOG("Unloading Intro scene");
+	
 
 	return true;
 }
@@ -208,12 +224,23 @@ update_status ModuleGame::Update(float dt)
 {
 	if (App->scene->GetState() == GAME) {
 		
-		if (IsKeyPressed(KEY_F1)) App->ChangeDebug();
-
 		raceTime = -startTime + startTimer.ReadSec();
-		if (!started && raceTime > 0)
+		
+		if (!started)
 		{
-			started = true;
+			if (raceTime > 0)
+			{
+				started = true;
+				PlaySound(greenSound);
+			}
+			else
+			{
+				if (!IsSoundPlaying(redSound) && raceTime > redSoundCounter)
+				{
+					PlaySound(redSound);
+					redSoundCounter += 1;
+				}
+			}
 		}
 
 		for each (Car * car in cars)
@@ -268,6 +295,7 @@ update_status ModuleGame::Update(float dt)
 		}
 		else
 		{
+			if (!IsSoundPlaying(endSong)) PlaySound(endSong);
 			if (IsKeyPressed(KEY_SPACE)) returnToMainMenu = true;
 		}
 

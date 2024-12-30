@@ -2,7 +2,6 @@
 #include "Globals.h"
 #include "raylib.h"
 #include <stdlib.h>
-#include <vld.h>
 
 enum main_states
 {

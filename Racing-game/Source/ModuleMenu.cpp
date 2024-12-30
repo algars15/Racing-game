@@ -53,6 +53,16 @@ bool ModuleMenu::Start()
         carPositions.push_back(position);
     }
 
+    //AUDIO
+    menuSong = LoadSound(parameters.attribute("songPath").as_string());
+    SetSoundVolume(menuSong, 0.5f);
+    selectionSound1 = LoadSound(parameters.attribute("selectionPath").as_string());
+    SetSoundPitch(selectionSound1, 2);
+    selectionSound2 = LoadSound(parameters.attribute("selectionPath").as_string());
+    SetSoundPitch(selectionSound2, 3);
+    pressSound = LoadSound(parameters.attribute("pressPath").as_string());
+    SetSoundVolume(pressSound, 0.5f);
+
 	bool ret = true;
 	return ret;
 }
@@ -61,6 +71,8 @@ update_status ModuleMenu::Update(float dt)
 {    
     if (App->scene->GetState() == MENU) {
 
+        if (!IsSoundPlaying(menuSong)) PlaySound(menuSong);
+
         switch (state)
         {
         case ModuleMenu::MENU:
@@ -68,6 +80,7 @@ update_status ModuleMenu::Update(float dt)
             {
                 state = ModuleMenu::RACE_SELECTION; 
                 trackSelected = 0;
+                PlaySound(pressSound);
             }
             DrawTexture(menuTexture, 0, 0, WHITE);
             break;
@@ -78,13 +91,19 @@ update_status ModuleMenu::Update(float dt)
                 state = ModuleMenu::CAR_SELECTION;
                 j1CarSelected = 0;
                 j2CarSelected = -1;
+                PlaySound(pressSound);
             }
             else
             {
+                int previousTrack = trackSelected;
                 if (IsKeyPressed(KEY_D)) trackSelected = trackSelected + 1 >= trackPositions.size() ? trackSelected : trackSelected + 1;
                 else if (IsKeyPressed(KEY_A)) trackSelected = trackSelected - 1 < 0 ? trackSelected : trackSelected - 1;
                 else if (IsKeyPressed(KEY_W)) trackSelected = trackSelected - 4 < 0 ? trackSelected : trackSelected - 4;
                 else if (IsKeyPressed(KEY_S)) trackSelected = trackSelected + 4 >= trackPositions.size() ? trackSelected : trackSelected + 4;
+                if (trackSelected != previousTrack)
+                {
+                    if (!IsSoundPlaying(selectionSound1)) PlaySound(selectionSound1);
+                }
             }
             
             DrawTexture(raceSelectionTexture, 0, 0, WHITE);
@@ -96,6 +115,7 @@ update_status ModuleMenu::Update(float dt)
             {
                 App->game->SetCars(j1CarSelected, j2CarSelected);
                 goGame = true;
+                PlaySound(pressSound);
             }
             else if (!goGame)
             {
@@ -115,6 +135,10 @@ update_status ModuleMenu::Update(float dt)
                     if (j1CarSelected + j1Sumator >= carPositions.size() || j1CarSelected + j1Sumator < 0) j1Sumator = 0;
                 }
                 j1CarSelected += j1Sumator;
+                if (j1Sumator != 0)
+                {
+                    if (!IsSoundPlaying(selectionSound1)) PlaySound(selectionSound1);
+                }
 
                 int j2Sumator = 0;
                 if (j2CarSelected < 0)
@@ -135,6 +159,10 @@ update_status ModuleMenu::Update(float dt)
                     if (j2CarSelected + j2Sumator >= carPositions.size() || j2CarSelected + j2Sumator < 0) j2Sumator = 0;
                 }
                 j2CarSelected += j2Sumator;
+                if (j2Sumator != 0)
+                {
+                    if (!IsSoundPlaying(selectionSound2)) PlaySound(selectionSound2);
+                }
             }
             
             DrawTexture(carSelectionBkgTexture, 0, 0, WHITE);
@@ -159,12 +187,18 @@ bool ModuleMenu::GetGoGame()
 void ModuleMenu::RestartMenu() {
     state = MENU;
     goGame = false;
+    StopSound(menuSong);
+    StopSound(selectionSound1);
+    StopSound(selectionSound2);
+    StopSound(pressSound);
 }
-
-
 
 bool ModuleMenu::CleanUp()
 {
+    UnloadSound(menuSong);
+    UnloadSound(selectionSound1);
+    UnloadSound(selectionSound2);
+    UnloadSound(pressSound);
 	LOG("Unloading Intro scene");
 
 	return true;

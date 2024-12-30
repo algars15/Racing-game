@@ -80,5 +80,10 @@ public:
 	{
 		return (vector1.x * vector2.y) - (vector1.y * vector2.x);
 	}
+
+	static float GetRandomFloat(float min, float max)
+	{
+		return ((float)rand() / (float)RAND_MAX) * (max - min) + min;
+	}
 };
 
