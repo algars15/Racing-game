@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="1" height="1" tilewidth="1920" tileheight="1080" infinite="0" nextlayerid="5" nextobjectid="82">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="1" height="1" tilewidth="1920" tileheight="1080" infinite="0" nextlayerid="5" nextobjectid="103">
  <properties>
   <property name="Direction" type="int" value="2"/>
  </properties>
@@ -20,25 +20,26 @@
   <object id="8" x="573" y="961" width="821" height="119"/>
  </objectgroup>
  <objectgroup id="4" name="StartPoints">
-  <object id="38" x="729" y="197" width="1" height="1"/>
-  <object id="40" x="629" y="197" width="1" height="1"/>
-  <object id="41" x="529" y="197" width="1" height="1"/>
-  <object id="45" x="689" y="280" width="1" height="1"/>
-  <object id="46" x="589" y="279" width="1" height="1"/>
-  <object id="47" x="489" y="279" width="1" height="1"/>
+  <object id="38" x="729" y="199" width="1" height="1"/>
+  <object id="45" x="689" y="281" width="1" height="1"/>
+  <object id="82" x="629" y="199" width="1" height="1"/>
+  <object id="83" x="589" y="281" width="1" height="1"/>
+  <object id="84" x="529" y="199" width="1" height="1"/>
+  <object id="85" x="489" y="281" width="1" height="1"/>
  </objectgroup>
  <objectgroup id="3" name="Route">
-  <object id="69" x="795.75" y="143" width="18.5833" height="195"/>
-  <object id="70" x="1555.5" y="143" width="25" height="195"/>
-  <object id="71" x="1581.13" y="374.5" width="197.875" height="21.5"/>
-  <object id="73" x="1491.5" y="429" width="23.5" height="196"/>
-  <object id="74" x="1198.5" y="625" width="195.5" height="25"/>
-  <object id="75" x="1170.67" y="765.333" width="26.6667" height="196"/>
-  <object id="76" x="770.083" y="766.02" width="30.5833" height="195.313"/>
-  <object id="77" x="573" y="690" width="197" height="21.5"/>
-  <object id="78" x="540.5" y="429.818" width="32.5" height="194.682"/>
-  <object id="79" x="339" y="429.125" width="30" height="195.875"/>
-  <object id="80" x="142.25" y="368" width="196.75" height="23.5"/>
-  <object id="81" x="362" y="143.022" width="25.5" height="194.978"/>
+  <object id="69" x="795.75" y="173" width="18.5833" height="132"/>
+  <object id="70" x="1555.5" y="175" width="25" height="131"/>
+  <object id="71" x="1615" y="374.5" width="131" height="21.5"/>
+  <object id="73" x="1551" y="467" width="15.5" height="129"/>
+  <object id="86" x="1395" y="466" width="18" height="125"/>
+  <object id="89" x="1231" y="692" width="128" height="17"/>
+  <object id="95" x="1176" y="803" width="22" height="123"/>
+  <object id="96" x="772" y="804" width="23" height="122"/>
+  <object id="97" x="604" y="695" width="129" height="19"/>
+  <object id="99" x="551" y="464" width="22" height="127"/>
+  <object id="100" x="344" y="469" width="19" height="119"/>
+  <object id="101" x="178" y="378" width="121" height="15"/>
+  <object id="102" x="346" y="175" width="21" height="131"/>
  </objectgroup>
 </map>

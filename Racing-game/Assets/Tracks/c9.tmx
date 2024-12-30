@@ -22,23 +22,20 @@
   <object id="68" x="1215.5" y="639" width="66.5" height="342"/>
  </objectgroup>
  <objectgroup id="3" name="Route">
-  <object id="70" x="1567" y="630" width="224.5" height="18"/>
-  <object id="71" x="1567.5" y="733" width="224" height="20.5"/>
-  <object id="72" x="1526.5" y="753.5" width="28" height="227.5"/>
-  <object id="73" x="1281.5" y="733" width="222.5" height="20.5"/>
-  <object id="74" x="1283" y="640" width="221.5" height="21.5"/>
-  <object id="75" x="1237.5" y="418" width="24.5" height="221.5"/>
-  <object id="76" x="993.5" y="639.5" width="221.5" height="22.5"/>
-  <object id="77" x="994.5" y="732" width="220.5" height="21.5"/>
-  <object id="78" x="947" y="753" width="23.5" height="228"/>
-  <object id="79" x="700" y="734.5" width="226" height="18.5"/>
-  <object id="80" x="699.5" y="639.5" width="225.5" height="23.5"/>
-  <object id="81" x="674" y="417" width="24.5" height="222.5"/>
-  <object id="82" x="351.5" y="417.5" width="24" height="222"/>
-  <object id="83" x="129.5" y="373.5" width="222" height="21.5"/>
-  <object id="84" x="351.5" y="129" width="24.5" height="221"/>
-  <object id="85" x="1543" y="130" width="24.5" height="221"/>
-  <object id="86" x="1567" y="353" width="225.5" height="23"/>
+  <object id="70" x="1617" y="630" width="129" height="18"/>
+  <object id="71" x="1619" y="733" width="123" height="20.5"/>
+  <object id="72" x="1529" y="800" width="14" height="128"/>
+  <object id="73" x="1327" y="684" width="135" height="12.5"/>
+  <object id="75" x="1237.5" y="468" width="24.5" height="116"/>
+  <object id="77" x="1043" y="697" width="124" height="12.5"/>
+  <object id="78" x="947" y="801" width="23.5" height="124"/>
+  <object id="80" x="751" y="693" width="127" height="9.5"/>
+  <object id="81" x="674" y="463" width="24.5" height="132"/>
+  <object id="82" x="351.5" y="468" width="24" height="123"/>
+  <object id="83" x="179" y="373.5" width="126" height="21.5"/>
+  <object id="84" x="351.5" y="177" width="24.5" height="126"/>
+  <object id="85" x="1532" y="171" width="24.5" height="134"/>
+  <object id="86" x="1622" y="358" width="119" height="23"/>
  </objectgroup>
  <objectgroup id="4" name="StartPoints">
   <object id="53" x="1722.02" y="555.06" width="1" height="1"/>

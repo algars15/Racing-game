@@ -10,38 +10,34 @@
 </data>
  </layer>
  <objectgroup id="2" name="Collisions">
-  <object id="1" x="0" y="0" width="145" height="1080"/>
-  <object id="2" x="1776" y="0" width="143" height="1082"/>
-  <object id="3" x="144" y="0" width="1634" height="144"/>
-  <object id="4" x="146" y="960" width="1632" height="122"/>
-  <object id="6" x="912" y="336" width="97" height="339"/>
-  <object id="7" x="336" y="675" width="1249" height="93"/>
-  <object id="8" x="336" y="336" width="97" height="339"/>
+  <object id="1" x="0" y="0" width="143" height="1080"/>
+  <object id="2" x="1778" y="0" width="141" height="1082"/>
+  <object id="3" x="144" y="0" width="1634" height="142"/>
+  <object id="4" x="146" y="961" width="1632" height="121"/>
+  <object id="6" x="914" y="338" width="93" height="337"/>
+  <object id="7" x="338" y="675" width="1247" height="91"/>
+  <object id="8" x="338" y="336" width="93" height="339"/>
   <object id="9" x="1488" y="336" width="97" height="339"/>
-  <object id="10" x="624" y="144" width="97" height="339"/>
-  <object id="11" x="1200" y="144" width="97" height="339"/>
+  <object id="10" x="624" y="142" width="95" height="341"/>
+  <object id="11" x="1202" y="142" width="93" height="341"/>
  </objectgroup>
  <objectgroup id="3" name="Route">
-  <object id="12" x="1585" y="582" width="191" height="18"/>
-  <object id="18" x="1585.33" y="740" width="190" height="27.3333"/>
-  <object id="19" x="1562.67" y="767.333" width="29.3333" height="192.667"/>
-  <object id="20" x="339.333" y="768" width="32.6667" height="191.333"/>
-  <object id="21" x="144" y="736.667" width="191.333" height="28.6667"/>
-  <object id="22" x="145.333" y="339.333" width="190.667" height="24"/>
-  <object id="23" x="368" y="144" width="36.6667" height="190.667"/>
-  <object id="24" x="432.667" y="339.333" width="190.667" height="24.6667"/>
-  <object id="25" x="434" y="460" width="190" height="22.6667"/>
-  <object id="26" x="658" y="484" width="36.6667" height="190.667"/>
-  <object id="27" x="721.333" y="458" width="190.667" height="24.6667"/>
-  <object id="28" x="721.333" y="336.667" width="190" height="22"/>
-  <object id="29" x="944" y="144.667" width="29.3333" height="190"/>
-  <object id="30" x="1009.33" y="336" width="190.667" height="28.6667"/>
-  <object id="31" x="1008.67" y="454" width="191.333" height="26"/>
-  <object id="32" x="1232.67" y="482.667" width="39.3333" height="192"/>
-  <object id="33" x="1296.67" y="451.333" width="192" height="29.3333"/>
-  <object id="34" x="1297.33" y="338.667" width="190.667" height="30"/>
-  <object id="35" x="1522" y="144" width="30" height="192"/>
-  <object id="36" x="1584.67" y="337.333" width="192" height="28.6667"/>
+  <object id="12" x="1614" y="582" width="134" height="18"/>
+  <object id="18" x="1613" y="719" width="132" height="27.3333"/>
+  <object id="19" x="1535" y="799" width="29.3333" height="130"/>
+  <object id="20" x="358" y="804" width="32.6667" height="124"/>
+  <object id="21" x="174" y="705" width="130" height="28.6667"/>
+  <object id="22" x="174" y="367" width="126" height="24"/>
+  <object id="23" x="375" y="179" width="12" height="126"/>
+  <object id="24" x="463" y="401" width="123" height="13.667"/>
+  <object id="26" x="666" y="512" width="14" height="128"/>
+  <object id="27" x="754" y="400" width="123" height="13.6667"/>
+  <object id="29" x="951" y="174" width="13" height="124"/>
+  <object id="31" x="1046" y="394" width="118" height="14"/>
+  <object id="32" x="1246" y="517" width="14" height="126"/>
+  <object id="34" x="1330" y="396" width="122" height="15.333"/>
+  <object id="35" x="1531" y="175" width="15" height="124"/>
+  <object id="36" x="1614" y="363" width="131" height="28.6667"/>
  </objectgroup>
  <objectgroup id="5" name="StartPoints">
   <object id="58" x="1722" y="509" width="1" height="1"/>

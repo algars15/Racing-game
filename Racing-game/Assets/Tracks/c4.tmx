@@ -28,18 +28,18 @@
   <object id="72" x="979.167" y="821" width="1" height="1"/>
  </objectgroup>
  <objectgroup id="3" name="Route">
-  <object id="73" x="339.667" y="765" width="16" height="195.667"/>
-  <object id="74" x="142.333" y="745.667" width="195.667" height="16.6667"/>
-  <object id="75" x="142.667" y="579" width="195.313" height="16"/>
-  <object id="76" x="338.333" y="382" width="21" height="197"/>
-  <object id="78" x="429" y="353" width="196" height="21.6667"/>
-  <object id="80" x="640.167" y="139" width="18.1667" height="199"/>
-  <object id="81" x="1225.33" y="139.333" width="19.6667" height="198.667"/>
-  <object id="82" x="1246" y="344.333" width="195" height="29.1667"/>
-  <object id="86" x="1441.33" y="378.958" width="20.6667" height="200.042"/>
-  <object id="88" x="1580.67" y="579" width="196.333" height="16.6667"/>
-  <object id="90" x="1581" y="751" width="196" height="13.3333"/>
-  <object id="91" x="1558.67" y="765.015" width="22" height="195.985"/>
-  <object id="93" x="642.5" y="765" width="18" height="196.5"/>
+  <object id="73" x="351" y="800" width="16" height="130"/>
+  <object id="74" x="178" y="732" width="127" height="16.6667"/>
+  <object id="75" x="178" y="584" width="129" height="16"/>
+  <object id="76" x="378" y="408" width="21" height="139"/>
+  <object id="78" x="464" y="353" width="127" height="21.6667"/>
+  <object id="80" x="640.167" y="176" width="18.1667" height="127"/>
+  <object id="81" x="1209" y="174" width="19.6667" height="129"/>
+  <object id="82" x="1282" y="344.333" width="124" height="29.1667"/>
+  <object id="86" x="1507" y="422" width="20.6667" height="123"/>
+  <object id="88" x="1618" y="579" width="124" height="16.6667"/>
+  <object id="90" x="1616" y="735" width="124" height="13.3333"/>
+  <object id="91" x="1539" y="802" width="22" height="122"/>
+  <object id="93" x="642.5" y="793" width="18" height="135"/>
  </objectgroup>
 </map>

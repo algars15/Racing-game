@@ -250,8 +250,10 @@ void Car::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 			if (ia)
 			{
 				nextWaypointPos = routePoints[nextWaypointIndex]->position;
-				if (routePoints[nextWaypointIndex]->body->width > routePoints[nextWaypointIndex]->body->height) nextWaypointPos.x += GetRandomValue(-80, 80);
-				if (routePoints[nextWaypointIndex]->body->width < routePoints[nextWaypointIndex]->body->height) nextWaypointPos.y += GetRandomValue(-80, 80);
+				float nextWayPointWidth =  routePoints[nextWaypointIndex]->body->width;
+				float nextWayPointHeight =  routePoints[nextWaypointIndex]->body->height;
+				if (nextWayPointWidth > nextWayPointHeight) nextWaypointPos.x += GetRandomValue(-nextWayPointWidth/2, nextWayPointWidth / 2);
+				if (nextWayPointWidth < nextWayPointHeight) nextWaypointPos.y += GetRandomValue(-nextWayPointHeight / 2, nextWayPointHeight/2);
 			}
 
 			break;

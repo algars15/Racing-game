@@ -23,31 +23,28 @@
   <object id="10" x="1152" y="336" width="98" height="240"/>
  </objectgroup>
  <objectgroup id="4" name="StartPoints">
-  <object id="34" x="200" y="496" width="1" height="1"/>
-  <object id="35" x="282.05" y="536.08" width="1" height="1"/>
-  <object id="36" x="200.01" y="596.03" width="1" height="1"/>
-  <object id="37" x="282.02" y="636.06" width="1" height="1"/>
-  <object id="40" x="199.93" y="696.05" width="1" height="1"/>
-  <object id="41" x="282.01" y="736.06" width="1" height="1"/>
+  <object id="34" x="200" y="504" width="1" height="1"/>
+  <object id="35" x="282.05" y="544" width="1" height="1"/>
+  <object id="36" x="200.01" y="604" width="1" height="1"/>
+  <object id="37" x="282.02" y="644" width="1" height="1"/>
+  <object id="40" x="199.93" y="704" width="1" height="1"/>
+  <object id="41" x="282.01" y="744" width="1" height="1"/>
  </objectgroup>
  <objectgroup id="3" name="Route">
-  <object id="11" x="146.333" y="415.333" width="191" height="18"/>
-  <object id="15" x="145" y="336.5" width="191" height="19.5"/>
-  <object id="16" x="337" y="144.5" width="24" height="192.5"/>
-  <object id="17" x="646" y="144" width="26" height="191"/>
-  <object id="18" x="673.5" y="336" width="191.5" height="18.5"/>
-  <object id="19" x="675.5" y="466" width="188" height="18.5"/>
-  <object id="20" x="906.5" y="484" width="19.5" height="191"/>
-  <object id="21" x="962" y="464" width="189.5" height="19.5"/>
-  <object id="22" x="962" y="336" width="190.5" height="22"/>
-  <object id="23" x="1192" y="145" width="26" height="190"/>
-  <object id="24" x="1249.5" y="336" width="190.5" height="19.5"/>
-  <object id="25" x="1439.5" y="383" width="24.5" height="193"/>
-  <object id="26" x="1569" y="384" width="17" height="191"/>
-  <object id="27" x="1586" y="578" width="190.5" height="19.5"/>
-  <object id="28" x="1585.5" y="745.5" width="190.5" height="22.5"/>
-  <object id="29" x="1569.5" y="768.5" width="17.5" height="191"/>
-  <object id="30" x="336" y="768.5" width="31" height="192"/>
-  <object id="31" x="145" y="744.5" width="191" height="21"/>
+  <object id="11" x="174" y="415" width="134" height="18"/>
+  <object id="16" x="337" y="173" width="24" height="135"/>
+  <object id="17" x="633" y="174" width="21" height="132"/>
+  <object id="18" x="707" y="401" width="127" height="18.5"/>
+  <object id="20" x="905" y="512" width="19.5" height="131"/>
+  <object id="22" x="990" y="398" width="135" height="22"/>
+  <object id="23" x="1190" y="171" width="20" height="136"/>
+  <object id="24" x="1277" y="349" width="134" height="10.5"/>
+  <object id="25" x="1446" y="412" width="13.5" height="130"/>
+  <object id="26" x="1569" y="415" width="12" height="132"/>
+  <object id="27" x="1612" y="591" width="130" height="19.5"/>
+  <object id="28" x="1615" y="727" width="131" height="22.5"/>
+  <object id="29" x="1543" y="797" width="17.5" height="133"/>
+  <object id="30" x="351" y="801" width="16" height="126"/>
+  <object id="31" x="175" y="728" width="132" height="21"/>
  </objectgroup>
 </map>

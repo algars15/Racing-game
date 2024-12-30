@@ -276,8 +276,6 @@ update_status ModuleGame::Update(float dt)
 		{
 			car->Draw();
 		}
-
-		
 	}
 	return UPDATE_CONTINUE;
 }
