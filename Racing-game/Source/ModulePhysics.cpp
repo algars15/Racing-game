@@ -12,7 +12,6 @@ ModulePhysics::ModulePhysics(Application* app, bool start_enabled) : Module(app,
 {
 	world = NULL;
 	mouse_joint = NULL;
-	debug = false;
 	name = "physics";
 }
 
@@ -218,12 +217,8 @@ PhysBody* ModulePhysics::CreateChain(int x, int y, const int* points, int size, 
 // 
 update_status ModulePhysics::PostUpdate()
 {
-	if (IsKeyPressed(KEY_F1))
-	{
-		debug = !debug;
-	}
 
-	if (!debug)
+	if (!App->GetDebug())
 	{
 		if (mouse_joint)
 		{

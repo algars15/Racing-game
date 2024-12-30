@@ -163,3 +163,13 @@ bool Application::LoadConfig()
 
 	return ret;
 }
+
+bool Application::GetDebug()
+{
+	return debug;
+}
+
+void Application::ChangeDebug()
+{
+	debug = !debug;
+}

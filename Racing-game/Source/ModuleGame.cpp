@@ -187,6 +187,7 @@ bool ModuleGame::CleanUp()
 	for (auto it = entities.rbegin(); it != entities.rend(); ++it)
 	{
 		PhysicEntity* item = *it;
+		item->CleanUp();
 		delete item;
 	}
 	entities.clear();
@@ -207,6 +208,8 @@ update_status ModuleGame::Update(float dt)
 {
 	if (App->scene->GetState() == GAME) {
 		
+		if (IsKeyPressed(KEY_F1)) App->ChangeDebug();
+
 		raceTime = -startTime + startTimer.ReadSec();
 		if (!started && raceTime > 0)
 		{
@@ -354,4 +357,9 @@ std::vector<int> ModuleGame::GetRankingNums()
 	}
 
 	return nums;
+}
+
+bool ModuleGame::GetDebug()
+{
+	return App->GetDebug();
 }

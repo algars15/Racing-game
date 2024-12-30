@@ -47,6 +47,8 @@ public:
 
 	void SetName(std::string name);
 
+	void CleanUp() override;
+
 private:
 	
 	ModuleGame* game;
@@ -91,5 +93,8 @@ private:
 	int previousWaypointIndex;
 	Vector2 nextWaypointPos;
 	Ranking ranking;
+
+	//AUDIO
+	Sound carSound;
 };
 

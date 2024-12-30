@@ -43,7 +43,7 @@ private:
 	uint32 last_sec_frame_count = 0;
 	uint32 prev_last_sec_frame_count = 0;
 
-	
+	bool debug;
 
 public:
 
@@ -52,11 +52,13 @@ public:
 
 	bool Init();
 	update_status Update();
+	bool GetDebug();
+	void ChangeDebug();
 	bool CleanUp();
-	
 
 private:
 
 	void AddModule(Module* module);
 	bool LoadConfig();
+	
 };

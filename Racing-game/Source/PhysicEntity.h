@@ -32,6 +32,11 @@ public:
 
 	};
 
+	virtual void CleanUp()
+	{
+
+	};
+
 public:
 	PhysBody* body;
 	Module* listener;

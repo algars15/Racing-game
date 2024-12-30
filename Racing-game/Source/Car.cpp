@@ -15,6 +15,8 @@ void Car::Start()
 	drsMaxSpeed = parameters.attribute("drsMaxSpeed").as_float();
 	reverseMaxSpeed = parameters.attribute("reverseMaxSpeed").as_float();
 
+	carSound = LoadSound(parameters.attribute("soundPath").as_string());
+
 	nextWaypointIndex = 0;
 	currentWaypointIndex = routePoints.size() - 1;
 	previousWaypointIndex = routePoints.size() - 2;
@@ -199,7 +201,7 @@ void Car::Draw()
 	body->GetPhysicPosition(x, y);
 	if (draw)
 	{
-		if (ia) DrawCircle(nextWaypointPos.x, nextWaypointPos.y, 5, RED);
+		if (ia && game->GetDebug()) DrawCircle(nextWaypointPos.x, nextWaypointPos.y, 5, RED);
 		DrawTexturePro(texture, Rectangle{ (float) width * carNumber, 0, (float)width, (float)height },
 			Rectangle{ (float)x, (float)y, (float)width, (float)height },
 			Vector2{ (float)width / 2.0f, (float)height / 2.0f }, body->GetRotation() * RAD2DEG, WHITE);
@@ -286,3 +288,7 @@ std::string Car::GetCarName()
 }
 
 
+void Car::CleanUp()
+{
+	UnloadSound(carSound);
+}

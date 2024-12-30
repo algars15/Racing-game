@@ -48,6 +48,7 @@ public:
 	bool GetReturnMain();
 	bool GetStarted();
 	bool GetEnded();
+	bool GetDebug();
 	void SaveGame();
 	void RestartGame();
 	void LoadGame();
