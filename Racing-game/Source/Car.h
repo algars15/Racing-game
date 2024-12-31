@@ -47,6 +47,8 @@ public:
 
 	void SetName(std::string name);
 
+	float GetTime();
+
 	void CleanUp() override;
 
 private:
@@ -54,6 +56,7 @@ private:
 	ModuleGame* game;
 	
 	std::string name;
+	float raceTime;
 
 	//TEXTURE
 	Texture2D texture;
@@ -65,6 +68,7 @@ private:
 	//BEHAVIOUR
 	bool ia;
 	bool drs;
+	bool ended;
 	KeyboardKey forwardKey;
 	KeyboardKey backKey;
 	KeyboardKey rightKey;

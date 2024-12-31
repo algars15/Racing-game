@@ -60,6 +60,7 @@ public:
 	int GetCurrentLap();
 	std::vector<std::string> GetRankingNames();
 	std::vector<int> GetRankingNums();
+	std::vector<float> GetRankingTimes();
 
 private:
 

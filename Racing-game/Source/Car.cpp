@@ -27,12 +27,15 @@ void Car::Start()
 	ranking.distanceToNextCheckpoint = 0;
 	ranking.lap = -1;
 
+	raceTime = 0;
+
 	//INDIVIDUAL
 	char nodeName[16];
 	sprintf_s(nodeName, "car%d", carNumber);
 	name = parameters.child(nodeName).attribute("name").as_string();
 	
 	drs = false;
+	ended = false;
 }
 
 void Car::SetRotation(float degrees)
@@ -53,13 +56,13 @@ void Car::Update(float dt)
 {
 	input = { 0,0 };
 
+	if (!ended) raceTime = game->GetTime();
+
 	if (game->GetStarted())
 	{
 		if (!ia) Input();
 		else (Ia());
 	}
-
-	
 
 	Vector2 velocity = body->GetLinearVelocity();
 
@@ -244,7 +247,10 @@ void Car::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 				if (currentWaypointIndex == 0)
 				{
 					ranking.lap++;
-					if (!ia && ranking.lap >= game->GetLaps()) ia = true;
+					if (ranking.lap >= game->GetLaps()) {
+						ended = true; 
+						ia = true;
+					}
 				}
 			}
 			else if (otherPhysBody == routePoints[previousWaypointIndex]->body)
@@ -299,4 +305,9 @@ std::string Car::GetCarName()
 void Car::CleanUp()
 {
 	UnloadSound(carSound);
+}
+
+float Car::GetTime()
+{
+	return raceTime;
 }

@@ -14,7 +14,6 @@ public:
 
 	bool Start();
 	update_status Update(float dt);
-	void Draw();
 	void SetGame(ModuleGame* game);
 
 	bool CleanUp();

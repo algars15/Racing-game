@@ -73,6 +73,7 @@ update_status ModuleUI::Update(float dt)
 			
 			
 			std::vector<int> rankingNumbers = game->GetRankingNums();
+			std::vector<float> rankingTimes = game->GetRankingTimes();
 
 			Vector2 currentNumPosition = numbersPosition;
 			for (int i = 0; i < rankingNumbers.size(); i++)
@@ -80,6 +81,19 @@ update_status ModuleUI::Update(float dt)
 				DrawTexture(numbers[i], currentNumPosition.x, currentNumPosition.y, WHITE);
 				DrawTexture(names[rankingNumbers[i]], currentNumPosition.x + nameDisplacement.x, currentNumPosition.y + nameDisplacement.y, WHITE);
 				currentNumPosition.y += numbersSpacing;
+			}
+			Vector2 currentTimePosition = { 0,0 };
+			if (rankingNumbers.size()>0) currentTimePosition = { numbersPosition.x + nameDisplacement.x + names[0].width/2, numbersPosition.y + nameDisplacement.y + names[0].height + 10};
+			for (int i = 0; i < rankingTimes.size(); i++)
+			{
+				int minutes = (int)rankingTimes[i] / 60;
+				int seconds = (int)rankingTimes[i] % 60;
+				int milliseconds = (int)((rankingTimes[i] - (int)rankingTimes[i]) * 1000);
+				char timeText[30];
+				sprintf_s(timeText, "%d : %d : %d", minutes, seconds, milliseconds);
+				Vector2 textSize = MeasureTextEx(fontRushDriver, timeText, 20, 5);
+				DrawTextEx(fontRushDriver, timeText, { currentTimePosition.x - textSize.x / 2, currentTimePosition.y }, 20, 5, WHITE);
+				currentTimePosition.y += numbersSpacing;
 			}
 		}
 		else
@@ -138,11 +152,6 @@ update_status ModuleUI::Update(float dt)
 
 	}
 	return UPDATE_CONTINUE;
-}
-
-void ModuleUI::Draw()
-{
-	
 }
 
 void ModuleUI::SetGame(ModuleGame* g)

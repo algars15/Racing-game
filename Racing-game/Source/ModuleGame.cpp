@@ -387,6 +387,18 @@ std::vector<int> ModuleGame::GetRankingNums()
 	return nums;
 }
 
+std::vector<float> ModuleGame::GetRankingTimes()
+{
+	std::vector<float> times;
+
+	for (int i = 0; i < cars.size(); i++)
+	{
+		times.push_back(cars[i]->GetTime());
+	}
+
+	return times;
+}
+
 bool ModuleGame::GetDebug()
 {
 	return App->GetDebug();
