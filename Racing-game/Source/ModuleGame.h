@@ -70,6 +70,7 @@ private:
 	bool started;
 	bool ended;
 	bool returnToMainMenu;
+	bool savedLaps;
 	int redSoundCounter;
 
 	int currentLap;

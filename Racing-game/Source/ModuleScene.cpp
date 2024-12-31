@@ -85,6 +85,7 @@ update_status ModuleScene::Update(float dt)
             else if (toMenu)
             {
                 game->RestartGame();
+                menu->LoadSavedData();
             }
             if (toMenu) state = MENU;
             if (toGame) state = GAME;

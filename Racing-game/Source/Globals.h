@@ -39,7 +39,7 @@ enum update_status
 #define WIN_BORDERLESS		true
 #define WIN_FULLSCREEN_DESKTOP false
 #define VSYNC				true
-#define TITLE "Physics 2D Playground"
+#define TITLE "Racing Game"
 
 //Game Configuration
 #define MAX_CAR_NUM 4

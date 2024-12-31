@@ -27,11 +27,12 @@ bool ModuleMenu::Start()
     LOG("Loading menu assets");
 
     goGame = false;
-
+    state = ModuleMenu::MENU;
     //MENU
     menuTexture = LoadTexture(parameters.child("menu").attribute("path").as_string());
 
     //TRACK SELECTION 
+    fontRushDriver = LoadFont(parameters.attribute("fontPath").as_string());
     raceSelectionTexture = LoadTexture(parameters.child("trackSelection").attribute("path").as_string());
     trackSelector = LoadTexture(parameters.child("trackSelection").attribute("trackSelectorPath").as_string());
 
@@ -63,6 +64,8 @@ bool ModuleMenu::Start()
     pressSound = LoadSound(parameters.attribute("pressPath").as_string());
     SetSoundVolume(pressSound, 0.5f);
 
+    LoadSavedData();
+
 	bool ret = true;
 	return ret;
 }
@@ -81,10 +84,13 @@ update_status ModuleMenu::Update(float dt)
                 state = ModuleMenu::RACE_SELECTION; 
                 trackSelected = 0;
                 PlaySound(pressSound);
+
             }
             DrawTexture(menuTexture, 0, 0, WHITE);
             break;
         case ModuleMenu::RACE_SELECTION:
+        {
+
             if (IsKeyPressed(KEY_SPACE))
             {
                 App->game->SetTrack(trackSelected);
@@ -105,10 +111,25 @@ update_status ModuleMenu::Update(float dt)
                     if (!IsSoundPlaying(selectionSound1)) PlaySound(selectionSound1);
                 }
             }
-            
+
             DrawTexture(raceSelectionTexture, 0, 0, WHITE);
             DrawTexture(trackSelector, trackPositions[trackSelected].x, trackPositions[trackSelected].y, WHITE);
-            
+
+            for (int i = 0; i < tracksTimes.size(); i++)
+            {
+                float time = tracksTimes[i];
+                if (time != 1000)
+                {
+                    int minutes = (int)time / 60;
+                    int seconds = (int)time % 60;
+                    int milliseconds = (int)((time - (int)time) * 1000);
+                    char timeText[30];
+                    sprintf_s(timeText, "%d : %d : %d", minutes, seconds, milliseconds);
+                    Vector2 textSize = MeasureTextEx(fontRushDriver, timeText, 20, 5);
+                    DrawTextEx(fontRushDriver, timeText, { trackPositions[i].x + trackSelector.width / 2 - textSize.x / 2, trackPositions[i].y + trackSelector.height + textSize.y / 2 }, 20, 5, WHITE);
+                }
+            }
+        }
             break;
         case ModuleMenu::CAR_SELECTION:
             if (IsKeyPressed(KEY_SPACE))
@@ -199,7 +220,33 @@ bool ModuleMenu::CleanUp()
     UnloadSound(selectionSound1);
     UnloadSound(selectionSound2);
     UnloadSound(pressSound);
+    UnloadFont(fontRushDriver);
 	LOG("Unloading Intro scene");
 
 	return true;
+}
+
+void ModuleMenu::LoadSavedData()
+{
+    pugi::xml_document configFile;
+    pugi::xml_parse_result result = configFile.load_file("config.xml");
+    if (result)
+    {
+        LOG("config.xml parsed without errors");
+    }
+    else
+    {
+        LOG("Error loading config.xml while loading: %s", result.description());
+    }
+
+    pugi::xml_node tracksNode = configFile.child("config").child("game").child("tracks");
+
+    tracksTimes.clear();
+    for (pugi::xml_node child : tracksNode.children())
+    {
+        tracksTimes.push_back(child.attribute("fastestLap").as_float());
+        TraceLog(LOG_INFO, "%f", child.attribute("fastestLap").as_float());
+    }
+
+    configFile.save_file("config.xml");
 }

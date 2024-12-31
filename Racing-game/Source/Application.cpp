@@ -13,6 +13,7 @@
 
 Application::Application()
 {
+	bool ret = true;
 	LoadConfig();
 
 	window = new ModuleWindow(this);
@@ -48,8 +49,8 @@ Application::Application()
 	
 	// Rendering happens at the end
 	AddModule(renderer);
-
-	bool ret = true;
+	debug = false;
+	
 
 	for (auto it = list_modules.rbegin(); it != list_modules.rend(); ++it)
 	{

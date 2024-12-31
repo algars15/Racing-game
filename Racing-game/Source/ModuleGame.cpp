@@ -173,6 +173,7 @@ void ModuleGame::LoadGame()
 	ended = false;
 	started = false;
 	returnToMainMenu = false;
+	savedLaps = false;
 
 	//Loading Audio
 	redSound = LoadSound(parameters.child("audio").attribute("redPath").as_string());
@@ -295,6 +296,11 @@ update_status ModuleGame::Update(float dt)
 		}
 		else
 		{
+			if (!savedLaps)
+			{
+				SaveGame();
+				savedLaps = true;
+			}
 			if (!IsSoundPlaying(endSong)) PlaySound(endSong);
 			if (IsKeyPressed(KEY_SPACE)) returnToMainMenu = true;
 		}
@@ -313,7 +319,32 @@ update_status ModuleGame::Update(float dt)
 
 void ModuleGame::SaveGame() {
 	
+	pugi::xml_document configFile;
+	pugi::xml_parse_result result = configFile.load_file("config.xml");
+	if (result)
+	{
+		LOG("config.xml parsed without errors");
+	}
+	else
+	{
+		LOG("Error loading config.xml while saving: %s", result.description());
+	}
+
+	float lessTime = cars[0]->GetTime();
+	for (int i = 1; i < cars.size(); i++)
+	{
+		if (lessTime > cars[i]->GetTime()) lessTime = cars[i]->GetTime();
+	}
+
+	char nodeName[16];
+	sprintf_s(nodeName, "c%d", trackNum);
+	pugi::xml_node trackNode = configFile.child("config").child("game").child("tracks").child(nodeName);
 	
+	if (lessTime < trackNode.attribute("fastestLap").as_float())
+	{
+		trackNode.attribute("fastestLap").set_value(lessTime);
+	}
+	configFile.save_file("config.xml");
 }
 
 void ModuleGame::SetUI(ModuleUI* _ui)

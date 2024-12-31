@@ -4,154 +4,135 @@
 		<title>Our racing game</title>
 		<maxFrameDuration value="16" />
 	</application>
-	
-	<audio>
-		
-	</audio>
-	
+	<audio />
 	<game>
-		<properties sortTime = "0.3" startTime="7"/>
-		<audio redPath ="Assets/Sounds/redSound.wav" greenPath="Assets/Sounds/greenSound.wav" endSong="Assets/Sounds/endSong.wav"/>
+		<properties sortTime="0.3" startTime="7" />
+		<audio redPath="Assets/Sounds/redSound.wav" greenPath="Assets/Sounds/greenSound.wav" endSong="Assets/Sounds/endSong.wav" />
 		<tracks>
-			<c0 path = "Assets/Tracks/C1.png" tmx = "Assets/Tracks/c1.tmx" laps="10"/>
-			<c1 path = "Assets/Tracks/C2.png" tmx = "Assets/Tracks/c2.tmx" laps="9"/>
-			<c2 path = "Assets/Tracks/C3.png" tmx = "Assets/Tracks/c3.tmx" laps="9"/>
-			<c3 path = "Assets/Tracks/C4.png" tmx = "Assets/Tracks/c4.tmx" laps="9"/>
-			<c4 path = "Assets/Tracks/C5.png" tmx = "Assets/Tracks/c5.tmx" laps="8"/>
-			<c5 path = "Assets/Tracks/C6.png" tmx = "Assets/Tracks/c6.tmx" laps="8"/>
-			<c6 path = "Assets/Tracks/C7.png" tmx = "Assets/Tracks/c7.tmx" laps="7"/>
-			<c7 path = "Assets/Tracks/C8.png" tmx = "Assets/Tracks/c8.tmx" laps="7"/>
-			<c8 path = "Assets/Tracks/C9.png" tmx = "Assets/Tracks/c9.tmx" laps="7"/>
-			<c9 path = "Assets/Tracks/C10.png" tmx = "Assets/Tracks/c10.tmx" laps="6"/>
+			<c0 path="Assets/Tracks/C1.png" tmx="Assets/Tracks/c1.tmx" laps="10" fastestLap="1000" />
+			<c1 path="Assets/Tracks/C2.png" tmx="Assets/Tracks/c2.tmx" laps="9" fastestLap="1000" />
+			<c2 path="Assets/Tracks/C3.png" tmx="Assets/Tracks/c3.tmx" laps="9" fastestLap="1000" />
+			<c3 path="Assets/Tracks/C4.png" tmx="Assets/Tracks/c4.tmx" laps="9" fastestLap="1000" />
+			<c4 path="Assets/Tracks/C5.png" tmx="Assets/Tracks/c5.tmx" laps="8" fastestLap="1000" />
+			<c5 path="Assets/Tracks/C6.png" tmx="Assets/Tracks/c6.tmx" laps="8" fastestLap="1000" />
+			<c6 path="Assets/Tracks/C7.png" tmx="Assets/Tracks/c7.tmx" laps="7" fastestLap="1000" />
+			<c7 path="Assets/Tracks/C8.png" tmx="Assets/Tracks/c8.tmx" laps="7" fastestLap="1000" />
+			<c8 path="Assets/Tracks/C9.png" tmx="Assets/Tracks/c9.tmx" laps="7" fastestLap="1000" />
+			<c9 path="Assets/Tracks/C10.png" tmx="Assets/Tracks/c10.tmx" laps="6" fastestLap="1000" />
 		</tracks>
-		<cars path = "Assets/Cars/Cars.png" width = "44" height = "76" gravity = "0" angularDamping ="20" linearDamping ="3" acceleration = "0.6f" deceleration ="0.5f" maxSpeed ="10" drsMaxSpeed ="12" reverseMaxSpeed =" 4" turnSpeed ="20" turnSpeedDrs ="10" soundPath ="Assets/Sounds/CarSound.wav">
-			<car0 name="CHARLES LEMERC"></car0>
-			<car1 name="DANIEL RIQUIARDE"></car1>
-			<car2 name="SERGIO PEREZOSO"></car2>
-			<car3 name="FRANCO PINTACOLAS"></car3>
-			<car4 name="PIERRE GASTLY"></car4>
-			<car5 name="FRENANDO ALONSO"></car5>
-			<car6 name="JORGE EL RUSO"></car6>
-			<car7 name="LA CABRA SAINZ"></car7>
-			<car8 name="LEWIS HALIMONTON"></car8>
-			<car9 name="MAXIMO VERSTAPON"></car9>
-			<car10 name="ESTEBAN MOJON"></car10>
-			<car11 name="LANCE TROLL"></car11>
-			<car12 name="VALTERO BOTAS"></car12>
-			<car13 name="YUKI TU NO DA"></car13>
-			<car14 name="KEVIN EL MAGNO"></car14>
-			<car15 name="NICO HULK"></car15>
+		<cars path="Assets/Cars/Cars.png" width="44" height="76" gravity="0" angularDamping="20" linearDamping="3" acceleration="0.6f" deceleration="0.5f" maxSpeed="10" drsMaxSpeed="12" reverseMaxSpeed=" 4" turnSpeed="20" turnSpeedDrs="10" soundPath="Assets/Sounds/CarSound.wav">
+			<car0 name="CHARLES LEMERC" />
+			<car1 name="DANIEL RIQUIARDE" />
+			<car2 name="SERGIO PEREZOSO" />
+			<car3 name="FRANCO PINTACOLAS" />
+			<car4 name="PIERRE GASTLY" />
+			<car5 name="FRENANDO ALONSO" />
+			<car6 name="JORGE EL RUSO" />
+			<car7 name="LA CABRA SAINZ" />
+			<car8 name="LEWIS HALIMONTON" />
+			<car9 name="MAXIMO VERSTAPON" />
+			<car10 name="ESTEBAN MOJON" />
+			<car11 name="LANCE TROLL" />
+			<car12 name="VALTERO BOTAS" />
+			<car13 name="YUKI TU NO DA" />
+			<car14 name="KEVIN EL MAGNO" />
+			<car15 name="NICO HULK" />
 		</cars>
 	</game>
-	
-	<menu songPath="Assets/Sounds/menuSong.wav" selectionPath="Assets/Sounds/selectionSound.wav" pressPath="Assets/Sounds/pressSound.wav">
-		<menu path = "Assets/Menu/Menu.png"/>
-		<trackSelection path = "Assets/Menu/Track menu.png" trackSelectorPath ="Assets/Menu/Track selector.png">
-			<track x="131" y ="298"/>
-			<track x="590" y ="298"/>
-			<track x="1049" y ="298"/>
-			<track x="1508" y ="298"/>
-			<track x="131" y ="568"/>
-			<track x="590" y ="568"/>
-			<track x="1049" y ="568"/>
-			<track x="1508" y ="568"/>
-			<track x="131" y ="838"/>
-			<track x="590" y ="838"/>
+	<menu songPath="Assets/Sounds/menuSong.wav" selectionPath="Assets/Sounds/selectionSound.wav" pressPath="Assets/Sounds/pressSound.wav" fontPath="Assets/UI/RushDriver-Italic.otf">
+		<menu path="Assets/Menu/Menu.png" />
+		<trackSelection path="Assets/Menu/Track menu.png" trackSelectorPath="Assets/Menu/Track selector.png">
+			<track x="131" y="298" />
+			<track x="590" y="298" />
+			<track x="1049" y="298" />
+			<track x="1508" y="298" />
+			<track x="131" y="568" />
+			<track x="590" y="568" />
+			<track x="1049" y="568" />
+			<track x="1508" y="568" />
+			<track x="131" y="838" />
+			<track x="590" y="838" />
 		</trackSelection>
-		<carSelection bkgPath = "Assets/Menu/Car_menu_bkg.png" carsPath = "Assets/Menu/Car menu_cars.png" carSelectorPath="Assets/Menu/Car Selection.png" selectorOffset ="6">
-			<car x="226" y ="258"/>
-			<car x="501" y ="258"/>
-			<car x="776" y ="258"/>
-			<car x="1051" y ="258"/>
-			<car x="1326" y ="258"/>
-			<car x="1601" y ="258"/>
-			<car x="226" y ="534"/>
-			<car x="501" y ="534"/>
-			<car x="776" y ="534"/>
-			<car x="1051" y ="534"/>
-			<car x="1326" y ="534"/>
-			<car x="1600" y ="534"/>
-			<car x="226" y ="816"/>
-			<car x="501" y ="816"/>
-			<car x="776" y ="816"/>
-			<car x="1051" y ="816"/>
+		<carSelection bkgPath="Assets/Menu/Car_menu_bkg.png" carsPath="Assets/Menu/Car menu_cars.png" carSelectorPath="Assets/Menu/Car Selection.png" selectorOffset="6">
+			<car x="226" y="258" />
+			<car x="501" y="258" />
+			<car x="776" y="258" />
+			<car x="1051" y="258" />
+			<car x="1326" y="258" />
+			<car x="1601" y="258" />
+			<car x="226" y="534" />
+			<car x="501" y="534" />
+			<car x="776" y="534" />
+			<car x="1051" y="534" />
+			<car x="1326" y="534" />
+			<car x="1600" y="534" />
+			<car x="226" y="816" />
+			<car x="501" y="816" />
+			<car x="776" y="816" />
+			<car x="1051" y="816" />
 		</carSelection>
 	</menu>
-	
-	<physics>
-
-	</physics>
-	
+	<physics />
 	<render>
 		<vsync value="false" />
 	</render>
-	
-	<scene>
-		
-	</scene>
-	
+	<scene />
 	<ui>
 		<fonts>
-			<rushDriver path="Assets/UI/RushDriver-Italic.otf"/>
+			<rushDriver path="Assets/UI/RushDriver-Italic.otf" />
 		</fonts>
-		<trafficLight path ="Assets/UI/BaseTrafficLight.png" width="770" height ="118">
-			<light path ="Assets/UI/FirstLight.png"></light>
-			<light path ="Assets/UI/SecondLight.png"></light>
-			<light path ="Assets/UI/ThirdLight.png"></light>
-			<light path ="Assets/UI/ForthLight.png"></light>
-			<light path ="Assets/UI/LastLight.png"></light>
+		<trafficLight path="Assets/UI/BaseTrafficLight.png" width="770" height="118">
+			<light path="Assets/UI/FirstLight.png" />
+			<light path="Assets/UI/SecondLight.png" />
+			<light path="Assets/UI/ThirdLight.png" />
+			<light path="Assets/UI/ForthLight.png" />
+			<light path="Assets/UI/LastLight.png" />
 		</trafficLight>
-		<leaderBoard path ="Assets/UI/Leaderboard.png" x="690" y="300" numbersSpacing ="80" displacementX = "90" displacementY="25">
-			<names path ="Assets/UI/Names/Name-Lemerc.png"/>
-			<names path ="Assets/UI/Names/Name-Riquiarde.png"/>
-			<names path ="Assets/UI/Names/Name-Perezoso.png"/>
-			<names path ="Assets/UI/Names/Name-Pintacolas.png"/>
-			<names path ="Assets/UI/Names/Name-Gastly.png"/>
-			<names path ="Assets/UI/Names/Name-Alonso.png"/>
-			<names path ="Assets/UI/Names/Name-Jorge.png"/>
-			<names path ="Assets/UI/Names/Name-Sainz.png"/>
-			<names path ="Assets/UI/Names/Name-Halimonton.png"/>
-			<names path ="Assets/UI/Names/Name-Verstapon.png"/>
-			<names path ="Assets/UI/Names/Name-Mojon.png"/>
-			<names path ="Assets/UI/Names/Name-Troll.png"/>
-			<names path ="Assets/UI/Names/Name-Botas.png"/>
-			<names path ="Assets/UI/Names/Name-Yuki.png"/>
-			<names path ="Assets/UI/Names/Name-Kevin.png"/>
-			<names path ="Assets/UI/Names/Name-Hulk.png"/>
-			<number path ="Assets/UI/Classification/1.png"/>
-			<number path ="Assets/UI/Classification/2.png"/>
-			<number path ="Assets/UI/Classification/3.png"/>
-			<number path ="Assets/UI/Classification/4.png"/>
-			<number path ="Assets/UI/Classification/5.png"/>
-			<number path ="Assets/UI/Classification/6.png"/>
+		<leaderBoard path="Assets/UI/Leaderboard.png" x="690" y="300" numbersSpacing="80" displacementX="90" displacementY="25">
+			<names path="Assets/UI/Names/Name-Lemerc.png" />
+			<names path="Assets/UI/Names/Name-Riquiarde.png" />
+			<names path="Assets/UI/Names/Name-Perezoso.png" />
+			<names path="Assets/UI/Names/Name-Pintacolas.png" />
+			<names path="Assets/UI/Names/Name-Gastly.png" />
+			<names path="Assets/UI/Names/Name-Alonso.png" />
+			<names path="Assets/UI/Names/Name-Jorge.png" />
+			<names path="Assets/UI/Names/Name-Sainz.png" />
+			<names path="Assets/UI/Names/Name-Halimonton.png" />
+			<names path="Assets/UI/Names/Name-Verstapon.png" />
+			<names path="Assets/UI/Names/Name-Mojon.png" />
+			<names path="Assets/UI/Names/Name-Troll.png" />
+			<names path="Assets/UI/Names/Name-Botas.png" />
+			<names path="Assets/UI/Names/Name-Yuki.png" />
+			<names path="Assets/UI/Names/Name-Kevin.png" />
+			<names path="Assets/UI/Names/Name-Hulk.png" />
+			<number path="Assets/UI/Classification/1.png" />
+			<number path="Assets/UI/Classification/2.png" />
+			<number path="Assets/UI/Classification/3.png" />
+			<number path="Assets/UI/Classification/4.png" />
+			<number path="Assets/UI/Classification/5.png" />
+			<number path="Assets/UI/Classification/6.png" />
 		</leaderBoard>
-		<inGameLeaderBoard path = "Assets/UI/Classification/CheckeredLine.png" x="0" y ="100">
-			<pilot path ="Assets/UI/Classification/Pilots/LEC.png"/>
-			<pilot path ="Assets/UI/Classification/Pilots/RIC.png"/>
-			<pilot path ="Assets/UI/Classification/Pilots/PER.png"/>
-			<pilot path ="Assets/UI/Classification/Pilots/COL.png"/>
-			<pilot path ="Assets/UI/Classification/Pilots/GAS.png"/>
-			<pilot path ="Assets/UI/Classification/Pilots/ALO.png"/>
-			<pilot path ="Assets/UI/Classification/Pilots/RUS.png"/>
-			<pilot path ="Assets/UI/Classification/Pilots/SAI.png"/>
-			<pilot path ="Assets/UI/Classification/Pilots/HAM.png"/>
-			<pilot path ="Assets/UI/Classification/Pilots/VER.png"/>
-			<pilot path ="Assets/UI/Classification/Pilots/OCO.png"/>
-			<pilot path ="Assets/UI/Classification/Pilots/STR.png"/>
-			<pilot path ="Assets/UI/Classification/Pilots/BOT.png"/>
-			<pilot path ="Assets/UI/Classification/Pilots/TSU.png"/>
-			<pilot path ="Assets/UI/Classification/Pilots/MAG.png"/>
-			<pilot path ="Assets/UI/Classification/Pilots/HUL.png"/>
+		<inGameLeaderBoard path="Assets/UI/Classification/CheckeredLine.png" x="0" y="100">
+			<pilot path="Assets/UI/Classification/Pilots/LEC.png" />
+			<pilot path="Assets/UI/Classification/Pilots/RIC.png" />
+			<pilot path="Assets/UI/Classification/Pilots/PER.png" />
+			<pilot path="Assets/UI/Classification/Pilots/COL.png" />
+			<pilot path="Assets/UI/Classification/Pilots/GAS.png" />
+			<pilot path="Assets/UI/Classification/Pilots/ALO.png" />
+			<pilot path="Assets/UI/Classification/Pilots/RUS.png" />
+			<pilot path="Assets/UI/Classification/Pilots/SAI.png" />
+			<pilot path="Assets/UI/Classification/Pilots/HAM.png" />
+			<pilot path="Assets/UI/Classification/Pilots/VER.png" />
+			<pilot path="Assets/UI/Classification/Pilots/OCO.png" />
+			<pilot path="Assets/UI/Classification/Pilots/STR.png" />
+			<pilot path="Assets/UI/Classification/Pilots/BOT.png" />
+			<pilot path="Assets/UI/Classification/Pilots/TSU.png" />
+			<pilot path="Assets/UI/Classification/Pilots/MAG.png" />
+			<pilot path="Assets/UI/Classification/Pilots/HUL.png" />
 		</inGameLeaderBoard>
-		
 	</ui>
-	
-	<window>
-
-	</window>
-	
+	<window />
 	<render>
 		<vsync value="false" />
 	</render>
-	
 </config>

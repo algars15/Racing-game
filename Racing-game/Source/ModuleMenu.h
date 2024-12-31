@@ -2,7 +2,6 @@
 
 #include "Globals.h"
 #include "Module.h"
-
 #include "p2Point.h"
 
 
@@ -25,6 +24,7 @@ public:
 	bool CleanUp();
 	bool GetGoGame();
 	void RestartMenu();
+	void LoadSavedData();
 
 
 private:
@@ -52,4 +52,8 @@ private:
 	Sound selectionSound1;
 	Sound selectionSound2;
 	Sound pressSound;
+
+	std::vector<float> tracksTimes;
+
+	Font fontRushDriver;
 };
